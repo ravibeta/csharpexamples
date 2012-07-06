@@ -4,13 +4,20 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Collections;
+using System.Threading.Tasks;
 
 namespace SchedulerCSharp
 {
+//Scheduler Algorithms
+//1) uniprocessor non-preemptive scheduler has no breaks
+//2) synchronized (prioritized) queue of non-blocking tasks
+//3) a thread pool manager with an event or mutex for each thread or monitor
+//4) task or time parallelization
+//5) timeslicing vs timesharing
     public sealed class Scheduler
     {
         private Queue tasks;
-        public void Add(Task t)
+        public void Add(MyTask t)
         {
             tasks.Enqueue(t);
         }
@@ -24,17 +31,17 @@ namespace SchedulerCSharp
         {
             while (tasks.Count != 0)
             {
-                Task t = tasks.Dequeue() as Task;
+                MyTask t = tasks.Dequeue() as MyTask;
                 t.Run();
             }
         }
     }
 
-    public class Task
+    public class MyTask
     {
         int Id {get; set;}
         public void Run() { Console.Write("{0}", Id); }
-        public Task(int id)
+        public MyTask(int id)
         {
             Id = id;
         }
@@ -48,10 +55,22 @@ namespace SchedulerCSharp
             var s = new Scheduler();
             for (int i = 0; i < 10; i++)
             {
-                var task = new Task(i);
+                var task = new MyTask(i);
                 s.Add(task);
             }
             s.Run();
+
+            TaskFactory factory = new TaskFactory();
+            factory.StartNew(()=> 
+                {
+                    for (int i = 0; i < 500; i++)
+                    {
+                        Console.Write("{0} on thread {1}", i, Thread.CurrentThread.ManagedThreadId);
+                    }
+                }
+            );
+            Console.ReadKey();
+
         }
     }
 }
