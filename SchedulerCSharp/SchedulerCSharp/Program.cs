@@ -60,8 +60,8 @@ namespace SchedulerCSharp
             }
             s.Run();
 
-            TaskFactory factory = new TaskFactory();
-            factory.StartNew(()=> 
+            //TaskFactory factory = new TaskFactory();
+            Task.Factory.StartNew(()=> 
                 {
                     for (int i = 0; i < 500; i++)
                     {
