@@ -29,11 +29,16 @@ namespace SchedulerCSharp
 
         public void Run()
         {
-            while (tasks.Count != 0)
+            Action<object> action = (object arg) =>
             {
-                MyTask t = tasks.Dequeue() as MyTask;
-                t.Run();
-            }
+                Queue tasks = arg as Queue;
+                while(tasks.Count != 0)
+                {
+                    MyTask t = tasks.Dequeue() as MyTask;
+                    t.Run();
+                }
+            };
+            Task.Factory.StartNew(action, this.tasks as object).Wait();
         }
     }
 
@@ -59,16 +64,6 @@ namespace SchedulerCSharp
                 s.Add(task);
             }
             s.Run();
-
-            //TaskFactory factory = new TaskFactory();
-            Task.Factory.StartNew(()=> 
-                {
-                    for (int i = 0; i < 500; i++)
-                    {
-                        Console.Write("{0} on thread {1}", i, Thread.CurrentThread.ManagedThreadId);
-                    }
-                }
-            );
             Console.ReadKey();
 
         }
