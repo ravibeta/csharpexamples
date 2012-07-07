@@ -2,3 +2,4 @@ C:\Users\admin\gitrep\csharpexamples\SchedulerCSharp\SchedulerCSharp\bin\Debug\S
 C:\Users\admin\gitrep\csharpexamples\SchedulerCSharp\SchedulerCSharp\bin\Debug\SchedulerCSharp.pdb
 C:\Users\admin\gitrep\csharpexamples\SchedulerCSharp\SchedulerCSharp\obj\x86\Debug\SchedulerCSharp.exe
 C:\Users\admin\gitrep\csharpexamples\SchedulerCSharp\SchedulerCSharp\obj\x86\Debug\SchedulerCSharp.pdb
+C:\Users\admin\gitrep\csharpexamples\SchedulerCSharp\SchedulerCSharp\obj\x86\Debug\SchedulerCSharp.csprojResolveAssemblyReference.cache

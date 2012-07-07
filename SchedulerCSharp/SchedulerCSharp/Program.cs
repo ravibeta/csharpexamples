@@ -20,6 +20,7 @@ namespace SchedulerCSharp
         public void Add(MyTask t)
         {
             tasks.Enqueue(t);
+            Run();
         }
 
         public Scheduler()
@@ -27,7 +28,7 @@ namespace SchedulerCSharp
             tasks = Queue.Synchronized(new Queue());
         }
 
-        public void Run()
+        private void Run()
         {
             Action<object> action = (object arg) =>
             {
@@ -63,7 +64,6 @@ namespace SchedulerCSharp
                 var task = new MyTask(i);
                 s.Add(task);
             }
-            s.Run();
             Console.ReadKey();
 
         }
