@@ -16,36 +16,54 @@ namespace SchedulerCSharp
 //5) timeslicing vs timesharing
     public sealed class Scheduler
     {
-        private Queue tasks;
+        private SortedList<int, MyTask> tasks;
+        List<Task> threads;
         public void Add(MyTask t)
         {
-            tasks.Enqueue(t);
+            lock (tasks)
+            {
+                tasks[t.Id] = t;
+            }
             Run();
         }
 
         public Scheduler()
         {
-            tasks = Queue.Synchronized(new Queue());
+            tasks = new SortedList<int,MyTask>();
+            threads = new List<Task>();
+        }
+
+        ~Scheduler()
+        {
+            for (int i = 0; i < threads.Count; i++)
+                if(threads[i].IsCompleted == false)
+                    threads[i].Wait();
         }
 
         private void Run()
         {
             Action<object> action = (object arg) =>
             {
-                Queue tasks = arg as Queue;
-                while(tasks.Count != 0)
+                var tasks = arg as SortedList<int, MyTask>;
+                
+                while (tasks.Count != 0)
                 {
-                    MyTask t = tasks.Dequeue() as MyTask;
+                    MyTask t;
+                    lock (tasks)
+                    {
+                        t = tasks.ElementAt(0).Value as MyTask;
+                        tasks.RemoveAt(0);
+                    }
                     t.Run();
                 }
             };
-            Task.Factory.StartNew(action, this.tasks as object).Wait();
+            threads.Add(Task.Factory.StartNew(action, this.tasks as object));
         }
     }
 
     public class MyTask
     {
-        int Id {get; set;}
+        public int Id {get; private set;}
         public void Run() { Console.Write("{0}", Id); }
         public MyTask(int id)
         {
