@@ -36,7 +36,7 @@ namespace SchedulerCSharp
         ~Scheduler()
         {
             for (int i = 0; i < threads.Count; i++)
-                if(threads[i].IsCompleted == false)
+                // if(threads[i].IsCompleted == false)
                     threads[i].Wait();
         }
 
