@@ -57,17 +57,29 @@ namespace SchedulerCSharp
                     t.Run();
                 }
             };
-            threads.Add(Task.Factory.StartNew(action, this.tasks as object));
+            Task.Factory.StartNew(action, this.tasks as object).Wait();
         }
     }
 
     public class MyTask
     {
         public int Id {get; private set;}
-        public void Run() { Console.Write("{0}", Id); }
+        public virtual void Run() { Console.Write("{0}", Id); }
         public MyTask(int id)
         {
             Id = id;
+        }
+    }
+
+    public class IdleTask : MyTask
+    {
+        public override void Run() 
+        { 
+            //Monitor.Wait(); 
+        }
+        public IdleTask(int id)
+            : base(id)
+        {
         }
     }
 
@@ -82,6 +94,7 @@ namespace SchedulerCSharp
                 var task = new MyTask(i);
                 s.Add(task);
             }
+            var idleTask = new IdleTask(10);
             Console.ReadKey();
 
         }
