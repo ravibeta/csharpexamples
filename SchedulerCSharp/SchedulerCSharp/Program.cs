@@ -13,9 +13,7 @@ namespace SchedulerCSharp
         {
             TimeBasedTaskScheduler lcts = new TimeBasedTaskScheduler(1);
             Action action = () =>
-            {
-                    Console.WriteLine("Run on thread {0}", Thread.CurrentThread.ManagedThreadId);
-            };
+            {Console.WriteLine("Run on thread {0}", Thread.CurrentThread.ManagedThreadId);};
             List<Task> tasks = new List<Task>();
             for (int i = 0; i < 10; i++)
             {
@@ -47,7 +45,7 @@ namespace SchedulerCSharp
         private readonly LinkedList<Task> _tasks = new LinkedList<Task>(); // protected by lock(_tasks)
         /// <summary>The maximum concurrency level allowed by this scheduler.</summary>
         private readonly int _maxDegreeOfParallelism;
-        /// <summary>Whether the scheduler is currently processing work items.</summary>
+        /// <summary>Whether the scheduler is currently processing work items.</summary>        
         private int _delegatesQueuedOrRunning = 0; // protected by lock(_tasks)
         private static AutoResetEvent itemEvent = new AutoResetEvent(false);
         private Timer timer;
@@ -127,9 +125,6 @@ namespace SchedulerCSharp
             finally { _currentThreadIsProcessingItems = false; }
         }
 
-        private void CheckStatus(Object stateInfo)
-        {
-        }
         /// <summary>Attempts to execute the specified task on the current thread.</summary>
         /// <param name="task">The task to be executed.</param>
         /// <param name="taskWasPreviouslyQueued"></param>
