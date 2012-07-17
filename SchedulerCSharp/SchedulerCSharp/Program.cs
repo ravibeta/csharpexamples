@@ -21,7 +21,7 @@ namespace SchedulerCSharp
                 MyTask t = new MyTask(action);
                 tasks.Add(t);
             }
-            tasks.ForEach(x => { x.Start(lcts); Thread.Sleep(1000); });
+            tasks.ForEach(x => { x.Start(lcts); Thread.Sleep(500); });
             tasks.ForEach(x => x.Wait());
             Console.ReadKey();
         }
