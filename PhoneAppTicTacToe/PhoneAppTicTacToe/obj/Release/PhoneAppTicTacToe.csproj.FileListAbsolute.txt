@@ -1,0 +1,12 @@
+C:\Users\admin\gitrep\csharpexamples\PhoneAppTicTacToe\PhoneAppTicTacToe\Bin\Release\ApplicationIcon.png
+C:\Users\admin\gitrep\csharpexamples\PhoneAppTicTacToe\PhoneAppTicTacToe\Bin\Release\Background.png
+C:\Users\admin\gitrep\csharpexamples\PhoneAppTicTacToe\PhoneAppTicTacToe\Bin\Release\PhoneAppTicTacToe.dll
+C:\Users\admin\gitrep\csharpexamples\PhoneAppTicTacToe\PhoneAppTicTacToe\Bin\Release\PhoneAppTicTacToe.pdb
+C:\Users\admin\gitrep\csharpexamples\PhoneAppTicTacToe\PhoneAppTicTacToe\Bin\Release\AppManifest.xaml
+C:\Users\admin\gitrep\csharpexamples\PhoneAppTicTacToe\PhoneAppTicTacToe\Bin\Release\PhoneAppTicTacToe.xap
+C:\Users\admin\gitrep\csharpexamples\PhoneAppTicTacToe\PhoneAppTicTacToe\obj\Release\App.g.i.cs
+C:\Users\admin\gitrep\csharpexamples\PhoneAppTicTacToe\PhoneAppTicTacToe\obj\Release\MainPage.g.i.cs
+C:\Users\admin\gitrep\csharpexamples\PhoneAppTicTacToe\PhoneAppTicTacToe\obj\Release\PhoneAppTicTacToe.g.resources
+C:\Users\admin\gitrep\csharpexamples\PhoneAppTicTacToe\PhoneAppTicTacToe\obj\Release\PhoneAppTicTacToe.dll
+C:\Users\admin\gitrep\csharpexamples\PhoneAppTicTacToe\PhoneAppTicTacToe\obj\Release\PhoneAppTicTacToe.pdb
+C:\Users\admin\gitrep\csharpexamples\PhoneAppTicTacToe\PhoneAppTicTacToe\obj\Release\XapCacheFile.xml
