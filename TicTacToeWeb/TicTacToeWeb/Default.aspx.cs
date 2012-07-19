@@ -9,23 +9,20 @@ namespace TicTacToeWeb
 {
     public partial class _Default : Page
     {
-        public char[,] Board { get; set; }
-        private bool gameOver = false;
-
+        
         protected void Page_Init(object sender, EventArgs e)
         {
-            Board = new char[3, 3] { { 'a', 'b', 'c' }, { 'd', 'e', 'f' }, { 'g', 'h', 'i' } };
-            this._9.Enabled = false;
+            
         }
         protected void Page_Load(object sender, EventArgs e)
         {
-//            Board = new char[3, 3] { { 'a', 'b', 'c' }, { 'd', 'e', 'f' }, { 'g', 'h', 'i' } };            
-//            this._9.Enabled = false;
         }
 
         protected void Play(object sender, EventArgs e)
         {
             Button b = sender as Button;
+            char[,] Board = Session["board"] as char[,];
+            bool gameOver = Convert.ToBoolean(Session["gameOver"]);
             int pos = Int32.Parse(b.ID.Substring(1));
             b.Enabled = false;
             b.Text = "X";
@@ -59,10 +56,14 @@ namespace TicTacToeWeb
                 this._9.Text = "Reset";
                 this._9.Enabled = true;
             }
+
+            Session["board"] = Board;
+            Session["gameOver"] = gameOver;
         }
         protected void Reset(object sender, EventArgs e)
         {
-            Board = new char[3, 3] { { ' ', ' ', ' ' }, { ' ', ' ', ' ' }, { ' ', ' ', ' ' } };
+            var Board = new char[3, 3] { { 'a', 'b', 'c' }, { 'd', 'e', 'f' }, { 'g', 'h', 'i' } };
+            bool gameOver = false;
             this._0.Enabled = true;
             this._1.Enabled = true;
             this._2.Enabled = true;
@@ -83,7 +84,8 @@ namespace TicTacToeWeb
             this._8.Text = "click me";
             this._9.Text = "Play";
             this._9.Enabled = false;
-            gameOver = false;
+            Session["board"] = Board;
+            Session["gameOver"] = gameOver;
         }
         private Button GetButton(int i)
         {
@@ -113,6 +115,8 @@ namespace TicTacToeWeb
         }
         private void CheckLastMove(int i, int j, char c)
         {
+            var Board = Session["board"] as char[,];
+            var gameOver = Convert.ToBoolean(Session["gameOver"]);
             if (i - 1 >= 0 && j - 1 >= 0 && i + 1 <= 2 && j + 1 <= 2 && Board[i - 1, j - 1] == c && c == Board[i + 1, j + 1]) gameOver = true;
             if (i - 1 >= 0 && i + 1 <= 2 && Board[i - 1, j] == c && c == Board[i + 1, j]) gameOver = true;
             if (i - 1 >= 0 && j + 1 <= 2 && i + 1 <= 2 && j - 1 >= 0 && Board[i - 1, j + 1] == c && c == Board[i + 1, j - 1]) gameOver = true;
@@ -126,9 +130,14 @@ namespace TicTacToeWeb
             if (i + 1 <= 2 && j - 1 >= 0 && i + 2 <= 2 && j - 2 >= 0 && Board[i + 1, j - 1] == c && c == Board[i + 2, j - 2]) gameOver = true;
             if (j - 1 >= 0 && j - 2 >= 0 && Board[i, j - 1] == c && c == Board[i, j - 2]) gameOver = true;
 
+            Session["board"] = Board;
+            Session["gameOver"] = gameOver;
         }
         private int GetNextMove(char c)
         {
+            var Board = Session["board"] as char[,];
+            var gameOver = Convert.ToBoolean(Session["gameOver"]);
+            
             for (int i = 0; i < 3; i++)
                 for (int j = 0; j < 3; j++)
                 {
@@ -173,6 +182,8 @@ namespace TicTacToeWeb
                     if (Board[i, j] != 'X' && Board[i, j] != 'O')
                     {
                         Board[i, j] = c;
+                        Session["board"] = Board;
+                        Session["gameOver"] = gameOver;
                         return i * 3 + j;
                     }
                 }
@@ -182,11 +193,16 @@ namespace TicTacToeWeb
 
         private int ThreeInARow(int i, int j, char c)
         {
+            var Board = Session["board"] as char[,];
+            var gameOver = Convert.ToBoolean(Session["gameOver"]);
+            
             if (i - 1 >= 0 && j - 1 >= 0
                 && i + 1 <= 2 && j + 1 <= 2 && Board[i - 1, j - 1] == Board[i + 1, j + 1])
             {
                 if (Board[i - 1, j - 1] == c && c == Board[i + 1, j + 1]) gameOver = true;
                 Board[i, j] = c;
+                Session["board"] = Board;
+                Session["gameOver"] = gameOver;
                 return i * 3 + j;
             }
 
@@ -195,6 +211,8 @@ namespace TicTacToeWeb
             {
                 if (Board[i - 1, j] == c && c == Board[i + 1, j]) gameOver = true;
                 Board[i, j] = c;
+                Session["board"] = Board;
+                Session["gameOver"] = gameOver;
                 return i * 3 + j;
             }
 
@@ -203,6 +221,8 @@ namespace TicTacToeWeb
             {
                 if (Board[i - 1, j + 1] == c && c == Board[i + 1, j - 1]) gameOver = true;
                 Board[i, j] = c;
+                Session["board"] = Board;
+                Session["gameOver"] = gameOver;
                 return i * 3 + j;
             }
 
@@ -211,6 +231,8 @@ namespace TicTacToeWeb
             {
                 if (Board[i, j - 1] == c && c == Board[i, j + 1]) gameOver = true;
                 Board[i, j] = c;
+                Session["board"] = Board;
+                Session["gameOver"] = gameOver;
                 return i * 3 + j;
             }
             return -1;
@@ -218,11 +240,16 @@ namespace TicTacToeWeb
 
         private int SkipNeighbour3InARow(int i, int j, char c)
         {
+            var Board = Session["board"] as char[,];
+            var gameOver = Convert.ToBoolean(Session["gameOver"]);
+            
             if (i - 1 >= 0 && j - 1 >= 0
                 && i - 2 >= 0 && j - 2 >= 0 && Board[i - 1, j - 1] == Board[i - 2, j - 2])
             {
                 if (Board[i - 1, j - 1] == c && c == Board[i - 2, j - 2]) gameOver = true;
                 Board[i, j] = c;
+                Session["board"] = Board;
+                Session["gameOver"] = gameOver;
                 return i * 3 + j;
             }
 
@@ -231,6 +258,8 @@ namespace TicTacToeWeb
             {
                 if (Board[i - 1, j] == c && c == Board[i - 2, j]) gameOver = true;
                 Board[i, j] = c;
+                Session["board"] = Board;
+                Session["gameOver"] = gameOver;
                 return i * 3 + j;
             }
 
@@ -239,6 +268,8 @@ namespace TicTacToeWeb
             {
                 if (Board[i - 1, j + 1] == c && c == Board[i - 2, j + 2]) gameOver = true;
                 Board[i, j] = c;
+                Session["board"] = Board;
+                Session["gameOver"] = gameOver;
                 return i * 3 + j;
             }
 
@@ -247,6 +278,8 @@ namespace TicTacToeWeb
             {
                 if (Board[i, j + 1] == c && c == Board[i, j + 2]) gameOver = true;
                 Board[i, j] = c;
+                Session["board"] = Board;
+                Session["gameOver"] = gameOver;
                 return i * 3 + j;
             }
 
@@ -255,6 +288,8 @@ namespace TicTacToeWeb
             {
                 if (Board[i + 1, j + 1] == c && c == Board[i + 2, j + 2]) gameOver = true;
                 Board[i, j] = c;
+                Session["board"] = Board;
+                Session["gameOver"] = gameOver;
                 return i * 3 + j;
             }
 
@@ -263,6 +298,8 @@ namespace TicTacToeWeb
             {
                 if (Board[i + 1, j] == c && c == Board[i + 2, j]) gameOver = true;
                 Board[i, j] = c;
+                Session["board"] = Board;
+                Session["gameOver"] = gameOver;
                 return i * 3 + j;
             }
 
@@ -271,6 +308,8 @@ namespace TicTacToeWeb
             {
                 if (Board[i + 1, j - 1] == c && c == Board[i + 2, j - 2]) gameOver = true;
                 Board[i, j] = c;
+                Session["board"] = Board;
+                Session["gameOver"] = gameOver;
                 return i * 3 + j;
             }
 
@@ -279,6 +318,8 @@ namespace TicTacToeWeb
             {
                 if (Board[i, j - 1] == c && c == Board[i, j - 2]) gameOver = true;
                 Board[i, j] = c;
+                Session["board"] = Board;
+                Session["gameOver"] = gameOver;
                 return i * 3 + j;
             }
             return -1;
@@ -286,51 +327,70 @@ namespace TicTacToeWeb
 
         private int TwoInARow(int i, int j, char c)
         {
+            var Board = Session["board"] as char[,];
+            var gameOver = Convert.ToBoolean(Session["gameOver"]);
+            
             if (i - 1 >= 0 && j - 1 >= 0 && Board[i - 1, j - 1] == c)
             {
                 Board[i, j] = c;
+                Session["board"] = Board;
+                Session["gameOver"] = gameOver;
                 return i * 3 + j;
             }
 
             if (i - 1 >= 0 && Board[i - 1, j] == c)
             {
                 Board[i, j] = c;
+                Session["board"] = Board;
+                Session["gameOver"] = gameOver;
                 return i * 3 + j;
             }
 
             if (i - 1 >= 0 && j + 1 <= 2 && Board[i - 1, j + 1] == c)
             {
                 Board[i, j] = c;
+                Session["board"] = Board;
+                Session["gameOver"] = gameOver;
                 return i * 3 + j;
             }
 
             if (j + 1 <= 2 && Board[i, j + 1] == c)
             {
                 Board[i, j] = c;
+                Session["board"] = Board;
+                Session["gameOver"] = gameOver;
                 return i * 3 + j;
             }
 
             if (i + 1 <= 2 && j + 1 <= 2 && Board[i + 1, j + 1] == c)
             {
                 Board[i, j] = c;
+                Session["board"] = Board;
+                Session["gameOver"] = gameOver;
                 return i * 3 + j;
             }
 
             if (i + 1 <= 2 && Board[i + 1, j] == c)
             {
                 Board[i, j] = c;
+                Session["board"] = Board;
+                Session["gameOver"] = gameOver;
                 return i * 3 + j;
             }
 
             if (i + 1 <= 2 && j - 1 >= 0 && Board[i + 1, j - 1] == c)
             {
                 Board[i, j] = c;
+                Session["board"] = Board;
+                Session["gameOver"] = gameOver;
                 return i * 3 + j;
             }
 
             if (j - 1 >= 0 && Board[i, j - 1] == c)
             {
                 Board[i, j] = c;
+                Session["board"] = Board;
+                Session["gameOver"] = gameOver;
                 return i * 3 + j;
             }
             return -1;

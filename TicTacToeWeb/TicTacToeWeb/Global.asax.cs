@@ -9,11 +9,12 @@ namespace TicTacToeWeb
 {
     public class Global : System.Web.HttpApplication
     {
+        private char[,] Board = new char[3, 3] { { 'a', 'b', 'c' }, { 'd', 'e', 'f' }, { 'g', 'h', 'i' } };
+        private bool gameOver = false;
+
 
         void Application_Start(object sender, EventArgs e)
         {
-            // Code that runs on application startup
-
         }
 
         void Application_End(object sender, EventArgs e)
@@ -31,7 +32,8 @@ namespace TicTacToeWeb
         void Session_Start(object sender, EventArgs e)
         {
             // Code that runs when a new session is started
-
+            Session["board"] = Board;
+            Session["gameOver"] = gameOver;
         }
 
         void Session_End(object sender, EventArgs e)
