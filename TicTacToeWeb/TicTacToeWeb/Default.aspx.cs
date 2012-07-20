@@ -29,7 +29,9 @@ namespace TicTacToeWeb
             int r = pos / 3;
             int c = pos % 3;
             Board[r, c] = 'X';
+            Session["board"] = Board;
             CheckLastMove(r, c, 'X');
+            gameOver = Convert.ToBoolean(Session["gameOver"]);
             if (!gameOver)
             {
                 var i = GetNextMove('O');
@@ -38,6 +40,8 @@ namespace TicTacToeWeb
                 {
                     t.Enabled = false;
                     t.Text = "O";
+                    CheckLastMove(i/3, i%3, 'O');
+                    gameOver = Convert.ToBoolean(Session["gameOver"]);
                 }
                 else
                     gameOver = true;
