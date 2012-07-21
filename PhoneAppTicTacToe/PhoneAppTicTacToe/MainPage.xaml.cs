@@ -44,6 +44,7 @@ namespace PhoneAppTicTacToe
                 {
                     t.IsEnabled = false;
                     t.Content = "O";
+                    CheckLastMove(i/3, i%3, 'O');
                 }
                 else
                     gameOver = true;
