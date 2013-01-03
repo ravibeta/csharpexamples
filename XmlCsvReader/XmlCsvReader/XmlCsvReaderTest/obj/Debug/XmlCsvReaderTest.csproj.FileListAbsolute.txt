@@ -1,7 +1,0 @@
-C:\Users\admin\gitrep\csharpexamples\XmlCsvReader\XmlCsvReader\XmlCsvReaderTest\obj\Debug\XmlCsvReaderTest.csprojResolveAssemblyReference.cache
-C:\Users\admin\gitrep\csharpexamples\XmlCsvReader\XmlCsvReader\XmlCsvReaderTest\bin\Debug\XmlCsvReaderTest.dll
-C:\Users\admin\gitrep\csharpexamples\XmlCsvReader\XmlCsvReader\XmlCsvReaderTest\bin\Debug\XmlCsvReaderTest.pdb
-C:\Users\admin\gitrep\csharpexamples\XmlCsvReader\XmlCsvReader\XmlCsvReaderTest\bin\Debug\XmlCsvReader.dll
-C:\Users\admin\gitrep\csharpexamples\XmlCsvReader\XmlCsvReader\XmlCsvReaderTest\bin\Debug\XmlCsvReader.pdb
-C:\Users\admin\gitrep\csharpexamples\XmlCsvReader\XmlCsvReader\XmlCsvReaderTest\obj\Debug\XmlCsvReaderTest.dll
-C:\Users\admin\gitrep\csharpexamples\XmlCsvReader\XmlCsvReader\XmlCsvReaderTest\obj\Debug\XmlCsvReaderTest.pdb

@@ -1,4 +1,0 @@
-C:\Users\admin\gitrep\csharpexamples\XmlCsvReader\Reader\Reader\bin\Debug\Reader.exe
-C:\Users\admin\gitrep\csharpexamples\XmlCsvReader\Reader\Reader\bin\Debug\Reader.pdb
-C:\Users\admin\gitrep\csharpexamples\XmlCsvReader\Reader\Reader\obj\x86\Debug\Reader.exe
-C:\Users\admin\gitrep\csharpexamples\XmlCsvReader\Reader\Reader\obj\x86\Debug\Reader.pdb
