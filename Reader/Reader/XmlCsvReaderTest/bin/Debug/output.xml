@@ -1,0 +1,16 @@
+<customers>
+  <customer>
+    <"customer_id">1</"customer_id">
+    <"account_num">87462024688</"account_num">
+    <"lname">"Nowmer"</"lname">
+    <"fname">"Sheri"</"fname">
+    <"mi">"A."</"mi">
+  </customer>
+  <customer>
+    <"customer_id">2</"customer_id">
+    <"account_num">87470586299</"account_num">
+    <"lname">"Whelply"</"lname">
+    <"fname">"Derrick"</"fname">
+    <"mi">"I."</"mi">
+  </customer>
+</customers>
