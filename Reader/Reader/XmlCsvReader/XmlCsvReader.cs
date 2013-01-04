@@ -162,7 +162,7 @@ namespace XmlCsvReaderNS
             if (rs == ReadState.Initial)
             {
                 rs = ReadState.Interactive;
-                value = RootName;
+                value = clean(RootName);
                 tag = 0;
                 return true;
             }
@@ -180,7 +180,7 @@ namespace XmlCsvReaderNS
 
             if (index < lines.Count() && column == 0 && !rowCreated)
             {
-                value = RowName;
+                value = clean(RowName);
                 rowCreated = true;
                 tag = 0;
                 return true;
@@ -193,7 +193,7 @@ namespace XmlCsvReaderNS
 
                 if (rowCreated)
                 {
-                    value = RowName;
+                    value = clean(RowName);
                     rowCreated = false;
                     tag = 2;
                     return true;
@@ -204,8 +204,8 @@ namespace XmlCsvReaderNS
             {
                 var line = lines[index];
                 var values = line.Split(new char[] { ',' });
-                if (!colCreated) { value = columnname; tag = 0; colCreated = true;  return true; }
-                if (tag == 1 && colCreated) { value = columnname; tag = 2; column++; colCreated = false; return true; }
+                if (!colCreated) { value = clean(columnname); tag = 0; colCreated = true;  return true; }
+                if (tag == 1 && colCreated) { value = clean(columnname); tag = 2; column++; colCreated = false; return true; }
                 tag = 1;
                 value = values[column];
                 value = value.Trim(new char[] { '"' });
@@ -241,81 +241,18 @@ namespace XmlCsvReaderNS
             get { return value; }
         }
 
-        public override bool CanReadBinaryContent { get{ throw new NotImplementedException();} }
-        public override bool CanReadValueChunk { get{ throw new NotImplementedException();} }
-        public override bool CanResolveEntity { get{ throw new NotImplementedException();} }
-        public override bool HasAttributes { get{ throw new NotImplementedException();} }
-        public override bool HasValue { get{ throw new NotImplementedException();} }
-        public override bool IsDefault { get{ throw new NotImplementedException();} }
-        public override string Name { get{ throw new NotImplementedException();} }
-        public override char QuoteChar { get{ throw new NotImplementedException();} }
-        public override IXmlSchemaInfo SchemaInfo { get{ return null;} }
-        // public override XmlReaderSettings Settings { get{ throw new NotImplementedException();} }
-        public override Type ValueType { get{ throw new NotImplementedException();} }
-        public override string XmlLang { get{ throw new NotImplementedException();} }
-        public override XmlSpace XmlSpace { get{ throw new NotImplementedException();} }
-        public override string this[int i] { get{ throw new NotImplementedException();} }
-        public override string this[string name] { get{ throw new NotImplementedException();} }
-        public override string this[string name, string namespaceURI] { get{ throw new NotImplementedException();} }
-        protected override void Dispose(bool disposing){ throw new NotImplementedException();}
-        public override bool IsStartElement(){ throw new NotImplementedException();}
-        public override bool IsStartElement(string name){ throw new NotImplementedException();}
-        public override bool IsStartElement(string localname, string ns){ throw new NotImplementedException();}
-        public override void MoveToAttribute(int i){ throw new NotImplementedException();}
-        public override XmlNodeType MoveToContent(){ throw new NotImplementedException();}
-        public override object ReadContentAs(Type returnType, IXmlNamespaceResolver namespaceResolver){ throw new NotImplementedException();}
-        public override int ReadContentAsBase64(byte[] buffer, int index, int count){ throw new NotImplementedException();}
-        public override int ReadContentAsBinHex(byte[] buffer, int index, int count){ throw new NotImplementedException();}
-        public override bool ReadContentAsBoolean(){ throw new NotImplementedException();}
-        public override DateTime ReadContentAsDateTime(){ throw new NotImplementedException();}
-        public override decimal ReadContentAsDecimal(){ throw new NotImplementedException();}
-        public override double ReadContentAsDouble(){ throw new NotImplementedException();}
-        public override float ReadContentAsFloat(){ throw new NotImplementedException();}
-        public override int ReadContentAsInt(){ throw new NotImplementedException();}
-        public override long ReadContentAsLong(){ throw new NotImplementedException();}
-        public override object ReadContentAsObject(){ throw new NotImplementedException();}
-        public override string ReadContentAsString(){ throw new NotImplementedException();}
-        public override object ReadElementContentAs(Type returnType, IXmlNamespaceResolver namespaceResolver){ throw new NotImplementedException();}
-        public override object ReadElementContentAs(Type returnType, IXmlNamespaceResolver namespaceResolver, string localName, string namespaceURI){ throw new NotImplementedException();}
-        public override int ReadElementContentAsBase64(byte[] buffer, int index, int count){ throw new NotImplementedException();}
-        public override int ReadElementContentAsBinHex(byte[] buffer, int index, int count){ throw new NotImplementedException();}
-        public override bool ReadElementContentAsBoolean(){ throw new NotImplementedException();}
-        public override bool ReadElementContentAsBoolean(string localName, string namespaceURI){ throw new NotImplementedException();}
-        public override DateTime ReadElementContentAsDateTime(){ throw new NotImplementedException();}
-        public override DateTime ReadElementContentAsDateTime(string localName, string namespaceURI){ throw new NotImplementedException();}
-        public override decimal ReadElementContentAsDecimal(){ throw new NotImplementedException();}
-        public override decimal ReadElementContentAsDecimal(string localName, string namespaceURI){ throw new NotImplementedException();}
-        public override double ReadElementContentAsDouble(){ throw new NotImplementedException();}
-        public override double ReadElementContentAsDouble(string localName, string namespaceURI){ throw new NotImplementedException();}
-        public override float ReadElementContentAsFloat(){ throw new NotImplementedException();}
-        public override float ReadElementContentAsFloat(string localName, string namespaceURI){ throw new NotImplementedException();}
-        public override int ReadElementContentAsInt(){ throw new NotImplementedException();}
-        public override int ReadElementContentAsInt(string localName, string namespaceURI){ throw new NotImplementedException();}
-        public override long ReadElementContentAsLong(){ throw new NotImplementedException();}
-        public override long ReadElementContentAsLong(string localName, string namespaceURI){ throw new NotImplementedException();}
-        public override object ReadElementContentAsObject(){ throw new NotImplementedException();}
-        public override object ReadElementContentAsObject(string localName, string namespaceURI){ throw new NotImplementedException();}
-        public override string ReadElementContentAsString(){ throw new NotImplementedException();}
-        public override string ReadElementContentAsString(string localName, string namespaceURI){ throw new NotImplementedException();}
-        public override string ReadElementString(){ throw new NotImplementedException();}
-        public override string ReadElementString(string name){ throw new NotImplementedException();}
-        public override string ReadElementString(string localname, string ns){ throw new NotImplementedException();}
-        public override void ReadEndElement(){ throw new NotImplementedException();}
-        public override string ReadInnerXml(){ throw new NotImplementedException();}
-        public override string ReadOuterXml(){ throw new NotImplementedException();}
-        public override void ReadStartElement(){ throw new NotImplementedException();}
-        public override void ReadStartElement(string name){ throw new NotImplementedException();}
-        public override void ReadStartElement(string localname, string ns){ throw new NotImplementedException();}
-        public override string ReadString(){ throw new NotImplementedException();}
-        public override XmlReader ReadSubtree(){ throw new NotImplementedException();}
-        public override bool ReadToDescendant(string name){ throw new NotImplementedException();}
-        public override bool ReadToDescendant(string localName, string namespaceURI){ throw new NotImplementedException();}
-        public override bool ReadToFollowing(string name){ throw new NotImplementedException();}
-        public override bool ReadToFollowing(string localName, string namespaceURI){ throw new NotImplementedException();}
-        public override bool ReadToNextSibling(string name){ throw new NotImplementedException();}
-        public override bool ReadToNextSibling(string localName, string namespaceURI){ throw new NotImplementedException();}
-        public override int ReadValueChunk(char[] buffer, int index, int count){ throw new NotImplementedException();}
-        public override void Skip(){ throw new NotImplementedException();}
-
+        private string clean(string namevalue, bool skipComma = false)
+        {
+            string str = namevalue;
+            if (!skipComma)
+            {
+                str = namevalue.Replace(" ", "");
+                str = str.Replace(",", "");
+            }
+            str = str.Trim(new char[] { ',', '*' });
+            str = str.Replace("/", "-");
+            str = str.Replace("*", "-");
+            return str;
+        }
     }
 }

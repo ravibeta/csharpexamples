@@ -1,5 +1,4 @@
 C:\Users\admin\gitrep\csharpexamples\Reader\Reader\Reader\bin\Debug\Reader.exe
 C:\Users\admin\gitrep\csharpexamples\Reader\Reader\Reader\bin\Debug\Reader.pdb
-C:\Users\admin\gitrep\csharpexamples\Reader\Reader\Reader\obj\x86\Debug\Reader.csprojResolveAssemblyReference.cache
 C:\Users\admin\gitrep\csharpexamples\Reader\Reader\Reader\obj\x86\Debug\Reader.exe
 C:\Users\admin\gitrep\csharpexamples\Reader\Reader\Reader\obj\x86\Debug\Reader.pdb
