@@ -1,0 +1,1 @@
+This sample makes an ItemLookup call with the AWS Product Advertising API using signed requests and including the latest changes to the WSDL and proxy
