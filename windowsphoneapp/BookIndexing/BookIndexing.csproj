@@ -51,6 +51,7 @@
     <Compile Include="SkipList.cs" />
     <Compile Include="SkipListNode.cs" />
     <Compile Include="SkipListNodeList.cs" />
+    <Compile Include="WordInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

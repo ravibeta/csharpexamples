@@ -347,5 +347,10 @@ namespace SkmDataStructures2
         }
         #endregion
         #endregion
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

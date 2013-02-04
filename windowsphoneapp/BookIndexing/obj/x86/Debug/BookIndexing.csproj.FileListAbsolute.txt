@@ -1,1 +1,6 @@
 C:\Users\admin\gitrep\cplusplusexamples\cplusplusexamples\textindexing\BookIndexing\bin\Debug\BookIndexing.exe.config
+C:\Users\admin\gitrep\csharpexamples\windowsphoneapp\BookIndexing\bin\Debug\BookIndexing.exe.config
+C:\Users\admin\gitrep\csharpexamples\windowsphoneapp\BookIndexing\bin\Debug\BookIndexing.exe
+C:\Users\admin\gitrep\csharpexamples\windowsphoneapp\BookIndexing\bin\Debug\BookIndexing.pdb
+C:\Users\admin\gitrep\csharpexamples\windowsphoneapp\BookIndexing\obj\x86\Debug\BookIndexing.exe
+C:\Users\admin\gitrep\csharpexamples\windowsphoneapp\BookIndexing\obj\x86\Debug\BookIndexing.pdb
