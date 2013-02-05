@@ -105,6 +105,36 @@ namespace SkmDataStructures2
         }
         #endregion
 
+        #region Find
+        /// <summary>
+        /// Retrieves a particular element whose data is specified by the user.
+        /// </summary>
+        /// <param name="value">The value to search for.</param>
+        /// <returns>node if value is found in the SkipList; null otherwise.</returns>
+        public SkipListNode<T> Find(T value)
+        {
+            SkipListNode<T> current = _head;
+
+            // first, determine the nodes that need to be updated at each level
+            for (int i = _head.Height - 1; i >= 0; i--)
+            {
+                while (current[i] != null)
+                {
+                    _comparisons++;
+                    int results = comparer.Compare(current[i].Value, value);
+                    if (results == 0)
+                        return current[i];        // we found the item
+                    else if (results < 0)
+                        current = current[i];   // move on to the next neighbor
+                    else
+                        break;	// exit while loop, we need to move down the height of the current node
+                }
+            }
+
+            // if we reach here, we searched to the end of the list without finding the element
+            return null;
+        }
+        #endregion
         #region Add
         /// <summary>
         /// Adds a new element to the SkipList.
