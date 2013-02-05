@@ -30,7 +30,7 @@ namespace SkmDataStructures2
         public SkipList() : this(-1, null) { }
         public SkipList(int randomSeed) : this(randomSeed, null) { }
         public SkipList(IComparer<T> comparer) : this(-1, comparer) { }
-        public SkipList(int randomSeed, IComparer<T> comparer)
+        public SkipList(int randomSeed, IComparer<T> comparer)  
         {
             _head = new SkipListNode<T>(1);
             _comparisons = 0;

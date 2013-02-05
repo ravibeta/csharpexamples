@@ -11,6 +11,7 @@ namespace BookIndexing
         public string Canon { get; set; }
         public Int64[] Offset { get; set; } // char count
         public Int32[] Page { get; set; }
+        public int Frequency { get; set; }
     }
 
     public class WordInfoComparer : IComparer<WordInfo>
