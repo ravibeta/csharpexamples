@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using SkmDataStructures2;
+using LAIR.ResourceAPIs.WordNet;
+using System.IO;
 
 // This is a placeholder for a windows phone application
 namespace BookIndexing
@@ -88,6 +90,34 @@ namespace BookIndexing
                 if (Candidates.Count != 0)
                 {
                     var selected = Candidates.Where(x => x.Word.Length > 5 && x.Frequency > 2);
+                    var relationFactor = new Dictionary<string, int>();
+                    foreach (var word in selected)
+                    {
+                        var fi = new FileInfo(System.Reflection.Assembly.GetExecutingAssembly().Location);
+                        var engine = new WordNetEngine(fi.DirectoryName, true);
+                        var allwords = engine.AllWords;
+                        foreach (var other in selected)
+                        {
+                            if (word != other)
+                            {
+                                var synset1 = engine.GetSynSets(word.Word,  null);
+                                var synset2 = engine.GetSynSets(other.Word, null);
+                                if (synset1 != null && synset1.Count > 0 
+                                    && synset2 != null && synset2.Count > 0)
+                                {
+                                    var spt = synset1.ElementAt(0).GetShortestPathTo(synset2.ElementAt(0), null);
+                                    if (spt != null && spt.Count < 8
+                                        && !relationFactor.ContainsKey(other.Word) && !relationFactor.ContainsKey(word.Word))
+                                        relationFactor.Add(word.Word, spt.Count);
+                                }
+                                else
+                                {
+                                    relationFactor.Add(word.Word, -1);
+                                }
+                            }
+                        }
+                    }
+                    selected = selected.Where(x => relationFactor.ContainsKey(x.Word));
                     int i = 0;
                     foreach (var t in selected)
                     {

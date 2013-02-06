@@ -12,6 +12,23 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		TraceAndTestImpact.testsettings = TraceAndTestImpact.testsettings
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WordNet", "..\WordNet\WordNet.csproj", "{F4C6C48C-90EF-445D-B8F8-AD9B6767D9A8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WordNameTest", "..\WordNetTest\WordNameTest.csproj", "{4CE87CD7-26B9-46AD-B192-C53096B7427D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WordNetDB", "WordNetDB", "{91118E52-32E2-41F0-A13C-760A4B913159}"
+	ProjectSection(SolutionItems) = preProject
+		..\WordNetDB\data.adj = ..\WordNetDB\data.adj
+		..\WordNetDB\data.adv = ..\WordNetDB\data.adv
+		..\WordNetDB\data.noun = ..\WordNetDB\data.noun
+		..\WordNetDB\data.verb = ..\WordNetDB\data.verb
+		..\WordNetDB\index.adj = ..\WordNetDB\index.adj
+		..\WordNetDB\index.adv = ..\WordNetDB\index.adv
+		..\WordNetDB\index.noun = ..\WordNetDB\index.noun
+		..\WordNetDB\index.sense = ..\WordNetDB\index.sense
+		..\WordNetDB\index.verb = ..\WordNetDB\index.verb
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = BookIndexing.vsmdi
@@ -45,6 +62,26 @@ Global
 		{8FE3486F-DE27-4EEA-A0DC-26970A1E6173}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{8FE3486F-DE27-4EEA-A0DC-26970A1E6173}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{8FE3486F-DE27-4EEA-A0DC-26970A1E6173}.Release|x86.ActiveCfg = Release|Any CPU
+		{F4C6C48C-90EF-445D-B8F8-AD9B6767D9A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F4C6C48C-90EF-445D-B8F8-AD9B6767D9A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F4C6C48C-90EF-445D-B8F8-AD9B6767D9A8}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{F4C6C48C-90EF-445D-B8F8-AD9B6767D9A8}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{F4C6C48C-90EF-445D-B8F8-AD9B6767D9A8}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{F4C6C48C-90EF-445D-B8F8-AD9B6767D9A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F4C6C48C-90EF-445D-B8F8-AD9B6767D9A8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F4C6C48C-90EF-445D-B8F8-AD9B6767D9A8}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{F4C6C48C-90EF-445D-B8F8-AD9B6767D9A8}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{F4C6C48C-90EF-445D-B8F8-AD9B6767D9A8}.Release|x86.ActiveCfg = Release|Any CPU
+		{4CE87CD7-26B9-46AD-B192-C53096B7427D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4CE87CD7-26B9-46AD-B192-C53096B7427D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4CE87CD7-26B9-46AD-B192-C53096B7427D}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{4CE87CD7-26B9-46AD-B192-C53096B7427D}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{4CE87CD7-26B9-46AD-B192-C53096B7427D}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{4CE87CD7-26B9-46AD-B192-C53096B7427D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4CE87CD7-26B9-46AD-B192-C53096B7427D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4CE87CD7-26B9-46AD-B192-C53096B7427D}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{4CE87CD7-26B9-46AD-B192-C53096B7427D}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{4CE87CD7-26B9-46AD-B192-C53096B7427D}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
