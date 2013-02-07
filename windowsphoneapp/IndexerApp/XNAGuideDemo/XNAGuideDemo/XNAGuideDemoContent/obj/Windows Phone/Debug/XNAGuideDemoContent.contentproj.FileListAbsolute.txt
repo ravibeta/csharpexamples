@@ -1,0 +1,2 @@
+C:\Users\Rob\Desktop\XNAGuideDemo\XNAGuideDemo\XNAGuideDemoContent\obj\Windows Phone\Debug\ResolveAssemblyReference.cache
+C:\Users\admin\Downloads\XNAGuideDemo\XNAGuideDemo\XNAGuideDemo\XNAGuideDemoContent\obj\Windows Phone\Debug\XNAGuideDemoContent.contentprojResolveAssemblyReference.cache
