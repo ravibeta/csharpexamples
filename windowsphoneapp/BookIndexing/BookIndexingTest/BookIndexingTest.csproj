@@ -33,8 +33,24 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="LAIR.Collections, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="LAIR.Extensions, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="LAIR.GraphViz">
+      <HintPath>..\..\WordNet\references\LAIR.GraphViz.dll</HintPath>
+    </Reference>
+    <Reference Include="LAIR.IO, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="LAIR.MachineLearning">
+      <HintPath>..\..\WordNet\references\LAIR.MachineLearning.dll</HintPath>
+    </Reference>
+    <Reference Include="LAIR.ResourceAPIs.WordNet, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="LAIR.XML">
+      <HintPath>..\..\WordNet\references\LAIR.XML.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="MySql.Data">
+      <HintPath>..\..\WordNet\references\MySql.Data.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -51,12 +67,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ProgramTest.cs" />
+    <Compile Include="Program_SalientWordsTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Shadow Include="Test References\BookIndexing.accessor" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\WordNet\WordNet.csproj">
+      <Project>{F4C6C48C-90EF-445D-B8F8-AD9B6767D9A8}</Project>
+      <Name>WordNet</Name>
+    </ProjectReference>
     <ProjectReference Include="..\BookIndexing.csproj">
       <Project>{DC27FFFD-FA61-4359-A495-38EB7ABB4CFB}</Project>
       <Name>BookIndexing</Name>
