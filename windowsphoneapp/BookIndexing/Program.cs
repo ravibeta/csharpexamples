@@ -89,7 +89,9 @@ namespace BookIndexing
                 var ret = new Dictionary<string, string>();
                 if (Candidates.Count != 0)
                 {
-                    var selected = Candidates.Where(x => x.Word.Length > 5 && x.Frequency > 2);
+                    var filter = new List<string> { "a", "an", "all", "and", "be", "can", "could", "each", "For", "in", "into", "is", "of", "or", "the", "which" };
+                    var selected = Candidates.Where(x => filter.Contains(x.Word) == false);
+                    selected = selected.Where(x => x.Word.Length > 5 && x.Frequency > 2);
                     var relationFactor = new Dictionary<string, int>();
                     foreach (var word in selected)
                     {
@@ -106,18 +108,46 @@ namespace BookIndexing
                                     && synset2 != null && synset2.Count > 0)
                                 {
                                     var spt = synset1.ElementAt(0).GetShortestPathTo(synset2.ElementAt(0), null);
-                                    if (spt != null && spt.Count < 8
-                                        && !relationFactor.ContainsKey(other.Word) && !relationFactor.ContainsKey(word.Word))
-                                        relationFactor.Add(word.Word, spt.Count);
+                                    if (spt != null)
+                                        if (relationFactor.Keys.Contains(word.Word))
+                                            relationFactor[word.Word] += spt.Count;
+                                        else
+                                            relationFactor.Add(word.Word, spt.Count);
                                 }
                                 else
                                 {
-                                    relationFactor.Add(word.Word, -1);
+                                    if (relationFactor.Keys.Contains(word.Word))
+                                        relationFactor[word.Word] += 0;
+                                    else
+                                        relationFactor.Add(word.Word, 0);
                                 }
                             }
                         }
                     }
-                    selected = selected.Where(x => relationFactor.ContainsKey(x.Word));
+                    int mostRelated = 0;
+                    if (relationFactor.Count() > 0)
+                        mostRelated = relationFactor.Max(x => x.Value/relationFactor.Count);
+                    var related = new List<String>();
+                    foreach (var kvp in relationFactor)
+                        if(kvp.Value >= mostRelated)
+                            related.Add(kvp.Key);
+                    //var discrete = new List<string>();
+                    //for (int k = 0; k < mostRelated + 1; k++)
+                    //{
+                    //    string word = string.Empty;
+                    //    var cluster = new List<string>();
+                    //    foreach(var kvp in relationFactor)
+                    //        if(kvp.Value >= k && kvp.Value < k + 1)
+                    //            cluster.Add(kvp.Key);
+                    //    var clusterset = Candidates.Where(x =>cluster.Contains(x.Word));
+                    //    if (clusterset != null)
+                    //    {
+                    //        var max = clusterset.Max(x => x.Frequency);
+                    //        discrete.Add(clusterset.Single(x=>x.Frequency == max).Word);
+                    //    }
+                    //}
+
+                    selected = selected.Where(x => related.Contains(x.Word));
                     int i = 0;
                     foreach (var t in selected)
                     {
