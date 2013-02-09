@@ -96,8 +96,9 @@ namespace webappMVCIndexer3
                     var relationFactor = new Dictionary<string, int>();
                     foreach (var word in selected)
                     {
-                        var fi = new FileInfo(System.Reflection.Assembly.GetExecutingAssembly().Location);
-                        var engine = new webAppMVCIndexer3.WordNetEngine(fi.DirectoryName, true);
+                        var asmpath = system.configuration.configurationmanager.appsettings["DataFilePath"];
+// var fi = new FileInfo(System.Reflection.Assembly.GetExecutingAssembly().Location);
+                        var engine = new webAppMVCIndexer3.WordNetEngine(asmpath, true);
                         var allwords = engine.AllWords;
                         foreach (var other in selected)
                         {
@@ -140,6 +141,8 @@ namespace webappMVCIndexer3
                         foreach (var kvp in relationFactor)
                             if (kvp.Value >= k && kvp.Value < k + 1)
                                 cluster.Add(kvp.Key);
+                     if (cluster.Count > 0)
+{
                         var clusterset = Candidates.Where(x => cluster.Contains(x.Canon));
                         if (clusterset != null)
                         {
@@ -148,8 +151,9 @@ namespace webappMVCIndexer3
                             if (first != null)
                                 discrete.Add(first.Canon);
                         }
+}
                     }
-
+if (discrete.Count > 0)
                     selected = selected.Where(x => discrete.Contains(x.Canon));
                     int i = 0;
                     foreach (var t in selected)
