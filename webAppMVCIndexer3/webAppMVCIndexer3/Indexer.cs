@@ -145,14 +145,10 @@ namespace webappMVCIndexer3
                             var clusterset = Candidates.Where(x => cluster.Contains(x.Canon));
                             if (clusterset != null)
                             {
-                                var clusterset = Candidates.Where(x => cluster.Contains(x.Canon));
-                                if (clusterset != null)
-                                {
                                     var max = clusterset.Max(x => x.Frequency);
                                     var first = clusterset.First(x => x.Frequency == max);
                                     if (first != null)
                                         discrete.Add(first.Canon);
-                                }
                             }
                         }
                     }
