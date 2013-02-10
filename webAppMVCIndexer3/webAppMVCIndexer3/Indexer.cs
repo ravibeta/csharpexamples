@@ -97,7 +97,6 @@ namespace webappMVCIndexer3
                     foreach (var word in selected)
                     {
                         var asmpath = System.Configuration.ConfigurationManager.AppSettings["DataFilePath"];
-                        // var fi = new FileInfo(System.Reflection.Assembly.GetExecutingAssembly().CodeBase);
                         var engine = new webAppMVCIndexer3.WordNetEngine(asmpath, true);
                         var allwords = engine.AllWords;
                         foreach (var other in selected)
@@ -146,15 +145,20 @@ namespace webappMVCIndexer3
                             var clusterset = Candidates.Where(x => cluster.Contains(x.Canon));
                             if (clusterset != null)
                             {
-                                var max = clusterset.Max(x => x.Frequency);
-                                var first = clusterset.First(x => x.Frequency == max);
-                                if (first != null)
-                                    discrete.Add(first.Canon);
+                                var clusterset = Candidates.Where(x => cluster.Contains(x.Canon));
+                                if (clusterset != null)
+                                {
+                                    var max = clusterset.Max(x => x.Frequency);
+                                    var first = clusterset.First(x => x.Frequency == max);
+                                    if (first != null)
+                                        discrete.Add(first.Canon);
+                                }
                             }
                         }
                     }
                     if (discrete.Count > 0)
                         selected = selected.Where(x => discrete.Contains(x.Canon));
+
                     int i = 0;
                     foreach (var t in selected)
                     {
