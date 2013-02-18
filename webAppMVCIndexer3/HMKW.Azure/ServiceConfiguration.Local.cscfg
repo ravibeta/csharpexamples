@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ServiceConfiguration serviceName="HMKW.Azure" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceConfiguration" osFamily="1" osVersion="*" schemaVersion="2012-05.1.7">
+  <Role name="HMKW">
+    <Instances count="1" />
+    <ConfigurationSettings>
+      <Setting name="Microsoft.WindowsAzure.Plugins.RemoteAccess.Enabled" value="true" />
+      <Setting name="Microsoft.WindowsAzure.Plugins.RemoteAccess.AccountUsername" value="raja0034@hotmail.com" />
+      <Setting name="Microsoft.WindowsAzure.Plugins.RemoteAccess.AccountEncryptedPassword" value="MIIBnQYJKoZIhvcNAQcDoIIBjjCCAYoCAQAxggFOMIIBSgIBADAyMB4xHDAaBgNVBAMME1dpbmRvd3MgQXp1cmUgVG9vbHMCECLScRZ5u8uATk1hUYJBw9YwDQYJKoZIhvcNAQEBBQAEggEAD86vqgk79Mg6+zdjvUrFTZNieFFezftQaD4R2J87MsrqQwusH8r2z2wKcU7kx9zRQXN/aBqB+IKqJ8ATENxHB1zvGM1uGx/pomUFheGb1kyJ+V3FGqDOwhih+jx+fMzk+KOYEHRxd/nxvfW6Za0VUQMSkGHH7djGsLJQHIoAP4TOZC3PEiAXLusGbuf8oVnOzyBjNhQj9LA8fHLaWDNMmHYq8muQRvd8xWKzdskkPQuRHpoqWfS5HrEhzrsl44Z6jAWZ3WdfFmTBLrqJu3y/AKnWIGNXNdB+uIeDKW89hjx/c9LXDhvJMc0uGgtW8BvxtF1W7xHQGvd0faxyU9RN0DAzBgkqhkiG9w0BBwEwFAYIKoZIhvcNAwcECMZuwZlP+bmwgBDOrQcMkJlFZ3BaI/Eng3vO" />
+      <Setting name="Microsoft.WindowsAzure.Plugins.RemoteAccess.AccountExpiration" value="2013-06-11T23:59:59.0000000-07:00" />
+      <Setting name="Microsoft.WindowsAzure.Plugins.RemoteForwarder.Enabled" value="true" />
+    </ConfigurationSettings>
+    <Certificates>
+      <Certificate name="Microsoft.WindowsAzure.Plugins.RemoteAccess.PasswordEncryption" thumbprint="6DDD27D39E8C467EF5DF687AE40B23B5C1C8F417" thumbprintAlgorithm="sha1" />
+    </Certificates>
+  </Role>
+</ServiceConfiguration>

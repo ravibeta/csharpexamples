@@ -2,7 +2,6 @@ C:\Users\admin\gitrep\csharpexamples\webAppMVCIndexer3\webAppMVCIndexer3\bin\web
 C:\Users\admin\gitrep\csharpexamples\webAppMVCIndexer3\webAppMVCIndexer3\bin\webAppMVCIndexer3.pdb
 C:\Users\admin\gitrep\csharpexamples\webAppMVCIndexer3\webAppMVCIndexer3\bin\EntityFramework.dll
 C:\Users\admin\gitrep\csharpexamples\webAppMVCIndexer3\webAppMVCIndexer3\bin\EntityFramework.xml
-C:\Users\admin\gitrep\csharpexamples\webAppMVCIndexer3\webAppMVCIndexer3\obj\Debug\webAppMVCIndexer3.csprojResolveAssemblyReference.cache
 C:\Users\admin\gitrep\csharpexamples\webAppMVCIndexer3\webAppMVCIndexer3\obj\Debug\webAppMVCIndexer3.dll
 C:\Users\admin\gitrep\csharpexamples\webAppMVCIndexer3\webAppMVCIndexer3\obj\Debug\webAppMVCIndexer3.pdb
 C:\Users\admin\gitrep\csharpexamples\webAppMVCIndexer3\webAppMVCIndexer3\bin\data.adj
@@ -22,3 +21,13 @@ C:\Users\admin\gitrep\csharpexamples\webAppMVCIndexer3\webAppMVCIndexer3\bin\LAI
 C:\Users\admin\gitrep\csharpexamples\webAppMVCIndexer3\webAppMVCIndexer3\bin\LAIR.ResourceAPIs.WordNet.dll
 C:\Users\admin\gitrep\csharpexamples\webAppMVCIndexer3\webAppMVCIndexer3\bin\LAIR.XML.dll
 C:\Users\admin\gitrep\csharpexamples\webAppMVCIndexer3\webAppMVCIndexer3\bin\MySql.Data.dll
+C:\Users\admin\gitrep\csharpexamples\webAppMVCIndexer3\webAppMVCIndexer3\bin\App_Data\data.adj
+C:\Users\admin\gitrep\csharpexamples\webAppMVCIndexer3\webAppMVCIndexer3\bin\App_Data\data.adv
+C:\Users\admin\gitrep\csharpexamples\webAppMVCIndexer3\webAppMVCIndexer3\bin\App_Data\data.noun
+C:\Users\admin\gitrep\csharpexamples\webAppMVCIndexer3\webAppMVCIndexer3\bin\App_Data\data.verb
+C:\Users\admin\gitrep\csharpexamples\webAppMVCIndexer3\webAppMVCIndexer3\bin\App_Data\index.adj
+C:\Users\admin\gitrep\csharpexamples\webAppMVCIndexer3\webAppMVCIndexer3\bin\App_Data\index.adv
+C:\Users\admin\gitrep\csharpexamples\webAppMVCIndexer3\webAppMVCIndexer3\bin\App_Data\index.noun
+C:\Users\admin\gitrep\csharpexamples\webAppMVCIndexer3\webAppMVCIndexer3\bin\App_Data\index.sense
+C:\Users\admin\gitrep\csharpexamples\webAppMVCIndexer3\webAppMVCIndexer3\bin\App_Data\index.verb
+C:\Users\admin\gitrep\csharpexamples\webAppMVCIndexer3\webAppMVCIndexer3\obj\Debug\webAppMVCIndexer3.csprojResolveAssemblyReference.cache
