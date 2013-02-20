@@ -1,0 +1,186 @@
+﻿@model PDC.Models.PersonalDataModel
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Edit</h2>
+
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>PersonalDataModel</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.FirstName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.FirstName)
+            @Html.ValidationMessageFor(model => model.FirstName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.LastName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.LastName)
+            @Html.ValidationMessageFor(model => model.LastName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Email)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Email)
+            @Html.ValidationMessageFor(model => model.Email)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Male)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Male)
+            @Html.ValidationMessageFor(model => model.Male)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Height)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Height)
+            @Html.ValidationMessageFor(model => model.Height)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Weight)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Weight)
+            @Html.ValidationMessageFor(model => model.Weight)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.BodyFat)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.BodyFat)
+            @Html.ValidationMessageFor(model => model.BodyFat)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Neck)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Neck)
+            @Html.ValidationMessageFor(model => model.Neck)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Shoulders)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Shoulders)
+            @Html.ValidationMessageFor(model => model.Shoulders)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Chest)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Chest)
+            @Html.ValidationMessageFor(model => model.Chest)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Waist)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Waist)
+            @Html.ValidationMessageFor(model => model.Waist)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Hip)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Hip)
+            @Html.ValidationMessageFor(model => model.Hip)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ThighLeft)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ThighLeft)
+            @Html.ValidationMessageFor(model => model.ThighLeft)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ThighRight)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ThighRight)
+            @Html.ValidationMessageFor(model => model.ThighRight)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CalfLeft)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.CalfLeft)
+            @Html.ValidationMessageFor(model => model.CalfLeft)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CalfRight)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.CalfRight)
+            @Html.ValidationMessageFor(model => model.CalfRight)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ArmsLeft)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ArmsLeft)
+            @Html.ValidationMessageFor(model => model.ArmsLeft)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ArmsRight)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ArmsRight)
+            @Html.ValidationMessageFor(model => model.ArmsRight)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ForeArmLeft)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ForeArmLeft)
+            @Html.ValidationMessageFor(model => model.ForeArmLeft)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ForeArmRight)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ForeArmRight)
+            @Html.ValidationMessageFor(model => model.ForeArmRight)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

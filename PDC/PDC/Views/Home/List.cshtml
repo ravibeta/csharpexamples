@@ -1,0 +1,148 @@
+﻿@model IEnumerable<PDC.Models.PersonalDataModel>
+
+@{
+    ViewBag.Title = "List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>List</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            FirstName
+        </th>
+        <th>
+            LastName
+        </th>
+        <th>
+            Email
+        </th>
+        <th>
+            Male
+        </th>
+        <th>
+            Height
+        </th>
+        <th>
+            Weight
+        </th>
+        <th>
+            BodyFat
+        </th>
+        <th>
+            Neck
+        </th>
+        <th>
+            Shoulders
+        </th>
+        <th>
+            Chest
+        </th>
+        <th>
+            Waist
+        </th>
+        <th>
+            Hip
+        </th>
+        <th>
+            ThighLeft
+        </th>
+        <th>
+            ThighRight
+        </th>
+        <th>
+            CalfLeft
+        </th>
+        <th>
+            CalfRight
+        </th>
+        <th>
+            ArmsLeft
+        </th>
+        <th>
+            ArmsRight
+        </th>
+        <th>
+            ForeArmLeft
+        </th>
+        <th>
+            ForeArmRight
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.FirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LastName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Male)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Height)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Weight)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BodyFat)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Neck)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Shoulders)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Chest)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Waist)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Hip)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ThighLeft)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ThighRight)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CalfLeft)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CalfRight)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ArmsLeft)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ArmsRight)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ForeArmLeft)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ForeArmRight)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>
