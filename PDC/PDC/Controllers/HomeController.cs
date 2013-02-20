@@ -44,7 +44,7 @@ namespace PDC.Controllers
 
 
             // If valid, save request to Database
-            if (ModelState.IsValid && ds != null)
+            if (ModelState.IsValid)
             {
                 var result = new Results();
                 //var dr = ds.Tables[0].NewRow();
