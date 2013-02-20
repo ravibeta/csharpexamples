@@ -15,7 +15,7 @@ namespace PDC.Controllers
         public HomeController()
         {
             // ds = this.HttpContext.Application["PDC"] as DataSet;
-            ds = this.ControllerContext.HttpContext.ApplicationInstance.Application["PDC"] as DataSet;
+            // ds = this.ControllerContext.HttpContext.ApplicationInstance.Application["PDC"] as DataSet;
         }
 
         public ActionResult Index()
