@@ -1,0 +1,52 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Allocator", "Allocator\Allocator.csproj", "{34F8C607-035F-47EF-94F2-58751ADB9540}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AllocatorTest", "AllocatorTest\AllocatorTest.csproj", "{272D096A-1446-466F-9993-45008BAA4F14}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{A8346035-406D-4D8D-BCBC-D00096F3BF96}"
+	ProjectSection(SolutionItems) = preProject
+		Allocator.vsmdi = Allocator.vsmdi
+		Local.testsettings = Local.testsettings
+		TraceAndTestImpact.testsettings = TraceAndTestImpact.testsettings
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = Allocator.vsmdi
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|Mixed Platforms = Debug|Mixed Platforms
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|Mixed Platforms = Release|Mixed Platforms
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{34F8C607-035F-47EF-94F2-58751ADB9540}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{34F8C607-035F-47EF-94F2-58751ADB9540}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{34F8C607-035F-47EF-94F2-58751ADB9540}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{34F8C607-035F-47EF-94F2-58751ADB9540}.Debug|x86.ActiveCfg = Debug|x86
+		{34F8C607-035F-47EF-94F2-58751ADB9540}.Debug|x86.Build.0 = Debug|x86
+		{34F8C607-035F-47EF-94F2-58751ADB9540}.Release|Any CPU.ActiveCfg = Release|x86
+		{34F8C607-035F-47EF-94F2-58751ADB9540}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{34F8C607-035F-47EF-94F2-58751ADB9540}.Release|Mixed Platforms.Build.0 = Release|x86
+		{34F8C607-035F-47EF-94F2-58751ADB9540}.Release|x86.ActiveCfg = Release|x86
+		{34F8C607-035F-47EF-94F2-58751ADB9540}.Release|x86.Build.0 = Release|x86
+		{272D096A-1446-466F-9993-45008BAA4F14}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{272D096A-1446-466F-9993-45008BAA4F14}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{272D096A-1446-466F-9993-45008BAA4F14}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{272D096A-1446-466F-9993-45008BAA4F14}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{272D096A-1446-466F-9993-45008BAA4F14}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{272D096A-1446-466F-9993-45008BAA4F14}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{272D096A-1446-466F-9993-45008BAA4F14}.Release|Any CPU.Build.0 = Release|Any CPU
+		{272D096A-1446-466F-9993-45008BAA4F14}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{272D096A-1446-466F-9993-45008BAA4F14}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{272D096A-1446-466F-9993-45008BAA4F14}.Release|x86.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
