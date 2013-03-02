@@ -35,7 +35,32 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="LAIR.Collections">
+      <HintPath>..\..\..\..\..\stage\webAppMVCIndexer3\webAppMVCIndexer3\bin\LAIR.Collections.dll</HintPath>
+    </Reference>
+    <Reference Include="LAIR.Extensions">
+      <HintPath>..\..\..\..\..\stage\webAppMVCIndexer3\webAppMVCIndexer3\bin\LAIR.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="LAIR.GraphViz">
+      <HintPath>..\..\..\..\..\stage\webAppMVCIndexer3\webAppMVCIndexer3\bin\LAIR.GraphViz.dll</HintPath>
+    </Reference>
+    <Reference Include="LAIR.IO">
+      <HintPath>..\..\..\..\..\stage\webAppMVCIndexer3\webAppMVCIndexer3\bin\LAIR.IO.dll</HintPath>
+    </Reference>
+    <Reference Include="LAIR.MachineLearning">
+      <HintPath>..\..\..\..\..\stage\webAppMVCIndexer3\webAppMVCIndexer3\bin\LAIR.MachineLearning.dll</HintPath>
+    </Reference>
+    <Reference Include="LAIR.ResourceAPIs.WordNet">
+      <HintPath>..\..\..\..\..\stage\webAppMVCIndexer3\webAppMVCIndexer3\bin\LAIR.ResourceAPIs.WordNet.dll</HintPath>
+    </Reference>
+    <Reference Include="LAIR.XML">
+      <HintPath>..\..\..\..\..\stage\webAppMVCIndexer3\webAppMVCIndexer3\bin\LAIR.XML.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data">
+      <HintPath>..\..\..\..\..\stage\webAppMVCIndexer3\webAppMVCIndexer3\bin\MySql.Data.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -44,6 +69,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Indexer.cs" />
     <Compile Include="Node.cs" />
     <Compile Include="NodeList.cs" />
     <Compile Include="Program.cs" />
@@ -51,9 +77,47 @@
     <Compile Include="SkipList.cs" />
     <Compile Include="SkipListNode.cs" />
     <Compile Include="SkipListNodeList.cs" />
+    <Compile Include="SynSet.cs" />
+    <Compile Include="WordInfo.cs" />
+    <Compile Include="WordNetEngine.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="data.adj">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="data.adv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="data.noun">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="data.verb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="index.adj">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="index.adv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="index.noun">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="index.sense">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="index.verb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="input.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
