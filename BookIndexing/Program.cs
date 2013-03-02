@@ -19,7 +19,7 @@ namespace BookIndexing
             }
             else
             {
-                Console.WriteLine("Put all you text in input.txt file in the same directory as this application and run again.");
+                Console.WriteLine("Put all your text in input.txt file in the same directory as this application and run again.");
             }
 
         }
