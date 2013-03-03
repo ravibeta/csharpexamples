@@ -19,7 +19,7 @@ namespace NerdRide
                 return new Description
                 {
                     DisplayName = "NerdRide.com",
-                    LongDescription = "Nerd Ride - Organizing the world's nerds and helping them eat in packs",
+                    LongDescription = "Nerd Ride - Organizing the world's nerds and helping them ride together",
                     SearchPathTemplate = "/Rides?q={0}",
                     IconPath = "~/favicon.ico"
                 };

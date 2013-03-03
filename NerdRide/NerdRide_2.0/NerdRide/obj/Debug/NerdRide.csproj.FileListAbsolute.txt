@@ -1,0 +1,15 @@
+C:\Users\admin\gitrep\csharpexamples\NerdRide\NerdRide_2.0\NerdRide\bin\NerdRide.dll
+C:\Users\admin\gitrep\csharpexamples\NerdRide\NerdRide_2.0\NerdRide\bin\NerdRide.pdb
+C:\Users\admin\gitrep\csharpexamples\NerdRide\NerdRide_2.0\NerdRide\bin\DDay.iCal.dll
+C:\Users\admin\gitrep\csharpexamples\NerdRide\NerdRide_2.0\NerdRide\bin\DotNetOpenAuth.dll
+C:\Users\admin\gitrep\csharpexamples\NerdRide\NerdRide_2.0\NerdRide\bin\Elmah.dll
+C:\Users\admin\gitrep\csharpexamples\NerdRide\NerdRide_2.0\NerdRide\bin\OpenSearchToolkit.dll
+C:\Users\admin\gitrep\csharpexamples\NerdRide\NerdRide_2.0\NerdRide\bin\System.Web.Mvc.dll
+C:\Users\admin\gitrep\csharpexamples\NerdRide\NerdRide_2.0\NerdRide\bin\antlr.runtime.dll
+C:\Users\admin\gitrep\csharpexamples\NerdRide\NerdRide_2.0\NerdRide\bin\DotNetOpenAuth.pdb
+C:\Users\admin\gitrep\csharpexamples\NerdRide\NerdRide_2.0\NerdRide\bin\Elmah.pdb
+C:\Users\admin\gitrep\csharpexamples\NerdRide\NerdRide_2.0\NerdRide\bin\Elmah.xml
+C:\Users\admin\gitrep\csharpexamples\NerdRide\NerdRide_2.0\NerdRide\bin\System.Web.Mvc.xml
+C:\Users\admin\gitrep\csharpexamples\NerdRide\NerdRide_2.0\NerdRide\obj\Debug\NerdRide.csprojResolveAssemblyReference.cache
+C:\Users\admin\gitrep\csharpexamples\NerdRide\NerdRide_2.0\NerdRide\obj\Debug\NerdRide.dll
+C:\Users\admin\gitrep\csharpexamples\NerdRide\NerdRide_2.0\NerdRide\obj\Debug\NerdRide.pdb

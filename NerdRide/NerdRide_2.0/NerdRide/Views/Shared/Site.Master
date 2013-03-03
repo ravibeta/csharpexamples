@@ -33,6 +33,7 @@
 
         <div id="header">
             <div id="title">
+                <h1><a href="/" title="Nerd Ride" class="logo"></a></h1>
             </div>
             <div id="menucontainer">
                 <ul id="menu">
@@ -55,6 +56,7 @@
         <div id="main" class="clearfix">
             <asp:ContentPlaceHolder ID="MainContent" runat="server" />
         </div>
+        <div id="footer">Car pooling on your demand.See who's available to give you a ride or if you want to give a ride to someone for favor or fee or just for a conversation</div>
 
     </div>
     
