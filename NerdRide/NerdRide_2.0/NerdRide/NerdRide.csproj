@@ -9,8 +9,8 @@
     <ProjectTypeGuids>{f85e285d-a4e0-4152-9332-ab1d724d3325};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>NerdDinner</RootNamespace>
-    <AssemblyName>NerdDinner</AssemblyName>
+    <RootNamespace>NerdRide</RootNamespace>
+    <AssemblyName>NerdRide</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <FileUpgradeFlags>
@@ -139,10 +139,10 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\NerdDinner.mdf">
+    <Content Include="App_Data\NerdRide.mdf">
     </Content>
-    <Content Include="App_Data\NerdDinner_log.ldf">
-      <DependentUpon>NerdDinner.mdf</DependentUpon>
+    <Content Include="App_Data\NerdRide_log.ldf">
+      <DependentUpon>NerdRide.mdf</DependentUpon>
     </Content>
     <Content Include="App_Data\NerdRide.mdf" />
     <Content Include="App_Data\NerdRide_log.ldf">
@@ -302,7 +302,7 @@
     <Content Include="Default.aspx" />
     <Content Include="Scripts\date.format.js" />
     <Content Include="Scripts\MSAjaxHistoryBundle.js" />
-    <Content Include="Scripts\NerdDinner.js" />
+    <Content Include="Scripts\NerdRide.js" />
     <Content Include="App_Browsers\Devices\mobile.browser" />
     <Content Include="Views\Rides\Details.aspx" />
     <Content Include="Views\Rides\Mobile\Details.aspx" />

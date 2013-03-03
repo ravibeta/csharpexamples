@@ -8,8 +8,8 @@
     <ProjectGuid>{DCF277C2-270F-4806-B2F6-8F757713D21A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>NerdDinner.Tests</RootNamespace>
-    <AssemblyName>NerdDinner.Tests</AssemblyName>
+    <RootNamespace>NerdRide.Tests</RootNamespace>
+    <AssemblyName>NerdRide.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -108,9 +108,9 @@
   <ItemGroup>
     <Compile Include="Controllers\RSVPControllerTest.cs" />
     <Compile Include="Controllers\SearchControllerTest.cs" />
-    <Compile Include="Controllers\DinnersControllerTest.cs" />
-    <Compile Include="Fakes\FakeDinnerData.cs" />
-    <Compile Include="Fakes\FakeDinnerRepository.cs" />
+    <Compile Include="Controllers\RidesControllerTest.cs" />
+    <Compile Include="Fakes\FakeRideData.cs" />
+    <Compile Include="Fakes\FakeRideRepository.cs" />
     <Compile Include="Fakes\FakeIdentity.cs" />
     <Compile Include="Helpers\FileNotFoundResultTests.cs" />
     <Compile Include="Helpers\PhoneValidatorTest.cs" />

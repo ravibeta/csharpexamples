@@ -1,2 +1,0 @@
-C:\Users\admin\Downloads\NerdDinner_2.0\NerdDinner_2.0\NerdDinner\obj\Debug\NerdRide.csprojResolveAssemblyReference.cache
-C:\Users\admin\Downloads\NerdRide_2.0\NerdRide_2.0\NerdRide\obj\Debug\NerdRide.csprojResolveAssemblyReference.cache

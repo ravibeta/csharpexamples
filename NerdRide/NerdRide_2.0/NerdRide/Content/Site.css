@@ -320,13 +320,13 @@ select.input-validation-error
     color: #ff0000;
 }
 
-#dinnerform textarea
+#rideform textarea
 {
    width:200px;
    height:70px;
 }
 
-#dinnerDiv textarea
+#rideDiv textarea
 {
    width:200px;
    height:70px;
@@ -348,7 +348,7 @@ hr
  text-align:center;
 }
 
-#dinnerDiv {
+#rideDiv {
     float: left;
     width: 280px;
 }
@@ -366,7 +366,7 @@ hr
     float: left;
 }
 
-#dinnerList {
+#rideList {
     padding:0px 0px 0px 0px;
 }
 

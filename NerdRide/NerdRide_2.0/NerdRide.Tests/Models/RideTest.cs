@@ -3,35 +3,35 @@ using System.Text;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using NerdDinner.Models;
+using NerdRide.Models;
 
-namespace NerdDinner.Tests.Models {
+namespace NerdRide.Tests.Models {
 
     [TestClass]
-    public class DinnerTest {
+    public class RideTest {
 
         [TestMethod]
-        public void Dinner_Should_Not_Be_Valid_When_Some_Properties_Incorrect() {
+        public void Ride_Should_Not_Be_Valid_When_Some_Properties_Incorrect() {
 
             //Arrange
-            Dinner dinner = new Dinner() {
+            Ride Ride = new Ride() {
                 Title = "Test title",
                 Country = "USA",
                 ContactPhone = "BOGUS"
             };
 
             // Act
-            bool isValid = dinner.IsValid;
+            bool isValid = Ride.IsValid;
 
             //Assert
             Assert.IsFalse(isValid);
         }
 
         [TestMethod]
-        public void Dinner_Should_Be_Valid_When_All_Properties_Correct() {
+        public void Ride_Should_Be_Valid_When_All_Properties_Correct() {
             
             //Arrange
-            Dinner dinner = new Dinner {
+            Ride Ride = new Ride {
                 Title = "Test title",
                 Description = "Some description",
                 EventDate = DateTime.Now,
@@ -44,7 +44,7 @@ namespace NerdDinner.Tests.Models {
             };
 
             // Act
-            bool isValid = dinner.IsValid;
+            bool isValid = Ride.IsValid;
 
             //Assert
             Assert.IsTrue(isValid);
