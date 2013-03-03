@@ -1,0 +1,4 @@
+C:\Users\admin\Downloads\NerdDinner_2.0\NerdDinner_2.0\NerdDinner.Tests\obj\Debug\NerdRide.Tests.csprojResolveAssemblyReference.cache
+C:\Users\admin\Downloads\NerdDinner_2.0\NerdDinner_2.0\NerdDinner.Tests\obj\Debug\NerdDinner.Tests.pdb
+C:\Users\admin\Downloads\NerdRide_2.0\NerdRide_2.0\NerdRide.Tests\obj\Debug\NerdRide.Tests.csprojResolveAssemblyReference.cache
+C:\Users\admin\Downloads\NerdRide_2.0\NerdRide_2.0\NerdRide.Tests\obj\Debug\NerdDinner.Tests.pdb
