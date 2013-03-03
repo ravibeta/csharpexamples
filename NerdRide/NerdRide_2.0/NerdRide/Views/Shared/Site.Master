@@ -5,7 +5,7 @@
 <head id="Head1" runat="server">
     <title><asp:ContentPlaceHolder ID="TitleContent" runat="server" /></title>
     <link href="/Content/Production.css?v=2" rel="stylesheet" type="text/css" media="screen"/>
-  	<meta content="Nerd, Ride, Geek, Luncheon, Dweeb, Breakfast, Technology, Bar, Beer, Wonk" name="keywords" /> 
+  	<meta content="Nerd, Ride, Geek, Conversation, Drive, Carpool, Technology, Autistic, Social, Vanpool" name="keywords" /> 
     <meta name="description" content="Host and promote your own Nerd Ride free!" /> 
     <link title="NerdRide.com" rel="search" type="application/opensearchdescription+xml" href="/Services/OpenSearch.ashx" />
 
@@ -56,7 +56,7 @@
         <div id="main" class="clearfix">
             <asp:ContentPlaceHolder ID="MainContent" runat="server" />
         </div>
-        <div id="footer">Car pooling on your demand.See who's available to give you a ride or if you want to give a ride to someone for favor or fee or just for a conversation</div>
+        <div id="footer">Car pooling on your demand.See who's available to give you a ride or if you want to give a ride to someone for favor or fee or just for a conversation.</div>
 
     </div>
     
