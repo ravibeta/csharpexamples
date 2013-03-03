@@ -33,11 +33,6 @@
 
         <div id="header">
             <div id="title">
-                <h1><a href="/" title="Nerd Ride" class="logo"></a></h1>
-            </div>
-
-            <div id="logindisplay">
-                <% Html.RenderPartial("LoginStatus"); %>
             </div>
             <div id="menucontainer">
                 <ul id="menu">
@@ -60,8 +55,6 @@
         <div id="main" class="clearfix">
             <asp:ContentPlaceHolder ID="MainContent" runat="server" />
         </div>
-
-        <div id="footer">Code by <a href="http://www.hanselman.com">Hanselman</a>, <a href="http://weblogs.asp.net/scottgu">Guthrie</a>, <a href="http://weblogs.asp.net/jongalloway">Galloway</a>, <a href="http://blog.wekeroad.com">Conery</a> and <a href="http://blogs.msdn.com/andrewarnottms/">Arnott</a>. JavaScript by <a href="http://encosia.com">Dave Ward</a>. ASP.NET MVC by <a href="http://www.haacked.com">Haack</a> and friends. Style by <a href="http://michaeldorian.com/">Michael Dorian Bach</a>.<br/> Source Code at <a href="http://nerdRide.codeplex.com">http://nerdRide.codeplex.com</a>. Free Sample Book Chapter and code walkthrough at <a href="http://tinyurl.com/aspnetmvc">http://tinyurl.com/aspnetmvc</a>.</div>
 
     </div>
     
