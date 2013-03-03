@@ -41,8 +41,8 @@ namespace NerdRide.Controllers
                 var item = new SyndicationItem(
                     title: d.Title,
                     content: contentString,
-                    itemAlternateLink: new Uri("http://nrddnr.com/" + d.RideID),
-                    id: "http://nrddnr.com/" + d.RideID,
+                    itemAlternateLink: new Uri("http://nerdride.cloudapp.net/" + d.RideID),
+                    id: "http://nerdride.cloudapp.net/" + d.RideID,
                     lastUpdatedTime: d.EventDate.ToUniversalTime()
                     );
                 item.PublishDate = d.EventDate.ToUniversalTime();

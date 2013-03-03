@@ -15,7 +15,7 @@ namespace NerdRide.Helpers
     {
         public static Event RideToEvent(Ride Ride, iCalendar iCal)
         {
-            string eventLink = "http://nrddnr.com/" + Ride.RideID;
+            string eventLink = "http://nerdride.cloudapp.net/" + Ride.RideID;
             Event evt = iCal.Create<Event>();
             evt.Start = Ride.EventDate;
             evt.Duration = new TimeSpan(3, 0, 0);

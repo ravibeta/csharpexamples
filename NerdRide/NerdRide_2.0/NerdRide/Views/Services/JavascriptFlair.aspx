@@ -8,8 +8,8 @@ document.write('<div id=\"nd-wrapper\"><h2 id=\"nd-header\">NerdRide.com</h2><di
 <% } else { %>
 document.write('<h3>  Rides Near You</h3><ul>');
     <% foreach (var item in Model.Rides) { %>
-document.write('<li><a target=\"_blank\" href=\"http://nrddnr.com/<%: item.RideID %>\"><%: item.Title.Truncate(20) %> with <%: item.HostedBy %> on <%: item.EventDate.ToShortDateString() %></a></li>');
+document.write('<li><a target=\"_blank\" href=\"http://nerdride.cloudapp.net/<%: item.RideID %>\"><%: item.Title.Truncate(20) %> with <%: item.HostedBy %> on <%: item.EventDate.ToShortDateString() %></a></li>');
     <% } %>
 document.write('</ul>');
 <% } %>
-document.write('<div id=\"nd-footer\">  More Rides and fun at <a target=\"_blank\" href=\"http://nrddnr.com\">http://nrddnr.com</a></div></div></div>');
+document.write('<div id=\"nd-footer\">  More Rides and fun at <a target=\"_blank\" href=\"http://nerdride.cloudapp.net\">http://nerdride.cloudapp.net</a></div></div></div>');
