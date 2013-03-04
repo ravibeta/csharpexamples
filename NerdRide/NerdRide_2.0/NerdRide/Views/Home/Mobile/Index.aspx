@@ -2,7 +2,7 @@
     Inherits="System.Web.Mvc.ViewPage" %>
 
 <asp:Content ID="Title" ContentPlaceHolderID="TitleContent" runat="server">
-    NerdRide.com
+    nerdride.cloudapp.net
 </asp:Content>
 <asp:Content ID="indexContent" ContentPlaceHolderID="MainContent" runat="server">
     <h1><img alt="nerdRide" src="/Content/Img/Mobile/logo_medium.jpg" runat="server" /></h1>

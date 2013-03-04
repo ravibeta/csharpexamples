@@ -10,6 +10,5 @@ C:\Users\admin\gitrep\csharpexamples\NerdRide\NerdRide_2.0\NerdRide\bin\DotNetOp
 C:\Users\admin\gitrep\csharpexamples\NerdRide\NerdRide_2.0\NerdRide\bin\Elmah.pdb
 C:\Users\admin\gitrep\csharpexamples\NerdRide\NerdRide_2.0\NerdRide\bin\Elmah.xml
 C:\Users\admin\gitrep\csharpexamples\NerdRide\NerdRide_2.0\NerdRide\bin\System.Web.Mvc.xml
-C:\Users\admin\gitrep\csharpexamples\NerdRide\NerdRide_2.0\NerdRide\obj\Debug\NerdRide.csprojResolveAssemblyReference.cache
 C:\Users\admin\gitrep\csharpexamples\NerdRide\NerdRide_2.0\NerdRide\obj\Debug\NerdRide.dll
 C:\Users\admin\gitrep\csharpexamples\NerdRide\NerdRide_2.0\NerdRide\obj\Debug\NerdRide.pdb

@@ -4,17 +4,17 @@
     <EntitySetMapping Name="Rides">
       <EntityTypeMapping TypeName="NerdRideModel.Ride">
         <MappingFragment StoreEntitySet="Rides">
-          <ScalarProperty Name="HostedById" ColumnName="HostedById" />
-          <ScalarProperty Name="RideID" ColumnName="RideID" />
-          <ScalarProperty Name="Title" ColumnName="Title" />
-          <ScalarProperty Name="EventDate" ColumnName="EventDate" />
-          <ScalarProperty Name="Description" ColumnName="Description" />
-          <ScalarProperty Name="HostedBy" ColumnName="HostedBy" />
-          <ScalarProperty Name="ContactPhone" ColumnName="ContactPhone" />
-          <ScalarProperty Name="Address" ColumnName="Address" />
-          <ScalarProperty Name="Country" ColumnName="Country" />
-          <ScalarProperty Name="Latitude" ColumnName="Latitude" />
           <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+          <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="ContactPhone" ColumnName="ContactPhone" />
+          <ScalarProperty Name="HostedBy" ColumnName="HostedBy" />
+          <ScalarProperty Name="HostedById" ColumnName="HostedById" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="EventDate" ColumnName="EventDate" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="RideID" ColumnName="RideID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -22,9 +22,9 @@
       <EntityTypeMapping TypeName="NerdRideModel.RSVP">
         <MappingFragment StoreEntitySet="RSVP">
           <ScalarProperty Name="AttendeeNameId" ColumnName="AttendeeNameId" />
-          <ScalarProperty Name="RsvpID" ColumnName="RsvpID" />
-          <ScalarProperty Name="RideID" ColumnName="RideID" />
           <ScalarProperty Name="AttendeeName" ColumnName="AttendeeName" />
+          <ScalarProperty Name="RideID" ColumnName="RideID" />
+          <ScalarProperty Name="RsvpID" ColumnName="RsvpID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

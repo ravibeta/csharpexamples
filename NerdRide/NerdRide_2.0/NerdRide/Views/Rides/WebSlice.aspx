@@ -24,7 +24,7 @@
                 </ul>
             </div>
         </div>
-        <a rel="Bookmark" href="http://www.nerdRide.com" style="display:none;"></a>
+        <a rel="Bookmark" href="http://www.nerdride.cloudapp.net" style="display:none;"></a>
     </div>
 </body>
 </html>

@@ -9,13 +9,13 @@
     </head>
     <body>
         <div id="nd-wrapper">
-            <h2 id="nd-header">NerdRide.com</h2>
+            <h2 id="nd-header">nerdride.cloudapp.net</h2>
             <div id="nd-outer">
                 <% if (Model.Rides.Count == 0) { %>
                 <div id="nd-bummer">
                     Looks like there's no Nerd Rides near
                     <%:Model.LocationName %>
-                    in the near future. Why not <a target="_blank" href="http://www.nerdRide.com/Rides/Create">host one</a>?</div>
+                    in the near future. Why not <a target="_blank" href="http://www.nerdride.cloudapp.net/Rides/Create">host one</a>?</div>
                 <% } else { %>
                 <h3>
                     Rides Near You</h3>

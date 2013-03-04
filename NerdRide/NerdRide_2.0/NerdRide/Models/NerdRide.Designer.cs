@@ -19,7 +19,7 @@ using System.Xml.Serialization;
 [assembly: EdmSchemaAttribute()]
 #region EDM Relationship Metadata
 
-[assembly: EdmRelationshipAttribute("NerdRideModel", "FK_RSVP_Rides", "Rides", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(NerdRide.Models.Ride), "RSVP", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(NerdRide.Models.RSVP), true)]
+[assembly: EdmRelationshipAttribute("NerdRideModel", "FK_RSVP_Rides", "Ride", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(NerdRide.Models.Ride), "RSVP", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(NerdRide.Models.RSVP), true)]
 
 #endregion
 
@@ -276,6 +276,30 @@ namespace NerdRide.Models
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String HostedById
+        {
+            get
+            {
+                return _HostedById;
+            }
+            set
+            {
+                OnHostedByIdChanging(value);
+                ReportPropertyChanging("HostedById");
+                _HostedById = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("HostedById");
+                OnHostedByIdChanged();
+            }
+        }
+        private global::System.String _HostedById;
+        partial void OnHostedByIdChanging(global::System.String value);
+        partial void OnHostedByIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
         public global::System.String HostedBy
@@ -416,30 +440,6 @@ namespace NerdRide.Models
         private global::System.Double _Longitude;
         partial void OnLongitudeChanging(global::System.Double value);
         partial void OnLongitudeChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public global::System.String HostedById
-        {
-            get
-            {
-                return _HostedById;
-            }
-            set
-            {
-                OnHostedByIdChanging(value);
-                ReportPropertyChanging("HostedById");
-                _HostedById = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("HostedById");
-                OnHostedByIdChanged();
-            }
-        }
-        private global::System.String _HostedById;
-        partial void OnHostedByIdChanging(global::System.String value);
-        partial void OnHostedByIdChanged();
 
         #endregion
 
@@ -531,7 +531,7 @@ namespace NerdRide.Models
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
         [DataMemberAttribute()]
         public global::System.Int32 RideID
         {
@@ -541,11 +541,14 @@ namespace NerdRide.Models
             }
             set
             {
-                OnRideIDChanging(value);
-                ReportPropertyChanging("RideID");
-                _RideID = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("RideID");
-                OnRideIDChanged();
+                if (_RideID != value)
+                {
+                    OnRideIDChanging(value);
+                    ReportPropertyChanging("RideID");
+                    _RideID = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("RideID");
+                    OnRideIDChanged();
+                }
             }
         }
         private global::System.Int32 _RideID;
@@ -555,7 +558,7 @@ namespace NerdRide.Models
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
         [DataMemberAttribute()]
         public global::System.String AttendeeName
         {
@@ -565,11 +568,14 @@ namespace NerdRide.Models
             }
             set
             {
-                OnAttendeeNameChanging(value);
-                ReportPropertyChanging("AttendeeName");
-                _AttendeeName = StructuralObject.SetValidValue(value, false);
-                ReportPropertyChanged("AttendeeName");
-                OnAttendeeNameChanged();
+                if (_AttendeeName != value)
+                {
+                    OnAttendeeNameChanging(value);
+                    ReportPropertyChanging("AttendeeName");
+                    _AttendeeName = StructuralObject.SetValidValue(value, false);
+                    ReportPropertyChanged("AttendeeName");
+                    OnAttendeeNameChanged();
+                }
             }
         }
         private global::System.String _AttendeeName;
@@ -611,16 +617,16 @@ namespace NerdRide.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("NerdRideModel", "FK_RSVP_Rides", "Rides")]
+        [EdmRelationshipNavigationPropertyAttribute("NerdRideModel", "FK_RSVP_Rides", "Ride")]
         public Ride Ride
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Ride>("NerdRideModel.FK_RSVP_Rides", "Rides").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Ride>("NerdRideModel.FK_RSVP_Rides", "Ride").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Ride>("NerdRideModel.FK_RSVP_Rides", "Rides").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Ride>("NerdRideModel.FK_RSVP_Rides", "Ride").Value = value;
             }
         }
         /// <summary>
@@ -632,13 +638,13 @@ namespace NerdRide.Models
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Ride>("NerdRideModel.FK_RSVP_Rides", "Rides");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Ride>("NerdRideModel.FK_RSVP_Rides", "Ride");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Ride>("NerdRideModel.FK_RSVP_Rides", "Rides", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Ride>("NerdRideModel.FK_RSVP_Rides", "Ride", value);
                 }
             }
         }

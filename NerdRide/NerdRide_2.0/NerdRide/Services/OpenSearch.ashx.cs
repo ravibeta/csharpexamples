@@ -18,7 +18,7 @@ namespace NerdRide
             {
                 return new Description
                 {
-                    DisplayName = "NerdRide.com",
+                    DisplayName = "nerdride.cloudapp.net",
                     LongDescription = "Nerd Ride - Organizing the world's nerds and helping them ride together",
                     SearchPathTemplate = "/Rides?q={0}",
                     IconPath = "~/favicon.ico"

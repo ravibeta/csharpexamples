@@ -104,7 +104,7 @@
 <div id="disqus_thread"></div>
 
 <script type="text/javascript">
-    var disqus_url = '<%: "http://www.nerdRide.com/" + Model.RideID.ToString() %>';
+    var disqus_url = '<%: "http://www.nerdride.cloudapp.net/" + Model.RideID.ToString() %>';
     var disqus_developer = 1;
 
     (function () {
