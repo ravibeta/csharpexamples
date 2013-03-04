@@ -1,24 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <RoleModel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="HMKW" version="1.7.30602.1703" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
   <Startup>
-    <Task commandLine="DotNetUpdate.cmd" executionContext="elevated" relativePath="plugins\Caching">
-      <Environment>
-        <Variable name="IsEmulated">
-          <RoleInstanceValue xpath="/RoleEnvironment/Deployment/@emulated" />
-        </Variable>
-        <Variable name="CachingLocalStorePath">
-          <RoleInstanceValue xpath="/RoleEnvironment/CurrentInstance/LocalResources/LocalResource[@name='Microsoft.WindowsAzure.Plugins.Caching.FileStore']/@path" />
-        </Variable>
-        <Variable name="RdModuleName" value="Caching" />
-        <Variable name="WaRoleType" value="IISWebRole" />
-      </Environment>
-    </Task>
-    <Task commandLine="CacheInstaller.exe" executionContext="elevated" relativePath="plugins\Caching">
-      <Environment>
-        <Variable name="RdModuleName" value="Caching" />
-        <Variable name="WaRoleType" value="IISWebRole" />
-      </Environment>
-    </Task>
     <Task commandLine="RemoteAccessAgent.exe" executionContext="elevated" taskType="background" relativePath="plugins\RemoteAccess">
       <Environment>
         <Variable name="RdModuleName" value="RemoteAccess" />
@@ -52,10 +34,6 @@
     <Setting name="AccountEncryptedPassword" nameSpace="Microsoft.WindowsAzure.Plugins.RemoteAccess" />
     <Setting name="AccountExpiration" nameSpace="Microsoft.WindowsAzure.Plugins.RemoteAccess" />
     <Setting name="Enabled" nameSpace="Microsoft.WindowsAzure.Plugins.RemoteForwarder" />
-    <Setting name="NamedCaches" nameSpace="Microsoft.WindowsAzure.Plugins.Caching" />
-    <Setting name="Loglevel" nameSpace="Microsoft.WindowsAzure.Plugins.Caching" />
-    <Setting name="CacheSizePercentage" nameSpace="Microsoft.WindowsAzure.Plugins.Caching" />
-    <Setting name="ConfigStoreConnectionString" nameSpace="Microsoft.WindowsAzure.Plugins.Caching" />
   </ConfigurationSettings>
   <Properties>
     <Property name="TargetFrameworkVersion" value="v4.0" />

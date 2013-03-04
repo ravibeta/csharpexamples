@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<serviceModel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="HMKW.Azure" generation="1" functional="0" release="0" Id="cc029f02-0b0d-4168-bfca-781ad349ec7e" dslVersion="1.2.0.0" xmlns="http://schemas.microsoft.com/dsltools/RDSM">
+<serviceModel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="HMKW.Azure" generation="1" functional="0" release="0" Id="ca2f0388-cb25-465e-8166-8893698a49e0" dslVersion="1.2.0.0" xmlns="http://schemas.microsoft.com/dsltools/RDSM">
   <groups>
     <group name="HMKW.AzureGroup" generation="1" functional="0" release="0">
       <componentports>
@@ -18,26 +18,6 @@
         <aCS name="Certificate|HMKW:Microsoft.WindowsAzure.Plugins.RemoteAccess.PasswordEncryption" defaultValue="">
           <maps>
             <mapMoniker name="/HMKW.Azure/HMKW.AzureGroup/MapCertificate|HMKW:Microsoft.WindowsAzure.Plugins.RemoteAccess.PasswordEncryption" />
-          </maps>
-        </aCS>
-        <aCS name="HMKW:Microsoft.WindowsAzure.Plugins.Caching.CacheSizePercentage" defaultValue="">
-          <maps>
-            <mapMoniker name="/HMKW.Azure/HMKW.AzureGroup/MapHMKW:Microsoft.WindowsAzure.Plugins.Caching.CacheSizePercentage" />
-          </maps>
-        </aCS>
-        <aCS name="HMKW:Microsoft.WindowsAzure.Plugins.Caching.ConfigStoreConnectionString" defaultValue="">
-          <maps>
-            <mapMoniker name="/HMKW.Azure/HMKW.AzureGroup/MapHMKW:Microsoft.WindowsAzure.Plugins.Caching.ConfigStoreConnectionString" />
-          </maps>
-        </aCS>
-        <aCS name="HMKW:Microsoft.WindowsAzure.Plugins.Caching.Loglevel" defaultValue="">
-          <maps>
-            <mapMoniker name="/HMKW.Azure/HMKW.AzureGroup/MapHMKW:Microsoft.WindowsAzure.Plugins.Caching.Loglevel" />
-          </maps>
-        </aCS>
-        <aCS name="HMKW:Microsoft.WindowsAzure.Plugins.Caching.NamedCaches" defaultValue="">
-          <maps>
-            <mapMoniker name="/HMKW.Azure/HMKW.AzureGroup/MapHMKW:Microsoft.WindowsAzure.Plugins.Caching.NamedCaches" />
           </maps>
         </aCS>
         <aCS name="HMKW:Microsoft.WindowsAzure.Plugins.RemoteAccess.AccountEncryptedPassword" defaultValue="">
@@ -82,31 +62,6 @@
             <inPortMoniker name="/HMKW.Azure/HMKW.AzureGroup/HMKW/Microsoft.WindowsAzure.Plugins.RemoteForwarder.RdpInput" />
           </toPorts>
         </lBChannel>
-        <sFSwitchChannel name="SW:HMKW:Microsoft.WindowsAzure.Plugins.Caching.cacheArbitrationPort">
-          <toPorts>
-            <inPortMoniker name="/HMKW.Azure/HMKW.AzureGroup/HMKW/Microsoft.WindowsAzure.Plugins.Caching.cacheArbitrationPort" />
-          </toPorts>
-        </sFSwitchChannel>
-        <sFSwitchChannel name="SW:HMKW:Microsoft.WindowsAzure.Plugins.Caching.cacheClusterPort">
-          <toPorts>
-            <inPortMoniker name="/HMKW.Azure/HMKW.AzureGroup/HMKW/Microsoft.WindowsAzure.Plugins.Caching.cacheClusterPort" />
-          </toPorts>
-        </sFSwitchChannel>
-        <sFSwitchChannel name="SW:HMKW:Microsoft.WindowsAzure.Plugins.Caching.cacheReplicationPort">
-          <toPorts>
-            <inPortMoniker name="/HMKW.Azure/HMKW.AzureGroup/HMKW/Microsoft.WindowsAzure.Plugins.Caching.cacheReplicationPort" />
-          </toPorts>
-        </sFSwitchChannel>
-        <sFSwitchChannel name="SW:HMKW:Microsoft.WindowsAzure.Plugins.Caching.cacheServicePortInternal">
-          <toPorts>
-            <inPortMoniker name="/HMKW.Azure/HMKW.AzureGroup/HMKW/Microsoft.WindowsAzure.Plugins.Caching.cacheServicePortInternal" />
-          </toPorts>
-        </sFSwitchChannel>
-        <sFSwitchChannel name="SW:HMKW:Microsoft.WindowsAzure.Plugins.Caching.cacheSocketPort">
-          <toPorts>
-            <inPortMoniker name="/HMKW.Azure/HMKW.AzureGroup/HMKW/Microsoft.WindowsAzure.Plugins.Caching.cacheSocketPort" />
-          </toPorts>
-        </sFSwitchChannel>
         <sFSwitchChannel name="SW:HMKW:Microsoft.WindowsAzure.Plugins.RemoteAccess.Rdp">
           <toPorts>
             <inPortMoniker name="/HMKW.Azure/HMKW.AzureGroup/HMKW/Microsoft.WindowsAzure.Plugins.RemoteAccess.Rdp" />
@@ -118,26 +73,6 @@
           <certificate>
             <certificateMoniker name="/HMKW.Azure/HMKW.AzureGroup/HMKW/Microsoft.WindowsAzure.Plugins.RemoteAccess.PasswordEncryption" />
           </certificate>
-        </map>
-        <map name="MapHMKW:Microsoft.WindowsAzure.Plugins.Caching.CacheSizePercentage" kind="Identity">
-          <setting>
-            <aCSMoniker name="/HMKW.Azure/HMKW.AzureGroup/HMKW/Microsoft.WindowsAzure.Plugins.Caching.CacheSizePercentage" />
-          </setting>
-        </map>
-        <map name="MapHMKW:Microsoft.WindowsAzure.Plugins.Caching.ConfigStoreConnectionString" kind="Identity">
-          <setting>
-            <aCSMoniker name="/HMKW.Azure/HMKW.AzureGroup/HMKW/Microsoft.WindowsAzure.Plugins.Caching.ConfigStoreConnectionString" />
-          </setting>
-        </map>
-        <map name="MapHMKW:Microsoft.WindowsAzure.Plugins.Caching.Loglevel" kind="Identity">
-          <setting>
-            <aCSMoniker name="/HMKW.Azure/HMKW.AzureGroup/HMKW/Microsoft.WindowsAzure.Plugins.Caching.Loglevel" />
-          </setting>
-        </map>
-        <map name="MapHMKW:Microsoft.WindowsAzure.Plugins.Caching.NamedCaches" kind="Identity">
-          <setting>
-            <aCSMoniker name="/HMKW.Azure/HMKW.AzureGroup/HMKW/Microsoft.WindowsAzure.Plugins.Caching.NamedCaches" />
-          </setting>
         </map>
         <map name="MapHMKW:Microsoft.WindowsAzure.Plugins.RemoteAccess.AccountEncryptedPassword" kind="Identity">
           <setting>
@@ -176,37 +111,7 @@
             <componentports>
               <inPort name="Endpoint1" protocol="http" portRanges="80" />
               <inPort name="Microsoft.WindowsAzure.Plugins.RemoteForwarder.RdpInput" protocol="tcp" />
-              <inPort name="Microsoft.WindowsAzure.Plugins.Caching.cacheArbitrationPort" protocol="tcp" />
-              <inPort name="Microsoft.WindowsAzure.Plugins.Caching.cacheClusterPort" protocol="tcp" />
-              <inPort name="Microsoft.WindowsAzure.Plugins.Caching.cacheReplicationPort" protocol="tcp" />
-              <inPort name="Microsoft.WindowsAzure.Plugins.Caching.cacheServicePortInternal" protocol="tcp" />
-              <inPort name="Microsoft.WindowsAzure.Plugins.Caching.cacheSocketPort" protocol="tcp" />
               <inPort name="Microsoft.WindowsAzure.Plugins.RemoteAccess.Rdp" protocol="tcp" portRanges="3389" />
-              <outPort name="HMKW:Microsoft.WindowsAzure.Plugins.Caching.cacheArbitrationPort" protocol="tcp">
-                <outToChannel>
-                  <sFSwitchChannelMoniker name="/HMKW.Azure/HMKW.AzureGroup/SW:HMKW:Microsoft.WindowsAzure.Plugins.Caching.cacheArbitrationPort" />
-                </outToChannel>
-              </outPort>
-              <outPort name="HMKW:Microsoft.WindowsAzure.Plugins.Caching.cacheClusterPort" protocol="tcp">
-                <outToChannel>
-                  <sFSwitchChannelMoniker name="/HMKW.Azure/HMKW.AzureGroup/SW:HMKW:Microsoft.WindowsAzure.Plugins.Caching.cacheClusterPort" />
-                </outToChannel>
-              </outPort>
-              <outPort name="HMKW:Microsoft.WindowsAzure.Plugins.Caching.cacheReplicationPort" protocol="tcp">
-                <outToChannel>
-                  <sFSwitchChannelMoniker name="/HMKW.Azure/HMKW.AzureGroup/SW:HMKW:Microsoft.WindowsAzure.Plugins.Caching.cacheReplicationPort" />
-                </outToChannel>
-              </outPort>
-              <outPort name="HMKW:Microsoft.WindowsAzure.Plugins.Caching.cacheServicePortInternal" protocol="tcp">
-                <outToChannel>
-                  <sFSwitchChannelMoniker name="/HMKW.Azure/HMKW.AzureGroup/SW:HMKW:Microsoft.WindowsAzure.Plugins.Caching.cacheServicePortInternal" />
-                </outToChannel>
-              </outPort>
-              <outPort name="HMKW:Microsoft.WindowsAzure.Plugins.Caching.cacheSocketPort" protocol="tcp">
-                <outToChannel>
-                  <sFSwitchChannelMoniker name="/HMKW.Azure/HMKW.AzureGroup/SW:HMKW:Microsoft.WindowsAzure.Plugins.Caching.cacheSocketPort" />
-                </outToChannel>
-              </outPort>
               <outPort name="HMKW:Microsoft.WindowsAzure.Plugins.RemoteAccess.Rdp" protocol="tcp">
                 <outToChannel>
                   <sFSwitchChannelMoniker name="/HMKW.Azure/HMKW.AzureGroup/SW:HMKW:Microsoft.WindowsAzure.Plugins.RemoteAccess.Rdp" />
@@ -214,21 +119,15 @@
               </outPort>
             </componentports>
             <settings>
-              <aCS name="Microsoft.WindowsAzure.Plugins.Caching.CacheSizePercentage" defaultValue="" />
-              <aCS name="Microsoft.WindowsAzure.Plugins.Caching.ConfigStoreConnectionString" defaultValue="" />
-              <aCS name="Microsoft.WindowsAzure.Plugins.Caching.Loglevel" defaultValue="" />
-              <aCS name="Microsoft.WindowsAzure.Plugins.Caching.NamedCaches" defaultValue="" />
               <aCS name="Microsoft.WindowsAzure.Plugins.RemoteAccess.AccountEncryptedPassword" defaultValue="" />
               <aCS name="Microsoft.WindowsAzure.Plugins.RemoteAccess.AccountExpiration" defaultValue="" />
               <aCS name="Microsoft.WindowsAzure.Plugins.RemoteAccess.AccountUsername" defaultValue="" />
               <aCS name="Microsoft.WindowsAzure.Plugins.RemoteAccess.Enabled" defaultValue="" />
               <aCS name="Microsoft.WindowsAzure.Plugins.RemoteForwarder.Enabled" defaultValue="" />
-              <aCS name="__ModelData" defaultValue="&lt;m role=&quot;HMKW&quot; xmlns=&quot;urn:azure:m:v1&quot;&gt;&lt;r name=&quot;HMKW&quot;&gt;&lt;e name=&quot;Endpoint1&quot; /&gt;&lt;e name=&quot;Microsoft.WindowsAzure.Plugins.Caching.cacheArbitrationPort&quot; /&gt;&lt;e name=&quot;Microsoft.WindowsAzure.Plugins.Caching.cacheClusterPort&quot; /&gt;&lt;e name=&quot;Microsoft.WindowsAzure.Plugins.Caching.cacheReplicationPort&quot; /&gt;&lt;e name=&quot;Microsoft.WindowsAzure.Plugins.Caching.cacheServicePortInternal&quot; /&gt;&lt;e name=&quot;Microsoft.WindowsAzure.Plugins.Caching.cacheSocketPort&quot; /&gt;&lt;e name=&quot;Microsoft.WindowsAzure.Plugins.RemoteAccess.Rdp&quot; /&gt;&lt;e name=&quot;Microsoft.WindowsAzure.Plugins.RemoteForwarder.RdpInput&quot; /&gt;&lt;/r&gt;&lt;/m&gt;" />
+              <aCS name="__ModelData" defaultValue="&lt;m role=&quot;HMKW&quot; xmlns=&quot;urn:azure:m:v1&quot;&gt;&lt;r name=&quot;HMKW&quot;&gt;&lt;e name=&quot;Endpoint1&quot; /&gt;&lt;e name=&quot;Microsoft.WindowsAzure.Plugins.RemoteAccess.Rdp&quot; /&gt;&lt;e name=&quot;Microsoft.WindowsAzure.Plugins.RemoteForwarder.RdpInput&quot; /&gt;&lt;/r&gt;&lt;/m&gt;" />
             </settings>
             <resourcereferences>
               <resourceReference name="DiagnosticStore" defaultAmount="[4096,4096,4096]" defaultSticky="true" kind="Directory" />
-              <resourceReference name="Microsoft.WindowsAzure.Plugins.Caching.FileStore" defaultAmount="[1000,1000,1000]" defaultSticky="true" kind="Directory" />
-              <resourceReference name="sewing1" defaultAmount="[1024,1024,1024]" defaultSticky="false" kind="Directory" />
               <resourceReference name="EventStore" defaultAmount="[1000,1000,1000]" defaultSticky="false" kind="LogStore" />
             </resourcereferences>
             <storedcertificates>
@@ -255,14 +154,14 @@
     </group>
   </groups>
   <implements>
-    <implementation Id="dcd5f31b-fc8c-4663-a1fc-9ff37ab2f131" ref="Microsoft.RedDog.Contract\ServiceContract\HMKW.AzureContract@ServiceDefinition.build">
+    <implementation Id="885488a5-a566-46ad-be0e-9c724da233bf" ref="Microsoft.RedDog.Contract\ServiceContract\HMKW.AzureContract@ServiceDefinition.build">
       <interfacereferences>
-        <interfaceReference Id="5f687acb-d78a-4d49-97ec-bffcc1c69671" ref="Microsoft.RedDog.Contract\Interface\HMKW:Endpoint1@ServiceDefinition.build">
+        <interfaceReference Id="b13bcb48-3781-4f5f-8cf0-cdd5f732935e" ref="Microsoft.RedDog.Contract\Interface\HMKW:Endpoint1@ServiceDefinition.build">
           <inPort>
             <inPortMoniker name="/HMKW.Azure/HMKW.AzureGroup/HMKW:Endpoint1" />
           </inPort>
         </interfaceReference>
-        <interfaceReference Id="ac00a780-1fdb-4b6a-b21c-e2d62b6d765e" ref="Microsoft.RedDog.Contract\Interface\HMKW:Microsoft.WindowsAzure.Plugins.RemoteForwarder.RdpInput@ServiceDefinition.build">
+        <interfaceReference Id="f15ba6e9-27f5-4dda-8480-0817ca236405" ref="Microsoft.RedDog.Contract\Interface\HMKW:Microsoft.WindowsAzure.Plugins.RemoteForwarder.RdpInput@ServiceDefinition.build">
           <inPort>
             <inPortMoniker name="/HMKW.Azure/HMKW.AzureGroup/HMKW:Microsoft.WindowsAzure.Plugins.RemoteForwarder.RdpInput" />
           </inPort>

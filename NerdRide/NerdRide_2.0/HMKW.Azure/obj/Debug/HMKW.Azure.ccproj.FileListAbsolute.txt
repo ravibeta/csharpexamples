@@ -53,15 +53,3 @@ C:\stage\webAppMVCIndexer3\HMKW.Azure\obj\Debug\HMKW\bin\WebMatrix.Data.xml
 C:\stage\webAppMVCIndexer3\HMKW.Azure\obj\Debug\HMKW\bin\WebMatrix.WebData.dll
 C:\stage\webAppMVCIndexer3\HMKW.Azure\obj\Debug\HMKW\bin\WebMatrix.WebData.xml
 C:\Users\admin\gitrep\csharpexamples\NerdRide\NerdRide_2.0\HMKW.Azure\bin\Debug\ServiceConfiguration.cscfg
-C:\Users\admin\gitrep\csharpexamples\NerdRide\NerdRide_2.0\HMKW.Azure\obj\Debug\HMKW\bin\antlr.runtime.dll
-C:\Users\admin\gitrep\csharpexamples\NerdRide\NerdRide_2.0\HMKW.Azure\obj\Debug\HMKW\bin\DDay.iCal.dll
-C:\Users\admin\gitrep\csharpexamples\NerdRide\NerdRide_2.0\HMKW.Azure\obj\Debug\HMKW\bin\DotNetOpenAuth.dll
-C:\Users\admin\gitrep\csharpexamples\NerdRide\NerdRide_2.0\HMKW.Azure\obj\Debug\HMKW\bin\DotNetOpenAuth.pdb
-C:\Users\admin\gitrep\csharpexamples\NerdRide\NerdRide_2.0\HMKW.Azure\obj\Debug\HMKW\bin\Elmah.dll
-C:\Users\admin\gitrep\csharpexamples\NerdRide\NerdRide_2.0\HMKW.Azure\obj\Debug\HMKW\bin\Elmah.pdb
-C:\Users\admin\gitrep\csharpexamples\NerdRide\NerdRide_2.0\HMKW.Azure\obj\Debug\HMKW\bin\Elmah.xml
-C:\Users\admin\gitrep\csharpexamples\NerdRide\NerdRide_2.0\HMKW.Azure\obj\Debug\HMKW\bin\NerdRide.dll
-C:\Users\admin\gitrep\csharpexamples\NerdRide\NerdRide_2.0\HMKW.Azure\obj\Debug\HMKW\bin\NerdRide.pdb
-C:\Users\admin\gitrep\csharpexamples\NerdRide\NerdRide_2.0\HMKW.Azure\obj\Debug\HMKW\bin\OpenSearchToolkit.dll
-C:\Users\admin\gitrep\csharpexamples\NerdRide\NerdRide_2.0\HMKW.Azure\obj\Debug\HMKW\bin\System.Web.Mvc.dll
-C:\Users\admin\gitrep\csharpexamples\NerdRide\NerdRide_2.0\HMKW.Azure\obj\Debug\HMKW\bin\System.Web.Mvc.xml

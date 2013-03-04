@@ -14,13 +14,10 @@
     <Imports>
       <Import moduleName="RemoteAccess" />
       <Import moduleName="RemoteForwarder" />
-      <Import moduleName="Caching" />
     </Imports>
     <Certificates>
     </Certificates>
     <LocalResources>
-      <LocalStorage name="sewing1" cleanOnRoleRecycle="true" sizeInMB="1024" />
-      <LocalStorage name="Microsoft.WindowsAzure.Plugins.Caching.FileStore" sizeInMB="1000" cleanOnRoleRecycle="false" />
     </LocalResources>
   </WebRole>
 </ServiceDefinition>

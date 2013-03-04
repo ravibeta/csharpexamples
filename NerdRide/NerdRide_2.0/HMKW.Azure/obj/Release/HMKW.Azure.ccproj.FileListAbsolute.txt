@@ -141,7 +141,6 @@ C:\stage\webAppMVCIndexer3\HMKW.Azure\obj\Release\HMKW\Views\Web.config
 C:\stage\webAppMVCIndexer3\HMKW.Azure\obj\Release\HMKW\Views\_ViewStart.cshtml
 C:\stage\webAppMVCIndexer3\HMKW.Azure\obj\Release\HMKW\Web.config
 C:\Users\admin\gitrep\csharpexamples\NerdRide\NerdRide_2.0\HMKW.Azure\bin\Release\ServiceConfiguration.cscfg
-C:\Users\admin\gitrep\csharpexamples\NerdRide\NerdRide_2.0\HMKW.Azure\bin\Release\ValidationIssues.xml
 C:\Users\admin\gitrep\csharpexamples\NerdRide\NerdRide_2.0\HMKW.Azure\obj\Release\HMKW\apple-touch-icon.png
 C:\Users\admin\gitrep\csharpexamples\NerdRide\NerdRide_2.0\HMKW.Azure\obj\Release\HMKW\App_Browsers\Devices\mobile.browser
 C:\Users\admin\gitrep\csharpexamples\NerdRide\NerdRide_2.0\HMKW.Azure\obj\Release\HMKW\App_Data\NerdRide.mdf
