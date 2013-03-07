@@ -4,6 +4,8 @@ using System.Web;
 using System.Web.Mvc;
 using NerdRide.Helpers;
 using NerdRide.Models;
+using System.ServiceModel;
+using System.ServiceModel.Web;
 
 namespace NerdRide.Controllers {
 
