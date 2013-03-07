@@ -8,6 +8,7 @@ using NerdRide.Models;
 namespace NerdRide.Controllers {
 
     [HandleErrorWithELMAH]
+    [ServiceContract]
     public class RidesController : Controller {
 
         IRideRepository RideRepository;
@@ -27,7 +28,8 @@ namespace NerdRide.Controllers {
         // GET: /Rides/
         //      /Rides/Page/2
         //      /Rides?q=term
-
+        [OperationContract]
+        [WebInvoke(Method = "GET", UriTemplate = "Rides?q={x}")]
         public ActionResult Index(string q, int? page) {
 
             const int pageSize = 25;
@@ -47,6 +49,8 @@ namespace NerdRide.Controllers {
 
         //
         // GET: /Rides/Details/5
+        [OperationContract]
+        [WebInvoke(UriTemplate = "Details?id={x}")]
 
         public ActionResult Details(int? id) {
             if (id == null) {
