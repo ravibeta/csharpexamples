@@ -1,7 +1,52 @@
-﻿@{
+@{
     ViewBag.Title = "Home Page";
 }
 
 <h2>@ViewBag.Message</h2>
+<table>
+<tr>
+<td>
+<img src="../../Content/indexer.png"  />
+</td>
+<td>
+<p class="content-p">
+Have you ever wanted to create an index for your document? You may have had to build it yourself. Almost all products required you to tag the words for indexing later and this can be quite tedious. Well not any more. Now, with Automated Document Indexing tool available for purchase, you can have the index built automatically along with a variety of other options. The index is generated without any input and based on semantic correlation and finding keywords based on some proprietary techniques. Try it yourself @Html.ActionLink("here", "Text", "Home") and if you like; you can download the product here.
+</p>
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post" >
+<input type="hidden" name="cmd" value="_s-xclick" />
+<input type="hidden" name="encrypted" value="-----BEGIN PKCS7-----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-----END PKCS7-----
+" />
+<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!" />
+<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1" />
+</form>
+<div>
+<!-- <form action="https://checkout.google.com/buttons/checkout.gif?merchant_id=435836864463013&w=160&h=43&style=white&variant=text&loc=en_US" method="post" /> -->
+<form action="https://checkout.google.com/api/checkout/v2/checkoutForm/Merchant/435836864463013" id="BB_BuyButtonForm" method="post" name="BB_BuyButtonForm" target="_top">
+    <input name="item_name_1" type="hidden" value="Automated Document Indexer"/>
+    <input name="item_description_1" type="hidden" value=""/>
+    <input name="item_quantity_1" type="hidden" value="1"/>
+    <input name="item_price_1" type="hidden" value="50.0"/>
+    <input name="item_currency_1" type="hidden" value="USD"/>
+    <input name="_charset_" type="hidden" value="utf-8"/>
+    <input alt="" src="https://checkout.google.com/buttons/buy.gif?merchant_id=435836864463013&amp;w=117&amp;h=48&amp;style=white&amp;variant=text&amp;loc=en_US" type="image"/>
+</form>
+</div>
+</td>
+</tr>
+</table>
+<p class="content-p">
+This product comes with state of the art semantic indexing techniques with some research in statistics and semantics. This tool lets you index again and again whenever the content changes. The tool is designed to save you time from having to pick out topics for indexing. The tool is a standalone offering and has little or no performance impact to the system it runs on. You have the ability to use this tool on any length of text ranging from a paragraph to a book.
+</p>
 <p>
+Use this tool to:
+<ol>
+<li>Create an index for your text </li>
+<li>Use the state-of-the art to build your index</li>
+<li>Regenerate index for content changes</li>
+<li>Use with any size text</li>
+<li>Use with any page size for your text</li>
+</ol>
+</p>
+<p>
+Product comes with the following disclaimers. No exchange or refund policy.  Product once sold will not be returned. This is a standalone tool that takes text input and generates index. There is no plugin for existing editors like MSWord document. Storage space of 100 megabytes and a single node processor are the minimum system requirements.  There is no warrant/support available for the product. The product comes with a license for every download and its usage is bound by copyrights. 
 </p>
