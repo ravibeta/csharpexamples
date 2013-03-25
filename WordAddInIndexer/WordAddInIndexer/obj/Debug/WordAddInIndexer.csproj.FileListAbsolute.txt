@@ -1,0 +1,11 @@
+C:\Users\admin\gitrep\csharpexamples\WordAddInIndexer\WordAddInIndexer\bin\Debug\WordAddInIndexer.dll
+C:\Users\admin\gitrep\csharpexamples\WordAddInIndexer\WordAddInIndexer\bin\Debug\WordAddInIndexer.pdb
+C:\Users\admin\gitrep\csharpexamples\WordAddInIndexer\WordAddInIndexer\bin\Debug\WordAddInIndexer.dll.manifest
+C:\Users\admin\gitrep\csharpexamples\WordAddInIndexer\WordAddInIndexer\bin\Debug\WordAddInIndexer.vsto
+C:\Users\admin\gitrep\csharpexamples\WordAddInIndexer\WordAddInIndexer\bin\Debug\Microsoft.Office.Tools.Common.v4.0.Utilities.dll
+C:\Users\admin\gitrep\csharpexamples\WordAddInIndexer\WordAddInIndexer\bin\Debug\Microsoft.Office.Tools.Common.v4.0.Utilities.xml
+C:\Users\admin\gitrep\csharpexamples\WordAddInIndexer\WordAddInIndexer\obj\Debug\WordAddInIndexer.csprojResolveAssemblyReference.cache
+C:\Users\admin\gitrep\csharpexamples\WordAddInIndexer\WordAddInIndexer\obj\Debug\WordAddInIndexer.Properties.Resources.resources
+C:\Users\admin\gitrep\csharpexamples\WordAddInIndexer\WordAddInIndexer\obj\Debug\WordAddInIndexer.csproj.GenerateResource.Cache
+C:\Users\admin\gitrep\csharpexamples\WordAddInIndexer\WordAddInIndexer\obj\Debug\WordAddInIndexer.dll
+C:\Users\admin\gitrep\csharpexamples\WordAddInIndexer\WordAddInIndexer\obj\Debug\WordAddInIndexer.pdb
