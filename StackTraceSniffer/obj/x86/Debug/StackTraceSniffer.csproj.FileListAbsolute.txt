@@ -1,0 +1,4 @@
+C:\Users\admin\gitrep\cplusplusexamples\cplusplusexamples\LD\StackTraceSniffer\bin\Debug\StackTraceSniffer.exe
+C:\Users\admin\gitrep\cplusplusexamples\cplusplusexamples\LD\StackTraceSniffer\bin\Debug\StackTraceSniffer.pdb
+C:\Users\admin\gitrep\cplusplusexamples\cplusplusexamples\LD\StackTraceSniffer\obj\x86\Debug\StackTraceSniffer.exe
+C:\Users\admin\gitrep\cplusplusexamples\cplusplusexamples\LD\StackTraceSniffer\obj\x86\Debug\StackTraceSniffer.pdb
