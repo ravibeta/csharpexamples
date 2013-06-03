@@ -28,6 +28,7 @@ namespace StackTraceSniffer
                     Console.WriteLine(BitConverter.ToChar(bytes, offset + i));
                 }
             }
+// read the stack pointer from context
             return ret;
         }
     }
