@@ -38,7 +38,17 @@ namespace StackTraceSniffer
                 var contextOffset = BitConverter.ToUInt32(bytes, (int)contextLocationOffset + 4); // RVA
 
                 // read the stack pointer from context 
-                var stackPointerOffset = BitConverter.ToUInt32(bytes, (int)contextOffset + 0xc4);
+                var stackPointerOffset = BitConverter.ToUInt32(bytes, (int)contextOffset + 0xc4); // _CEDUMP_ELEMENT_LIST
+
+                for (int i = 0; i < numStreams; i++)
+                {
+                    // find memory stream _MINIDUMP_STREAM_TYPE  == 5
+                    // dump stack pointer
+                    
+
+                }
+
+                
                 
             }
             return ret;
