@@ -10,13 +10,16 @@ namespace StackTraceService
     {
         public IEnumerable<string> GetStackTrace(string filename)
         {
+            var ret = new List<string>();
             try
             {
                 using (var proxy = new DebugClient())
+                using (var control = new DebugControl(proxy))
+                using (var symbol = new DebugSymbols(proxy))
                 {
-
-
-
+                    proxy.OpenDumpFile(filename);
+                    var trace = control.GetStackTrace(10);
+                    trace.ToList().ForEach(x => ret.Add(x.ToString()));                    
                 }
             }
             catch (Exception e)
@@ -24,7 +27,7 @@ namespace StackTraceService
                 var str = e.Message;
                 Console.WriteLine(str);
             }
-            return null;
+            return ret;
         }
     }
 }
