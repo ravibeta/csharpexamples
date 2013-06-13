@@ -3,25 +3,72 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using Microsoft.Debuggers.DbgEng;
 
 namespace StackTraceSniffer
 {
     class Program
     {
+        private static List<string> frames;
+
         static void Main(string[] args)
         {
             try
             {
-                var stacktrace = ReadDumpFile(args.First());
-                Console.WriteLine(stacktrace);
+                var frames = GetStackTrace(args.First());
+                frames.ToList().ForEach(x => Console.WriteLine(x));
+                //var stacktrace = ReadDumpFile(args.First());
+                //Console.WriteLine(stacktrace);
             }
             catch (Exception e)
             {
+                var str = e.Message;
+                Console.WriteLine(str);
             }
+        }
+
+        private static IEnumerable<string> GetStackTrace(string filename)
+        {
+            frames = new List<string>();
+            try
+            {
+                using (var proxy = new DebugClient())
+                {
+                    var client = proxy.CreateClient();
+                    client.OpenDumpFile(filename);
+                    using (var symbol = new DebugSymbols(client))
+                    using (var control = new DebugControl(client))
+                    {
+                        control.WaitForEvent();
+                        {
+                            proxy.DebugOutput += new EventHandler<DebugOutputEventArgs>(proxy_DebugOutput);
+
+                            var trace = control.GetStackTrace(10);
+                            frames.Clear();
+                            control.OutputStackTrace(OutputControl.ToAllClients, trace.ToArray(), StackTraceOutput.Default);
+
+                        }
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                var str = e.Message;
+                Console.WriteLine(str);
+            }
+            return frames;
+
+        }
+
+        static void proxy_DebugOutput(object sender, DebugOutputEventArgs e)
+        {
+            var str = e.Output;
+            str.Split(new char[] { '\n' }).ToList().ForEach(x => frames.Add(x));
         }
 
         private static string ReadDumpFile(string dumpFileName)
         {
+            using (var proxy = new DebugClient()) ;
             string ret = string.Empty;
             using (var fs = new FileStream(dumpFileName,FileMode.Open))
             {
