@@ -27,6 +27,7 @@ namespace StackTraceService
                             //proxy.ExceptionHit += new EventHandler<ExceptionEventArgs>(proxy_ExceptionHit);
 
                             var trace = control.GetStackTrace(10);
+                            frames.Clear();
                             control.OutputStackTrace(OutputControl.ToAllClients, trace.ToArray(), StackTraceOutput.Default);
                             
                         }
