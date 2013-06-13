@@ -4,4 +4,7 @@
     <StartAction>Project</StartAction>
     <StartArguments>C:\Users\admin\gitrep\cplusplusexamples\cplusplusexamples\LD\StackTraceSniffer\SampleData\calc.dmp</StartArguments>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
+    <StartArguments>C:\\notepaddmp.dmp</StartArguments>
+  </PropertyGroup>
 </Project>
