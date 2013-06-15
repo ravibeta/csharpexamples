@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="StackTraceDBModelStoreContainer" CdmEntityContainer="StackTraceDBEntities">
+    <EntitySetMapping Name="StackTraces">
+      <EntityTypeMapping TypeName="StackTraceDBModel.StackTrace">
+        <MappingFragment StoreEntitySet="StackTrace">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="StackTrace1" ColumnName="StackTrace" />
+          <ScalarProperty Name="DumpFile" ColumnName="DumpFile" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -3,4 +3,3 @@ C:\Users\admin\gitrep\csharpexamples\StackTracePS\bin\Debug\StackTracePS.pdb
 C:\Users\admin\gitrep\csharpexamples\StackTracePS\bin\Debug\mdbgeng.dll
 C:\Users\admin\gitrep\csharpexamples\StackTracePS\obj\Debug\StackTracePS.dll
 C:\Users\admin\gitrep\csharpexamples\StackTracePS\obj\Debug\StackTracePS.pdb
-C:\Users\admin\gitrep\csharpexamples\StackTracePS\obj\Debug\StackTracePS.csprojResolveAssemblyReference.cache

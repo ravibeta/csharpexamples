@@ -6,3 +6,8 @@ C:\Users\admin\gitrep\csharpexamples\StackTraceFileWatcherService\bin\Debug\Stac
 C:\Users\admin\gitrep\csharpexamples\StackTraceFileWatcherService\bin\Debug\mdbgeng.dll
 C:\Users\admin\gitrep\csharpexamples\StackTraceFileWatcherService\bin\Debug\StackTraceService.pdb
 C:\Users\admin\gitrep\csharpexamples\StackTraceFileWatcherService\obj\Debug\StackTraceFileWatcher.csprojResolveAssemblyReference.cache
+C:\Users\admin\gitrep\csharpexamples\StackTraceFileWatcherService\bin\Debug\StackTraceDB.mdf
+C:\Users\admin\gitrep\csharpexamples\StackTraceFileWatcherService\bin\Debug\StackTraceDB_log.ldf
+C:\Users\admin\gitrep\csharpexamples\StackTraceFileWatcherService\bin\Debug\StackTraceFileWatcherService.exe.config
+C:\Users\admin\gitrep\csharpexamples\StackTraceFileWatcherService\bin\Debug\StackTraceDatabase.dll
+C:\Users\admin\gitrep\csharpexamples\StackTraceFileWatcherService\bin\Debug\StackTraceDatabase.pdb

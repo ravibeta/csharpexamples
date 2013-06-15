@@ -5,6 +5,7 @@ using System.Linq;
 using System.Security.Permissions;
 using System.Text;
 using StackTraceService;
+using StackTraceDatabase;
 
 namespace StackTraceFileWatcherService
 {
@@ -64,7 +65,9 @@ namespace StackTraceFileWatcherService
                 var ret = svc.GetStackTrace(e.FullPath);
                 Console.WriteLine("StackTrace from " + e.FullPath);
                 Console.WriteLine("------------------------------");
-                ret.ToList().ForEach(x => Console.WriteLine(x));
+                var stackTrace = string.Empty;
+                ret.ToList().ForEach(x => { Console.WriteLine(x); stackTrace += x + " | "; });
+                (new Adapter()).SaveStackTrace(e.FullPath, stackTrace);
                 Console.WriteLine("------------------------------");
             }
             Console.WriteLine("File: " + e.FullPath + " " + e.ChangeType);
