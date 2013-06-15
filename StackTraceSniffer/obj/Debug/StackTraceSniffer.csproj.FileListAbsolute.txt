@@ -1,0 +1,5 @@
+C:\Users\admin\gitrep\csharpexamples\StackTraceSniffer\bin\Debug\StackTraceSniffer.exe.config
+C:\Users\admin\gitrep\csharpexamples\StackTraceSniffer\bin\Debug\StackTraceSniffer.exe
+C:\Users\admin\gitrep\csharpexamples\StackTraceSniffer\bin\Debug\StackTraceSniffer.pdb
+C:\Users\admin\gitrep\csharpexamples\StackTraceSniffer\obj\Debug\StackTraceSniffer.exe
+C:\Users\admin\gitrep\csharpexamples\StackTraceSniffer\obj\Debug\StackTraceSniffer.pdb

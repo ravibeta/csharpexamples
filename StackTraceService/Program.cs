@@ -22,6 +22,7 @@ namespace StackTraceService
                     Console.WriteLine("Press <ENTER> to terminate service.");
                     var svc = new StackService();
                     var ret = svc.GetStackTrace(args.First());
+                    ret.ToList().ForEach(x => Console.WriteLine(x));
                     Console.ReadLine();
                     
                     // Close the ServiceHost.
