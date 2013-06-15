@@ -61,14 +61,19 @@ namespace StackTraceFileWatcherService
             // Specify what is done when a file is changed, created, or deleted.
             if (e.ChangeType == WatcherChangeTypes.Created)
             {
-                var svc = new StackService();
-                var ret = svc.GetStackTrace(e.FullPath);
-                Console.WriteLine("StackTrace from " + e.FullPath);
-                Console.WriteLine("------------------------------");
-                var stackTrace = string.Empty;
-                ret.ToList().ForEach(x => { Console.WriteLine(x); stackTrace += x + " | "; });
-                (new Adapter()).SaveStackTrace(e.FullPath, stackTrace);
-                Console.WriteLine("------------------------------");
+                var adapter = new Adapter();
+                var item = adapter.GetAll().FirstOrDefault(x => x.DumpFile == e.FullPath);
+                if (item == null)
+                {
+                    var svc = new StackService();
+                    var ret = svc.GetStackTrace(e.FullPath);
+                    Console.WriteLine("StackTrace from " + e.FullPath);
+                    Console.WriteLine("------------------------------");
+                    var stackTrace = string.Empty;
+                    ret.ToList().ForEach(x => { Console.WriteLine(x); stackTrace += x + " | "; });
+                    adapter.SaveStackTrace(e.FullPath, stackTrace);
+                    Console.WriteLine("------------------------------");
+                }
             }
             Console.WriteLine("File: " + e.FullPath + " " + e.ChangeType);
         }

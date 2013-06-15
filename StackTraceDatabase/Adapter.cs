@@ -16,5 +16,21 @@ namespace StackTraceDatabase
                 context.SaveChanges();
             }
         }
+
+        public List<StackTrace> GetAll()
+        {
+            using (var context = new StackTraceDBEntities())
+            {
+                return context.StackTraces.ToList();
+            }
+        }
+
+        public StackTrace Get(int id)
+        {
+            using (var context = new StackTraceDBEntities())
+            {
+                return context.StackTraces.FirstOrDefault(x => x.ID == id);
+            }
+        }
     }
 }
