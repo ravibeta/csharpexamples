@@ -72,6 +72,8 @@ namespace StackTracePS
 
                     }
                 }
+                client.FlushCallbacks();
+                client.EndSession(EndSessionMode.ActiveTerminate);
             }
             return frames;
         }

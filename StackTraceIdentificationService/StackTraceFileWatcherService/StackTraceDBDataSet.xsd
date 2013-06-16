@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="StackTraceDBDataSet" targetNamespace="http://tempuri.org/StackTraceDBDataSet.xsd" xmlns:mstns="http://tempuri.org/StackTraceDBDataSet.xsd" xmlns="http://tempuri.org/StackTraceDBDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="StackTraceDBConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="StackTraceDBConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.StackTraceFileWatcherService.Properties.Settings.GlobalReference.Default.StackTraceDBConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="StackTraceDBDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="StackTraceDBDataSet" msprop:Generator_UserDSName="StackTraceDBDataSet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="StackTrace" msprop:Generator_TableClassName="StackTraceDataTable" msprop:Generator_TableVarName="tableStackTrace" msprop:Generator_RowChangedName="StackTraceRowChanged" msprop:Generator_TablePropName="StackTrace" msprop:Generator_RowDeletingName="StackTraceRowDeleting" msprop:Generator_RowChangingName="StackTraceRowChanging" msprop:Generator_RowEvHandlerName="StackTraceRowChangeEventHandler" msprop:Generator_RowDeletedName="StackTraceRowDeleted" msprop:Generator_RowClassName="StackTraceRow" msprop:Generator_UserTableName="StackTrace" msprop:Generator_RowEvArgName="StackTraceRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="DumpFileName" msprop:Generator_ColumnVarNameInTable="columnDumpFileName" msprop:Generator_ColumnPropNameInRow="DumpFileName" msprop:Generator_ColumnPropNameInTable="DumpFileNameColumn" msprop:Generator_UserColumnName="DumpFileName" type="xs:string" minOccurs="0" />
+              <xs:element name="StackTrace" msprop:Generator_ColumnVarNameInTable="columnStackTrace" msprop:Generator_ColumnPropNameInRow="StackTrace" msprop:Generator_ColumnPropNameInTable="StackTraceColumn" msprop:Generator_UserColumnName="StackTrace" type="xs:string" minOccurs="0" />
+              <xs:element name="ID" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="StackTraceKey1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:StackTrace" />
+      <xs:field xpath="mstns:ID" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

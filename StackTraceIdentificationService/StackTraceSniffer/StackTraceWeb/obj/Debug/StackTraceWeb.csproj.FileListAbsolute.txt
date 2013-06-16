@@ -1,0 +1,11 @@
+C:\Users\admin\gitrep\csharpexamples\StackTraceSniffer\StackTraceWeb\bin\StackTraceDB.mdf
+C:\Users\admin\gitrep\csharpexamples\StackTraceSniffer\StackTraceWeb\bin\StackTraceDB_log.ldf
+C:\Users\admin\gitrep\csharpexamples\StackTraceSniffer\StackTraceWeb\bin\StackTraceWeb.dll
+C:\Users\admin\gitrep\csharpexamples\StackTraceSniffer\StackTraceWeb\bin\StackTraceWeb.pdb
+C:\Users\admin\gitrep\csharpexamples\StackTraceSniffer\StackTraceWeb\bin\EntityFramework.dll
+C:\Users\admin\gitrep\csharpexamples\StackTraceSniffer\StackTraceWeb\bin\StackTraceDatabase.dll
+C:\Users\admin\gitrep\csharpexamples\StackTraceSniffer\StackTraceWeb\bin\StackTraceDatabase.pdb
+C:\Users\admin\gitrep\csharpexamples\StackTraceSniffer\StackTraceWeb\bin\EntityFramework.xml
+C:\Users\admin\gitrep\csharpexamples\StackTraceSniffer\StackTraceWeb\obj\Debug\StackTraceWeb.csprojResolveAssemblyReference.cache
+C:\Users\admin\gitrep\csharpexamples\StackTraceSniffer\StackTraceWeb\obj\Debug\StackTraceWeb.dll
+C:\Users\admin\gitrep\csharpexamples\StackTraceSniffer\StackTraceWeb\obj\Debug\StackTraceWeb.pdb

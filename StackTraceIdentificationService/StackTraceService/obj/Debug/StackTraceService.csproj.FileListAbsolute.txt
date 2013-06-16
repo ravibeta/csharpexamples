@@ -1,0 +1,6 @@
+C:\Users\admin\gitrep\csharpexamples\StackTraceService\bin\Debug\StackTraceService.exe
+C:\Users\admin\gitrep\csharpexamples\StackTraceService\bin\Debug\StackTraceService.pdb
+C:\Users\admin\gitrep\csharpexamples\StackTraceService\bin\Debug\mdbgeng.dll
+C:\Users\admin\gitrep\csharpexamples\StackTraceService\obj\Debug\StackTraceService.exe
+C:\Users\admin\gitrep\csharpexamples\StackTraceService\obj\Debug\StackTraceService.pdb
+C:\Users\admin\gitrep\csharpexamples\StackTraceService\bin\Debug\StackTraceService.exe.config

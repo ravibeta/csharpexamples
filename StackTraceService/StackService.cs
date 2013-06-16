@@ -16,21 +16,25 @@ namespace StackTraceService
             {
                 using (var proxy = new DebugClient())
                 {
-                    var client = proxy.CreateClient();
-                    client.OpenDumpFile(filename);
-                    using (var symbol = new DebugSymbols(client))
-                    using (var control = new DebugControl(client))
+                    using (var client = proxy.CreateClient())
                     {
-                        control.WaitForEvent();
+                        client.OpenDumpFile(filename);
+                        using (var symbol = new DebugSymbols(client))
+                        using (var control = new DebugControl(client))
                         {
-                            proxy.DebugOutput += new EventHandler<DebugOutputEventArgs>(proxy_DebugOutput);
-                            //proxy.ExceptionHit += new EventHandler<ExceptionEventArgs>(proxy_ExceptionHit);
+                            control.WaitForEvent();
+                            {
+                                proxy.DebugOutput += new EventHandler<DebugOutputEventArgs>(proxy_DebugOutput);
+                                //proxy.ExceptionHit += new EventHandler<ExceptionEventArgs>(proxy_ExceptionHit);
 
-                            var trace = control.GetStackTrace(10);
-                            frames.Clear();
-                            control.OutputStackTrace(OutputControl.ToAllClients, trace.ToArray(), StackTraceOutput.Default);
-                            
+                                var trace = control.GetStackTrace(10);
+                                frames.Clear();
+                                control.OutputStackTrace(OutputControl.ToAllClients, trace.ToArray(), StackTraceOutput.Default);
+
+                            }
                         }
+                        client.FlushCallbacks();
+                        client.EndSession(EndSessionMode.ActiveTerminate);
                     }
                 }
             }

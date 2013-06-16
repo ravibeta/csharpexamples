@@ -17,8 +17,6 @@ namespace StackTraceSniffer
             {
                 var frames = GetStackTrace(args.First());
                 frames.ToList().ForEach(x => Console.WriteLine(x));
-                //var stacktrace = ReadDumpFile(args.First());
-                //Console.WriteLine(stacktrace);
             }
             catch (Exception e)
             {
@@ -34,20 +32,25 @@ namespace StackTraceSniffer
             {
                 using (var proxy = new DebugClient())
                 {
-                    var client = proxy.CreateClient();
-                    client.OpenDumpFile(filename);
-                    using (var symbol = new DebugSymbols(client))
-                    using (var control = new DebugControl(client))
+                    using (var client = proxy.CreateClient())
                     {
-                        control.WaitForEvent();
+                        client.OpenDumpFile(filename);
+                        using (var symbol = new DebugSymbols(client))
+                        using (var control = new DebugControl(client))
                         {
-                            proxy.DebugOutput += new EventHandler<DebugOutputEventArgs>(proxy_DebugOutput);
+                            control.WaitForEvent();
+                            {
+                                proxy.DebugOutput += new EventHandler<DebugOutputEventArgs>(proxy_DebugOutput);
 
-                            var trace = control.GetStackTrace(10);
-                            frames.Clear();
-                            control.OutputStackTrace(OutputControl.ToAllClients, trace.ToArray(), StackTraceOutput.Default);
+                                var trace = control.GetStackTrace(10);
+                                frames.Clear();
+                                control.OutputStackTrace(OutputControl.ToAllClients, trace.ToArray(), StackTraceOutput.Default);
 
+                            }
                         }
+
+                        client.FlushCallbacks();
+                        client.EndSession(EndSessionMode.ActiveTerminate);
                     }
                 }
             }
@@ -68,7 +71,6 @@ namespace StackTraceSniffer
 
         private static string ReadDumpFile(string dumpFileName)
         {
-            using (var proxy = new DebugClient()) ;
             string ret = string.Empty;
             using (var fs = new FileStream(dumpFileName,FileMode.Open))
             {
