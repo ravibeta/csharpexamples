@@ -81,9 +81,10 @@ namespace StackTraceSniffer
                         var contextLocationOffset = rvaExceptionStream + 32 + 128; // based on MINIDUMP_EXCEPTION                
                         var contextSize = BitConverter.ToUInt32(bytes, (int)contextLocationOffset); // MINIDUMP_LOCATION_DESCRIPTOR                
                         var contextOffset = BitConverter.ToUInt32(bytes, (int)contextLocationOffset + 4); // RVA                
-                    }
+                    
                     // read the stack pointer from context                 
                     var stackPointerOffset = BitConverter.ToUInt32(bytes, (int)contextOffset + 0xc4); // _CEDUMP_ELEMENT_LIST
+                    }
                 }
             }
             return ret;
