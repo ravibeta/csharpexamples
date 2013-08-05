@@ -1,4 +1,0 @@
-C:\Users\admin\gitrep\csharpexamples\TicTacToeWeb\HMKW.Azure\bin\Debug\ServiceConfiguration.cscfg
-C:\Users\admin\gitrep\csharpexamples\TicTacToeWeb\HMKW.Azure\obj\Debug\HMKW\bin\TicTacToeWeb.dll
-C:\Users\admin\gitrep\csharpexamples\TicTacToeWeb\HMKW.Azure\obj\Debug\HMKW\bin\TicTacToeWeb.pdb
-C:\Users\admin\Downloads\boostlib\PDC\HMKW.Azure\bin\Debug\ServiceConfiguration.cscfg

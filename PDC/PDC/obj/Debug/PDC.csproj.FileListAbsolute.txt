@@ -1,6 +1,0 @@
-C:\Users\admin\Downloads\boostlib\PDC\PDC\bin\PDC.dll
-C:\Users\admin\Downloads\boostlib\PDC\PDC\bin\PDC.pdb
-C:\Users\admin\Downloads\boostlib\PDC\PDC\bin\EntityFramework.dll
-C:\Users\admin\Downloads\boostlib\PDC\PDC\bin\EntityFramework.xml
-C:\Users\admin\Downloads\boostlib\PDC\PDC\obj\Debug\PDC.dll
-C:\Users\admin\Downloads\boostlib\PDC\PDC\obj\Debug\PDC.pdb

@@ -1,5 +1,0 @@
-C:\Users\Admin\Documents\Visual Studio 2012\Projects\AWSwithWSDL\AWSwithWSDL\bin\Debug\AWSwithWSDL.pdb
-C:\Users\Admin\Documents\Visual Studio 2012\Projects\AWSwithWSDL\AWSwithWSDL\obj\Debug\AWSwithWSDL.pdb
-C:\Users\Admin\Documents\Visual Studio 2012\Projects\AWSwithWSDL\AWSwithWSDL\bin\Debug\AWSwithWSDL.exe.config
-C:\Users\Admin\Documents\Visual Studio 2012\Projects\AWSwithWSDL\AWSwithWSDL\bin\Debug\AWSwithWSDL.exe
-C:\Users\Admin\Documents\Visual Studio 2012\Projects\AWSwithWSDL\AWSwithWSDL\obj\Debug\AWSwithWSDL.exe

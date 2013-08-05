@@ -1,8 +1,0 @@
-C:\Users\admin\Downloads\boostlib\PDC\PDC.Tests\bin\Debug\PDC.Tests.dll.config
-C:\Users\admin\Downloads\boostlib\PDC\PDC.Tests\bin\Debug\PDC.Tests.dll
-C:\Users\admin\Downloads\boostlib\PDC\PDC.Tests\bin\Debug\PDC.Tests.pdb
-C:\Users\admin\Downloads\boostlib\PDC\PDC.Tests\bin\Debug\PDC.dll
-C:\Users\admin\Downloads\boostlib\PDC\PDC.Tests\bin\Debug\PDC.pdb
-C:\Users\admin\Downloads\boostlib\PDC\PDC.Tests\obj\Debug\PDC.Tests.csprojResolveAssemblyReference.cache
-C:\Users\admin\Downloads\boostlib\PDC\PDC.Tests\obj\Debug\PDC.Tests.dll
-C:\Users\admin\Downloads\boostlib\PDC\PDC.Tests\obj\Debug\PDC.Tests.pdb

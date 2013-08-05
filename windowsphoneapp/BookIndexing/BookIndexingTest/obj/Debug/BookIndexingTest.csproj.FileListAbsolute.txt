@@ -1,9 +1,0 @@
-C:\Users\admin\gitrep\csharpexamples\windowsphoneapp\BookIndexing\BookIndexingTest\bin\Debug\BookIndexingTest.dll
-C:\Users\admin\gitrep\csharpexamples\windowsphoneapp\BookIndexing\BookIndexingTest\bin\Debug\BookIndexingTest.pdb
-C:\Users\admin\gitrep\csharpexamples\windowsphoneapp\BookIndexing\BookIndexingTest\bin\Debug\BookIndexing.exe
-C:\Users\admin\gitrep\csharpexamples\windowsphoneapp\BookIndexing\BookIndexingTest\bin\Debug\BookIndexing.pdb
-C:\Users\admin\gitrep\csharpexamples\windowsphoneapp\BookIndexing\BookIndexingTest\bin\Debug\BookIndexing_Accessor.exe
-C:\Users\admin\gitrep\csharpexamples\windowsphoneapp\BookIndexing\BookIndexingTest\bin\Debug\BookIndexing_Accessor.pdb
-C:\Users\admin\gitrep\csharpexamples\windowsphoneapp\BookIndexing\BookIndexingTest\obj\Debug\BookIndexingTest.csprojResolveAssemblyReference.cache
-C:\Users\admin\gitrep\csharpexamples\windowsphoneapp\BookIndexing\BookIndexingTest\obj\Debug\BookIndexingTest.dll
-C:\Users\admin\gitrep\csharpexamples\windowsphoneapp\BookIndexing\BookIndexingTest\obj\Debug\BookIndexingTest.pdb

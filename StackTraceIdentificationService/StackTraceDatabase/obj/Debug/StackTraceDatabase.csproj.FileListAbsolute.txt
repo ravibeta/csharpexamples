@@ -1,7 +1,0 @@
-C:\Users\admin\gitrep\csharpexamples\StackTraceDatabase\bin\Debug\StackTraceDB.mdf
-C:\Users\admin\gitrep\csharpexamples\StackTraceDatabase\bin\Debug\StackTraceDB_log.ldf
-C:\Users\admin\gitrep\csharpexamples\StackTraceDatabase\bin\Debug\StackTraceDatabase.dll.config
-C:\Users\admin\gitrep\csharpexamples\StackTraceDatabase\bin\Debug\StackTraceDatabase.dll
-C:\Users\admin\gitrep\csharpexamples\StackTraceDatabase\bin\Debug\StackTraceDatabase.pdb
-C:\Users\admin\gitrep\csharpexamples\StackTraceDatabase\obj\Debug\StackTraceDatabase.dll
-C:\Users\admin\gitrep\csharpexamples\StackTraceDatabase\obj\Debug\StackTraceDatabase.pdb
