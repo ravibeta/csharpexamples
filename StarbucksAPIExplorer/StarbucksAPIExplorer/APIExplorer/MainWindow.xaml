@@ -1,0 +1,45 @@
+﻿<Window x:Class="APIExplorer.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="350" Width="525">
+    <Grid>
+        <TextBlock HorizontalAlignment="Left" Height="20" Margin="10,10,0,0" TextWrapping="Wrap" Text="Starbucks API Explorer" VerticalAlignment="Top" Width="128" RenderTransformOrigin="0.5,0.5">
+            <TextBlock.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="0.393"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </TextBlock.RenderTransform>
+        </TextBlock>
+        <Label Content="Access Token:" HorizontalAlignment="Left" Height="28" Margin="10,36,0,0" VerticalAlignment="Top" Width="83"/>
+        <TextBox x:Name="Token" HorizontalAlignment="Left" Height="28" Margin="93,36,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="187" TextChanged="TextBox_TextChanged_1"/>
+        <ComboBox x:Name="Environment" HorizontalAlignment="Left" Margin="316,36,0,0" SelectedItem ="GET" VerticalAlignment="Top" Width="77">
+            <ComboBoxItem  Content="Dev" HorizontalAlignment="Left" Width="88" Selected="ComboBoxItem_Selected_1"/>
+            <ComboBoxItem Content="Test" HorizontalAlignment="Left" Width="88" Selected="ComboBoxItem_Selected_2" IsSelected="True"/>
+        </ComboBox>
+        <Button x:Name="GetAccessToken" Content="Get Access Token" HorizontalAlignment="Left" Margin="410,36,0,0" VerticalAlignment="Top" Width="98" Click="GetAccessTokenClick"/>
+        <Label Content="Starbucks API" HorizontalAlignment="Left" Margin="10,69,0,0" VerticalAlignment="Top" Width="83"/>
+        <TextBox x:Name="ResourceLocator" HorizontalAlignment="Left" Height="21" Margin="105,99,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="333" TextChanged="TextBox_TextChanged_2"/>
+        <ComboBox HorizontalAlignment="Left" Margin="12,100,0,0" SelectedItem="GET" VerticalAlignment="Top" Width="56" SelectionChanged="ComboBox_SelectionChanged_1">
+            <ComboBox.CacheMode>
+                <BitmapCache/>
+            </ComboBox.CacheMode>
+            <ComboBox.BindingGroup>
+                <BindingGroup/>
+            </ComboBox.BindingGroup>
+            <ComboBoxItem Content="GET" HorizontalAlignment="Left" Width="88" IsSelected="True"/>
+            <ComboBoxItem Content="POST" HorizontalAlignment="Left" Width="88"/>
+        </ComboBox>
+        <Button x:Name="Submit" Content="Submit" HorizontalAlignment="Left" Margin="443,100,0,0" VerticalAlignment="Top" Width="65" RenderTransformOrigin="-0.184,-0.28" Click="SubmitClicked"/>
+        <Label Content="Locale:" HorizontalAlignment="Left" Margin="368,10,0,0" VerticalAlignment="Top" Height="21" Width="36" FontSize="8"/>
+        <Button Content="English (US)" HorizontalAlignment="Left" Margin="422,10,0,0" VerticalAlignment="Top" Width="61" RenderTransformOrigin="-0.123,-0.428" FontSize="10" Height="21"/>
+        <Label Content="Learn more about the Starbucks API" HorizontalAlignment="Left" Margin="10,127,0,0" VerticalAlignment="Top" Width="179" FontSize="10"/>
+        <TextBlock x:Name="Response" HorizontalAlignment="Left" Height="109" Margin="12,193,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="496"/>
+        <TextBox x:Name="RequestBody" HorizontalAlignment="Left" Height="23" Margin="105,149,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="403"/>
+        <Label Content="Request Body:" HorizontalAlignment="Left" Margin="12,146,0,0" VerticalAlignment="Top" RenderTransformOrigin="-6.173,0.574" Width="88"/>
+        <Label Content="Response:" HorizontalAlignment="Left" Margin="12,167,0,0" VerticalAlignment="Top"/>
+
+    </Grid>
+</Window>
