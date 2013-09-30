@@ -1,0 +1,34 @@
+c:\users\rarajama\documents\visual studio 2012\Projects\SourceSearch\SourceSearch\bin\Debug\SourceSearch.exe.config
+c:\users\rarajama\documents\visual studio 2012\Projects\SourceSearch\SourceSearch\bin\Debug\SourceSearch.exe
+c:\users\rarajama\documents\visual studio 2012\Projects\SourceSearch\SourceSearch\bin\Debug\SourceSearch.pdb
+c:\users\rarajama\documents\visual studio 2012\Projects\SourceSearch\SourceSearch\bin\Debug\Common.Logging.dll
+c:\users\rarajama\documents\visual studio 2012\Projects\SourceSearch\SourceSearch\bin\Debug\ICSharpCode.SharpZipLib.dll
+c:\users\rarajama\documents\visual studio 2012\Projects\SourceSearch\SourceSearch\bin\Debug\Lucene.Net.dll
+c:\users\rarajama\documents\visual studio 2012\Projects\SourceSearch\SourceSearch\bin\Debug\Lucene.Net.Linq.dll
+c:\users\rarajama\documents\visual studio 2012\Projects\SourceSearch\SourceSearch\bin\Debug\Remotion.Linq.dll
+c:\users\rarajama\documents\visual studio 2012\Projects\SourceSearch\SourceSearch\bin\Debug\Common.Logging.pdb
+c:\users\rarajama\documents\visual studio 2012\Projects\SourceSearch\SourceSearch\bin\Debug\Common.Logging.xml
+c:\users\rarajama\documents\visual studio 2012\Projects\SourceSearch\SourceSearch\bin\Debug\Lucene.Net.pdb
+c:\users\rarajama\documents\visual studio 2012\Projects\SourceSearch\SourceSearch\bin\Debug\Lucene.Net.xml
+c:\users\rarajama\documents\visual studio 2012\Projects\SourceSearch\SourceSearch\bin\Debug\Lucene.Net.Linq.xml
+c:\users\rarajama\documents\visual studio 2012\Projects\SourceSearch\SourceSearch\bin\Debug\Remotion.Linq.xml
+c:\users\rarajama\documents\visual studio 2012\Projects\SourceSearch\SourceSearch\obj\Debug\SourceSearch.csprojResolveAssemblyReference.cache
+c:\users\rarajama\documents\visual studio 2012\Projects\SourceSearch\SourceSearch\obj\Debug\SourceSearch.exe
+c:\users\rarajama\documents\visual studio 2012\Projects\SourceSearch\SourceSearch\obj\Debug\SourceSearch.pdb
+C:\Code\QA\SourceSearch\SourceSearch\bin\Debug\SourceSearch.exe.config
+C:\Code\QA\SourceSearch\SourceSearch\obj\Debug\SourceSearch.exe
+C:\Code\QA\SourceSearch\SourceSearch\obj\Debug\SourceSearch.pdb
+C:\Code\QA\SourceSearch\SourceSearch\bin\Debug\SourceSearch.exe
+C:\Code\QA\SourceSearch\SourceSearch\bin\Debug\SourceSearch.pdb
+C:\Code\QA\SourceSearch\SourceSearch\bin\Debug\Common.Logging.dll
+C:\Code\QA\SourceSearch\SourceSearch\bin\Debug\ICSharpCode.SharpZipLib.dll
+C:\Code\QA\SourceSearch\SourceSearch\bin\Debug\Lucene.Net.dll
+C:\Code\QA\SourceSearch\SourceSearch\bin\Debug\Lucene.Net.Linq.dll
+C:\Code\QA\SourceSearch\SourceSearch\bin\Debug\Remotion.Linq.dll
+C:\Code\QA\SourceSearch\SourceSearch\bin\Debug\Common.Logging.pdb
+C:\Code\QA\SourceSearch\SourceSearch\bin\Debug\Common.Logging.xml
+C:\Code\QA\SourceSearch\SourceSearch\bin\Debug\Lucene.Net.pdb
+C:\Code\QA\SourceSearch\SourceSearch\bin\Debug\Lucene.Net.xml
+C:\Code\QA\SourceSearch\SourceSearch\bin\Debug\Lucene.Net.Linq.xml
+C:\Code\QA\SourceSearch\SourceSearch\bin\Debug\Remotion.Linq.xml
+C:\Code\QA\SourceSearch\SourceSearch\obj\Debug\SourceSearch.csprojResolveAssemblyReference.cache
