@@ -1,0 +1,28 @@
+﻿@model IEnumerable<System.Uri>
+
+@{
+    ViewBag.Title = "Results";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Results</h2>
+
+<p>
+    @Html.ActionLink("Search", "Search")
+</p>
+<table>
+    <tr>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @*<a href="@item.AbsoluteUri">@item.AbsoluteUri</a>*@
+            // @Html.ActionLink(item.AbsolutePath, "Display", item)
+            @Html.ActionLink(item.AbsolutePath, "Display", new { id=item.AbsoluteUri }) 
+        </td>
+    </tr>
+}
+
+</table>

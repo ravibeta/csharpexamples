@@ -1,0 +1,24 @@
+﻿@model IEnumerable<SourceIndexServer.Models.Match>
+
+@{
+    ViewBag.Title = "Matches";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Matches</h2>
+
+<table>
+    <tr>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            <a href="@item.item.AbsoluteUri">@item.item.AbsoluteUri</a>
+            @*@Html.ActionLink(item.item.AbsolutePath, "Display", new { id = item.item }) *@
+        </td>
+    </tr>
+}
+
+</table>
