@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -25,9 +25,10 @@ namespace SourceSearch
             }
 
             var indexAt = SimpleFSDirectory.Open(new DirectoryInfo(@"C:\Code\Index2"));
+            var analyzer = new StandardAnalyzer(Lucene.Net.Util.Version.LUCENE_30);
             using (var indexer = new IndexWriter(
                 indexAt,
-                new StandardAnalyzer(Lucene.Net.Util.Version.LUCENE_30),
+                analyzer, true,
                 IndexWriter.MaxFieldLength.UNLIMITED))
             {
 
@@ -40,7 +41,10 @@ namespace SourceSearch
                             using (var reader = File.OpenText(x.FullName))
                             {
                                 var doc = new Document();
-                                doc.Add(new Field("contents", reader));
+                                TeeSinkTokenFilter tfilter = new TeeSinkTokenFilter(new WhitespaceTokenizer(reader));
+                                TeeSinkTokenFilter.SinkTokenStream sink = tfilter.NewSinkTokenStream();
+                                TokenStream final = new LowerCaseFilter(tfilter);
+                                doc.Add(new Field("contents", final));
                                 doc.Add(new Field("title", x.FullName, Field.Store.YES, Field.Index.ANALYZED));
                                 indexer.AddDocument(doc);
                             }
@@ -52,7 +56,7 @@ namespace SourceSearch
 
             using (var reader = IndexReader.Open(indexAt, true))
             {
-                var pos = reader.TermPositions(new Term("contents", args.First()));
+                var pos = reader.TermPositions(new Term("contents", args.First().ToLower()));
                 while (pos.Next())
                 {
                     Console.WriteLine("Match in document " + reader.Document(pos.Doc).GetValues("title").FirstOrDefault());
