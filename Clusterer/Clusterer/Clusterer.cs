@@ -12,7 +12,7 @@ namespace Clusterer
         public List<Doggie> Doggies { get; set; }
         public List<Doggie> Classify() 
         {
-            if (Doggies == null && Doggies.Count() < 3) return Doggies;
+            if (Doggies == null || Doggies.Count() < 3) return Doggies;
 
             // initial assignment- Three clusters seeds
             var chihuahuaCentroid = Doggies.Min(x => x.Weight);
