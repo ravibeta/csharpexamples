@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clusterer", "Clusterer\Clusterer.csproj", "{E8D08FDC-A398-46BD-8819-1F69661529DB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClustererTest", "ClustererTest\ClustererTest.csproj", "{9A59652A-C2C2-4DF6-92B6-A93AE7B24B25}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E8D08FDC-A398-46BD-8819-1F69661529DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E8D08FDC-A398-46BD-8819-1F69661529DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E8D08FDC-A398-46BD-8819-1F69661529DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E8D08FDC-A398-46BD-8819-1F69661529DB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9A59652A-C2C2-4DF6-92B6-A93AE7B24B25}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9A59652A-C2C2-4DF6-92B6-A93AE7B24B25}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9A59652A-C2C2-4DF6-92B6-A93AE7B24B25}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9A59652A-C2C2-4DF6-92B6-A93AE7B24B25}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
