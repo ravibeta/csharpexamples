@@ -10,7 +10,10 @@ namespace Clusterer
     public class Clusterer
     {
         public List<Doggie> Doggies { get; set; }
-        
+        private Doggie chihuahuaCentroid { get; set; }
+        private Doggie beaglesCentroid { get; set; }
+        private Doggie daschundCentroid { get; set; }
+
         public List<Doggie> Classify() 
         {
             if (Doggies == null || Doggies.Count() < 3) return Doggies;
@@ -22,25 +25,21 @@ namespace Clusterer
             double minWeight = Doggies.Min(x => x.Weight);
  
             // seed
-            var chihuahuaCentroid = Doggies.FirstOrDefault(x => x.Weight == minWeight);
+            chihuahuaCentroid = Doggies.FirstOrDefault(x => x.Weight == minWeight);
             chihuahuaCentroid.Label = Label.Chihuahuas;
-            var beaglesCentroid = Doggies.FirstOrDefault(x => x.Height == maxHeight);
+            beaglesCentroid = Doggies.FirstOrDefault(x => x.Height == maxHeight);
             beaglesCentroid.Label = Label.Beagles;
-            var daschundCentroid = Doggies.Where(x => x.Height - minHeight < 1 ).OrderBy(x => x.Weight).Last();
+            daschundCentroid = Doggies.Where(x => x.Height - minHeight < 1 ).OrderBy(x => x.Weight).Last();
             daschundCentroid.Label = Label.Daschunds;
 
             
-            AssignLabel(chihuahuaCentroid, beaglesCentroid, daschundCentroid);
+            AssignLabel();
 
-            var chihuahuas = Doggies.Where(x => x.Label == Label.Chihuahuas).ToList();
-            var daschunds = Doggies.Where(x => x.Label == Label.Daschunds).ToList();
-            var beagles = Doggies.Where(x => x.Label == Label.Beagles).ToList();
+            FixCentroids(Label.Chihuahuas);
+            FixCentroids(Label.Beagles);
+            FixCentroids(Label.Daschunds);
 
-            chihuahuaCentroid = new Doggie() { Height = chihuahuas.Sum(x => x.Height) / chihuahuas.Count, Weight = chihuahuas.Sum(x => x.Weight) / chihuahuas.Count , Label = Label.Chihuahuas};
-            daschundCentroid = new Doggie() { Height = daschunds.Sum(x => x.Height) / daschunds.Count, Weight = daschunds.Sum(x => x.Weight) / daschunds.Count, Label = Label.Daschunds };
-            beaglesCentroid = new Doggie() { Height = beagles.Sum(x => x.Height) / beagles.Count, Weight = beagles.Sum(x => x.Weight) / beagles.Count, Label = Label.Beagles };
-
-            AssignLabel(chihuahuaCentroid, beaglesCentroid, daschundCentroid);
+            AssignLabel();
 
             return Doggies;
         }
@@ -53,20 +52,41 @@ namespace Clusterer
             return distance;
         }
 
-        private void AssignLabel(Doggie chihuahuaCentroid, Doggie beaglesCentroid, Doggie daschundCentroid )
+        private void AssignLabel()
         {
             Doggies.ForEach(x =>
             {
                 var distances = new List<double> () {   GetEuclideanDistance(x, chihuahuaCentroid), 
                                                         GetEuclideanDistance(x, beaglesCentroid), 
                                                         GetEuclideanDistance(x, daschundCentroid) };
-                if (distances.Any(d => d == 0) == false)
-                {
-                    if (distances[0] == distances.Min()) x.Label = Label.Chihuahuas;
-                    else if (distances[1] == distances.Min()) x.Label = Label.Beagles;
-                    else x.Label = Label.Daschunds;
-                }
+                if (distances[0] == distances.Min()) x.Label = Label.Chihuahuas;
+                else if (distances[1] == distances.Min()) x.Label = Label.Beagles;
+                else x.Label = Label.Daschunds;
+
+                FixCentroids(x.Label);
+
             });
+        }
+
+        private void FixCentroids(Label category)
+        {
+            var members = Doggies.Where( x => x.Label == category).ToList();
+            var centroid = new Doggie() { Height = members.Sum(x => x.Height) / members.Count, Weight = members.Sum(x => x.Weight) / members.Count , Label = category};
+            switch (category)
+            {
+                case Label.Beagles:
+                    beaglesCentroid = centroid;
+                    break;
+
+                case Label.Chihuahuas:
+                    chihuahuaCentroid = centroid;
+                    break;
+
+                case Label.Daschunds:
+                    daschundCentroid = centroid;
+                    break;
+            }
+            
         }
 
     }
