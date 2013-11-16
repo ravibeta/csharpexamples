@@ -35,7 +35,8 @@ namespace Clusterer
 
             if (total != 0)
             {
-                probability = GetScalingFactor() * Convert.ToDecimal(FreqDistributionOfTermsFromVocabulary[term] / total);
+                probability = Convert.ToDecimal(FreqDistributionOfTermsFromVocabulary[term]) / Convert.ToDecimal(total);
+                probability = GetScalingFactor() * Convert.ToDecimal(probability);
             }
 
             return probability; 
