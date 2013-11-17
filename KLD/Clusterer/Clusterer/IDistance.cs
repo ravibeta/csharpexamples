@@ -8,6 +8,6 @@ namespace Clusterer
 {
     public interface IDistance
     {
-        decimal GetDistance(Document di, Document dj);
+        double GetDistance(Document di, Document dj);
     }
 }

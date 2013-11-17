@@ -10,18 +10,18 @@ namespace Clusterer
     public class Document 
     {
         // based on Kullback-Leibler 
-        public List<decimal> Probabilities { get; set; }
+        public List<double> Probabilities { get; set; }
 
-        public const decimal EPSILONPROBABILITY = 0.01m;
+        public const double EPSILONPROBABILITY = 0.01d;
 
         public List<string> Vocabulary { get; set; }
         
         public Dictionary<string, int> FreqDistributionOfTermsFromVocabulary { get; set; }
 
 
-        public decimal GetProbability(string term)
+        public double GetProbability(string term)
         {
-            decimal probability = EPSILONPROBABILITY;
+            double probability = EPSILONPROBABILITY;
             if (FreqDistributionOfTermsFromVocabulary.Keys.Contains(term) == false)
             {
                 return probability;
@@ -35,18 +35,31 @@ namespace Clusterer
 
             if (total != 0)
             {
-                probability = Convert.ToDecimal(FreqDistributionOfTermsFromVocabulary[term]) / Convert.ToDecimal(total);
-                probability = GetScalingFactor() * Convert.ToDecimal(probability);
+                probability = Convert.ToDouble(FreqDistributionOfTermsFromVocabulary[term]) / Convert.ToDouble(total);
+                probability = GetScalingFactor() * Convert.ToDouble(probability);
             }
 
             return probability; 
         }
 
-        public decimal GetScalingFactor()
+        public double GetScalingFactor()
         {
             var numUnknownTerms = Vocabulary.Count() - FreqDistributionOfTermsFromVocabulary.Count();
             Debug.Assert(numUnknownTerms > 0);
             return 1 - numUnknownTerms * EPSILONPROBABILITY;
+        }
+
+        public static Document GetEmptyDocument(List<string> vocabulary)
+        {
+            Document d = new Document();
+            d.FreqDistributionOfTermsFromVocabulary = new Dictionary<string, int>();
+            d.Vocabulary = vocabulary;
+            d.Probabilities = new List<double>();
+            foreach (var v in vocabulary)
+            {
+                d.Probabilities.Add(EPSILONPROBABILITY);
+            }
+            return d;
         }
     }
 }
