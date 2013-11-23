@@ -24,6 +24,8 @@ namespace ClustererTest
             {
                 document.Probabilities.Add(document.GetProbability(term));
             }
+            var scale = document.GetScalingFactor();
+            Assert.IsTrue(scale > 0 && scale < 1.0);
             di = document;
         }
 
@@ -49,7 +51,9 @@ namespace ClustererTest
             }
             var distance = new Distance();
             var KLD = distance.GetDistance(di, dj);
+            var KLDNormalized = distance.GetNormalizedDistance(di, dj);
             Assert.IsTrue(KLD > 0);
+            Assert.IsTrue(KLDNormalized < 1.0d);
         }
     }
 }
