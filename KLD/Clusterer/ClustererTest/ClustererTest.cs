@@ -57,8 +57,12 @@ namespace ClustererTest
         }
 
         [TestMethod]
-        public void TestClusterBasedOnKLD()
+        public void TestFixCentroids()
         {
+            var numbers = new List<double>() { 1.0d, 2.0d, 3.0d, 4.0d, 5.0d, 6.0d, 7.0d, 8.0d, 9.0d };
+            var clusterer = new Clusterer.Clusterer();
+            var index = clusterer.GetNewCentroidIndex(numbers);
+            Assert.IsTrue(numbers[index] == 5);
         }
     }
 }
