@@ -18,6 +18,7 @@ namespace Clusterer
         
         public Dictionary<string, int> FreqDistributionOfTermsFromVocabulary { get; set; }
 
+        public Label Label { get; set; }
 
         public double GetProbability(string term)
         {

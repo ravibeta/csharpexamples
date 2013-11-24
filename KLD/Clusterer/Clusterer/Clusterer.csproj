@@ -39,9 +39,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Clusterer.cs" />
     <Compile Include="Distance.cs" />
     <Compile Include="Document.cs" />
     <Compile Include="IDistance.cs" />
+    <Compile Include="Label.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -55,5 +55,10 @@ namespace ClustererTest
             Assert.IsTrue(KLD > 0);
             Assert.IsTrue(KLDNormalized < 1.0d);
         }
+
+        [TestMethod]
+        public void TestClusterBasedOnKLD()
+        {
+        }
     }
 }
