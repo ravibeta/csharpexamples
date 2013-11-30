@@ -19,6 +19,10 @@ namespace Clusterer
             if (Documents == null || Documents.Count() < 3) return Documents;
             distance = new Distance();
 
+            Document oldNewsCentroid = null;
+            Document oldReviewsCentroid = null;
+            Document oldEditorialCentroid = null;
+
             // initial assignment- Three clusters seeds
             // seed
             newsCentroid = Documents.FirstOrDefault();
@@ -31,16 +35,23 @@ namespace Clusterer
 
             AssignLabel();
 
-            FixCentroids(Label.news);
-            FixCentroids(Label.reviews);
-            FixCentroids(Label.editorials);
+            while (oldNewsCentroid != newsCentroid || oldReviewsCentroid != reviewsCentroid || oldEditorialCentroid != editorialCentroid)
+            {
 
-            AssignLabel();
+                oldNewsCentroid = newsCentroid;
+                oldReviewsCentroid = reviewsCentroid;
+                oldEditorialCentroid = editorialCentroid;
 
+                FixCentroids(Label.news);
+                FixCentroids(Label.reviews);
+                FixCentroids(Label.editorials);
+
+                AssignLabel();
+            }
             return Documents;
         }
 
-        private void AssignLabel()
+        internal void AssignLabel()
         {
             Documents.ForEach(x =>
             {
@@ -56,7 +67,7 @@ namespace Clusterer
             });
         }
 
-        private void FixCentroids(Label category)
+        internal void FixCentroids(Label category)
         {
             var measure = new List<Double>();
             var members = Documents.Where(x => x.Label == category).ToList();
