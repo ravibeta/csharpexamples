@@ -36,7 +36,7 @@ namespace IndexSum
 
         public static void PermuteAndFind(ref List<IndexedNumber> numbers, ref List<IndexedNumber> candidate, ref List<List<IndexedNumber>> sequences, int n)
         {
-            if (candidate.Select(x => x.Number).Sum() == n)
+            if (candidate.Sum() == n)
             {
                 sequences.Add(new List<IndexedNumber>(candidate));
             }
