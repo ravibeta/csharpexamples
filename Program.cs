@@ -26,10 +26,10 @@ namespace IndexSum
             var candidate = new List<IndexedNumber>();
             var sequences = new List<List<IndexedNumber>>();
             
-            //Act
+            // act
             PermuteAndFind(ref indexedNumbers, ref candidate, ref sequences, n);
 
-            // Print
+            // print
             Console.WriteLine(sequences.ToString(true));
 
         }
