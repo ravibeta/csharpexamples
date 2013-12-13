@@ -51,9 +51,20 @@ namespace IndexSum
             }
         }
 
-
-
-
-
+        public static void Combine(ref List<IndexedNumber> numbers, ref List<IndexedNumber> candidate, ref List<List<IndexedNumber>> sequences, int level, int start, int n)
+        {
+            for (int i = start; i < numbers.Count; i++)
+            {
+                if (candidate.Contains(numbers[i]) == false)
+                {
+                    candidate[level] = numbers[i];
+                    if (candidate.Sum() == n)
+                        sequences.Add(new List<IndexedNumber>(candidate));
+                    if (i < numbers.Count - 1)
+                        Combine(ref numbers, ref candidate, ref sequences, level + 1, start + 1, n);
+                    candidate[level] = new IndexedNumber() { Number = 0, Index = -1 };
+                }
+            }
+        }
     }
 }
