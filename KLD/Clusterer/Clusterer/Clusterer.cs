@@ -6,6 +6,14 @@ using System.Threading.Tasks;
 
 namespace Clusterer
 {
+
+    // TODO: Add pairwise term co-occurrence clustering
+    // Step1 : Preprocessing and stemming
+    // Step2 : Selection of frequent terms
+    // Step3 : Clustering frequent terms
+    // Step4 : Calculation of expected probability
+    // Step5 : Calculation of chi-square value
+    // Step6 : Output Keywords
     public class Clusterer
     {
         public List<Document> Documents { get; set; }
