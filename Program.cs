@@ -17,7 +17,7 @@ namespace IndexSum
 
         public static void PrintSumCombinations(List<int> numbers, int n)
         {
-            if (numbers.Count == 0) return;
+            if (numbers == null || numbers.Count == 0) return;
             numbers.Sort();
             if (numbers.ElementAt(0) > n) return;
 
