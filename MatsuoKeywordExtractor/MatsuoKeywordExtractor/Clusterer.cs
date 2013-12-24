@@ -69,6 +69,7 @@ namespace MatsuoKeywordExtractor
                 double component = ((g.Value - nw * pg) * (g.Value - nw * pg)) / nw * pg;
                 chi = chi + component;
             }
+            return chi;
         }
     }
 }
