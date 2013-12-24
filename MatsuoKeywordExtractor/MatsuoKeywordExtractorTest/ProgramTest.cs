@@ -28,5 +28,20 @@ namespace MatsuoKeywordExtractorTest
             Assert.IsTrue(matrix[2, 0] == 1);
 
         }
+
+        [TestMethod]
+        public void TestMethod2()
+        {
+            var dict = new Dictionary<string, int>();
+            dict.Add("abc", 3);
+            dict.Add("def", 2);
+            dict.Add("ghi", 1);
+            var sentences = new string[] { "abc def ghi", "abc def", "abc" };
+            clusterer.Sentences = sentences;
+            clusterer.WordCount = dict;
+            clusterer.InitializeFrequentTerms(dict);
+            var chisquare =  clusterer.GetChiSquare("abc");
+            Assert.IsTrue(chisquare == 30.25d);
+        }
     }
 }
