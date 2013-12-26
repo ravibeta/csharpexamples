@@ -11,6 +11,7 @@ namespace MatsuoKeywordExtractor
     {
         public Dictionary<string, int> WordCount { get; set; }
         public List<KeyValuePair<string, int>> FrequentTerms { get; set; }
+        public List<KeyValuePair<string, int>> TopTerms { get; set; }
         public string[] Sentences { get; set; }
         public int[,] CooccurenceMatrix { get; set; }
         public string[] StopWords { get; set; }
@@ -24,7 +25,8 @@ namespace MatsuoKeywordExtractor
 
         internal int[,] PopulateCooccurrenceMatrix(Dictionary<string, int> dict, string[] sentences)
         {
-            var topTerms = dict.OrderByDescending(x => x.Value);
+            var topTerms = dict.OrderByDescending(x => x.Value).ToList();
+            TopTerms = topTerms;
             InitializeFrequentTerms(dict);
             var matrix = new int[topTerms.Count(), FrequentTerms.Count()];
             int i = -1;
@@ -51,6 +53,14 @@ namespace MatsuoKeywordExtractor
             return matrix;
 
         }
+        
+        internal int IndexOf(string term)
+        {
+            int index = -1;
+            var kvp  = WordCount.FirstOrDefault(x => x.Key == term);
+            index = TopTerms.IndexOf(kvp);
+            return index;
+        }
 
         internal double GetChiSquare(string word)
         {
@@ -61,11 +71,15 @@ namespace MatsuoKeywordExtractor
             Sentences.ToList().ForEach(x => { if (x.Contains(word)) { var words = x.Split(); nw += words.Count(t => StopWords.Contains(t) == false); } });
             foreach ( var g in FrequentTerms)
             {
-                double pg = 0;
-                Sentences.ToList().ForEach(x => { if (x.Contains(g.Key)) { var words = x.Split(); pg += words.Count(t => StopWords.Contains(t) == false); } });
-                pg = pg / FrequentTerms.Count();
-                double component = ((g.Value - nw * pg) * (g.Value - nw * pg)) / (nw * pg);
-                chi = chi + component;
+                if (word != g.Key)
+                {
+                    double pg = 0;
+                    Sentences.ToList().ForEach(x => { if (x.Contains(g.Key)) { var words = x.Split(); pg += words.Count(t => StopWords.Contains(t) == false); } });
+                    pg = pg / FrequentTerms.Count();
+                    var freq_w_g = CooccurenceMatrix[IndexOf(word), IndexOf(g.Key)];
+                    double component = ((freq_w_g - nw * pg) * (freq_w_g - nw * pg)) / (nw * pg);
+                    chi = chi + component;
+                }
             }
             return chi;
         }

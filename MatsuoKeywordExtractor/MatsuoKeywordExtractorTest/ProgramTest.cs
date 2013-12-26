@@ -40,8 +40,11 @@ namespace MatsuoKeywordExtractorTest
             clusterer.Sentences = sentences;
             clusterer.WordCount = dict;
             clusterer.InitializeFrequentTerms(dict);
+            clusterer.Classify();
             var chisquare =  clusterer.GetChiSquare("abc");
-            Assert.IsTrue(chisquare == 30.25d);
+            Assert.IsTrue(chisquare == 0);
+            var chisquare1 = clusterer.GetChiSquare("def");
+            Assert.IsTrue(chisquare1 == 26.133333333333333d);
         }
     }
 }
