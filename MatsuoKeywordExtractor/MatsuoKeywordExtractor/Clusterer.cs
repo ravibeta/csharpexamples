@@ -34,9 +34,9 @@ namespace MatsuoKeywordExtractor
                 FrequentTerms.Any(x => x.Key == Y) == false)
                 return result;
 
-            var countX = Sentences.Count(x => x.Contains(X)) / FrequentTerms.Count();
-            var countY = Sentences.Count(y => y.Contains(Y)) / FrequentTerms.Count();
-            result = (CooccurenceMatrix[IndexOf(X), IndexOf(Y)] / FrequentTerms.Count) / (countX * countY);
+            var countX = Sentences.Count(x => x.Contains(X)) / FrequentTerms.Sum(x => x.Value);
+            var countY = Sentences.Count(y => y.Contains(Y)) / FrequentTerms.Sum(x => x.Value);
+            result = (CooccurenceMatrix[IndexOf(X), IndexOf(Y)] / FrequentTerms.Sum(x => x.Value) / (countX * countY);
             return result;
         }
 
@@ -92,7 +92,7 @@ namespace MatsuoKeywordExtractor
                 {
                     double pg = 0;
                     Sentences.ToList().ForEach(x => { if (x.Contains(g.Key)) { var words = x.Split(); pg += words.Count(t => StopWords.Contains(t) == false); } });
-                    pg = pg / FrequentTerms.Count();
+                    pg = pg / FrequentTerms.Sum(x => x.Value);
                     var freq_w_g = CooccurenceMatrix[IndexOf(word), IndexOf(g.Key)];
                     double component = ((freq_w_g - nw * pg) * (freq_w_g - nw * pg)) / (nw * pg);
                     chi = chi + component;
