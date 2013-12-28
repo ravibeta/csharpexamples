@@ -17,11 +17,28 @@ namespace MatsuoKeywordExtractor
         public string[] StopWords { get; set; }
 
 
-        public void Classify()
+        public void Initialize()
         {
             CooccurenceMatrix = PopulateCooccurrenceMatrix(WordCount, Sentences);
         }
 
+        public void Classify()
+        {
+            throw new NotImplementedException();
+        }
+
+        internal double GetMutualInformation(string X, string Y)
+        {
+            var result = 0.0d;
+            if (FrequentTerms.Any(x => x.Key == X) == false ||
+                FrequentTerms.Any(x => x.Key == Y) == false)
+                return result;
+
+            var countX = Sentences.Count(x => x.Contains(X)) / FrequentTerms.Count();
+            var countY = Sentences.Count(y => y.Contains(Y)) / FrequentTerms.Count();
+            result = (CooccurenceMatrix[IndexOf(X), IndexOf(Y)] / FrequentTerms.Count) / (countX * countY);
+            return result;
+        }
 
         internal int[,] PopulateCooccurrenceMatrix(Dictionary<string, int> dict, string[] sentences)
         {
