@@ -63,15 +63,12 @@ namespace MatsuoKeywordExtractor
                                 wordCluster.Add(X, Clusters.Count);
                                 wordCluster.Add(Y, Clusters.Count);
                             }
-                            // XIndex != -1 && YIndex != -1 && XIndex != YIndex
-                        }
-                        else
-                        {
-                            Clusters.Add(new Cluster() { Members = new List<string> { X } });
-                            wordCluster.Add(X, Clusters.Count);
-                            Clusters.Add(new Cluster() { Members = new List<string> { Y} });
-                            wordCluster.Add(Y, Clusters.Count);
-                        }
+                            if(XIndex != -1 && YIndex != -1 && Xindex != YIndex)
+{
+Clusters[XIndex].Members.Merge(Clusters[YIndex].Members);
+Clusters[YIndex].Members.ForEach(x => {wordCluster[x] = XIndex;});
+Clusters.RemoveAt(YIndex);
+}
                     }                    
                 }
         }
