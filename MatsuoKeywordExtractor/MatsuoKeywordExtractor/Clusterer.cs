@@ -16,12 +16,15 @@ namespace MatsuoKeywordExtractor
         public string[] Sentences { get; set; }
         public int[,] CooccurenceMatrix { get; set; }
         public string[] StopWords { get; set; }
+        const double ThresholdFactor = 1.0d;
 
 
-        public void Initialize(Dictionary<string,int> dict)
+        public void Initialize(Dictionary<string,int> dict, string[] sentences)
         {
             var topTerms = dict.OrderByDescending(x => x.Value).ToList();
+            Sentences = sentences;
             TopTerms = topTerms;
+            WordCount = dict;
             InitializeFrequentTerms(dict);
             CooccurenceMatrix = PopulateCooccurrenceMatrix();
         }
@@ -97,7 +100,7 @@ namespace MatsuoKeywordExtractor
             int indexX = IndexOf(X);
             int indexY = IndexOf(Y);
             if (indexX < CooccurenceMatrix.Length && indexY < CooccurenceMatrix.Rank)
-                result = (CooccurenceMatrix[IndexOf(X), IndexOf(Y)] / FrequentTerms.Sum(x => x.Value)) / (countX * countY);
+                result = ((double)CooccurenceMatrix[IndexOf(X), IndexOf(Y)] / FrequentTerms.Sum(x => x.Value)) / (countX * countY);
             return result;
         }
 
@@ -162,11 +165,10 @@ namespace MatsuoKeywordExtractor
         internal void InitializeFrequentTerms(Dictionary<string, int> dict)
         {
             var topTerms = dict.OrderByDescending(x => x.Value);
-            var cutoff = topTerms.Sum(x => x.Value) * 0.3d;
+            var cutoff = topTerms.Sum(x => x.Value) * ThresholdFactor;
             var sum = 0.0d;
             int entries = 0;
-            var frequentTerms = topTerms.TakeWhile(x => { entries++; sum += x.Value; return sum < cutoff || entries == 1; }).ToList();
-            FrequentTerms = frequentTerms;
+            FrequentTerms = topTerms.TakeWhile(x => { entries++; if (sum < cutoff || entries == 1) { sum += x.Value; return true; } else { return false; } }).ToList();
         }
     }
 
