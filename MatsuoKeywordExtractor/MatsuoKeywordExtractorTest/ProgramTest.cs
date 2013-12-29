@@ -23,7 +23,11 @@ namespace MatsuoKeywordExtractorTest
             dict.Add("def", 2);
             dict.Add("ghi", 1);
             var sentences = new string[] { "abc def ghi", "abc def", "abc" };
-            var matrix = clusterer.PopulateCooccurrenceMatrix(dict, sentences);
+            clusterer.Sentences = sentences;
+            clusterer.WordCount = dict;
+            clusterer.InitializeFrequentTerms(dict);
+            clusterer.Initialize(dict);
+            var matrix = clusterer.PopulateCooccurrenceMatrix();
             Assert.IsTrue(matrix[1, 0] == 2);
             Assert.IsTrue(matrix[2, 0] == 1);
 
@@ -40,7 +44,7 @@ namespace MatsuoKeywordExtractorTest
             clusterer.Sentences = sentences;
             clusterer.WordCount = dict;
             clusterer.InitializeFrequentTerms(dict);
-            clusterer.Initialize();
+            clusterer.Initialize(dict);
             var chisquare =  clusterer.GetChiSquare("abc");
             Assert.IsTrue(chisquare == 0);
             var chisquare1 = clusterer.GetChiSquare("def");
@@ -58,9 +62,28 @@ namespace MatsuoKeywordExtractorTest
             clusterer.Sentences = sentences;
             clusterer.WordCount = dict;
             clusterer.InitializeFrequentTerms(dict);
-            clusterer.Initialize();
-            var mutualInformation = clusterer.GetMutualInformation("abc","def"); // there's only one
+            clusterer.FrequentTerms.Add(new KeyValuePair<string, int>("def", 1));
+            clusterer.Initialize(dict);
+            var mutualInformation = clusterer.GetMutualInformation("abc", "def"); // there's only one
             Assert.IsTrue(mutualInformation == 0.0d);
         }
+
+        [TestMethod]
+        public void TestMethod4()
+        {
+            var dict = new Dictionary<string, int>();
+            dict.Add("abc", 3);
+            dict.Add("def", 2);
+            dict.Add("ghi", 1);
+            var sentences = new string[] { "abc def ghi jkl", "abc def ghi", "abc def", "abc abc", "abc" };
+            clusterer.Sentences = sentences;
+            clusterer.WordCount = dict; 
+            clusterer.InitializeFrequentTerms(dict);
+            clusterer.FrequentTerms.Add(new KeyValuePair<string, int>("def", 1));
+            
+            clusterer.Initialize(dict);
+            clusterer.Classify();
+        }
+
     }
 }

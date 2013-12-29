@@ -18,9 +18,12 @@ namespace MatsuoKeywordExtractor
         public string[] StopWords { get; set; }
 
 
-        public void Initialize()
+        public void Initialize(Dictionary<string,int> dict)
         {
-            CooccurenceMatrix = PopulateCooccurrenceMatrix(WordCount, Sentences);
+            var topTerms = dict.OrderByDescending(x => x.Value).ToList();
+            TopTerms = topTerms;
+            InitializeFrequentTerms(dict);
+            CooccurenceMatrix = PopulateCooccurrenceMatrix();
         }
 
         public void Classify()
@@ -37,7 +40,7 @@ namespace MatsuoKeywordExtractor
                     {
                         var X = FrequentTerms[i].Key;
                         var Y = FrequentTerms[j].Key;
-                        int XIndex = wordCluster.Keys.Contains(X) ?  wordCluster[X] : -1;
+                        int XIndex = wordCluster.Keys.Contains(X) ? wordCluster[X] : -1;
                         int YIndex = wordCluster.Keys.Contains(Y) ? wordCluster[Y] : -1;
                         if (XIndex == YIndex && XIndex != -1) continue;
                         var measure = GetMutualInformation(X, Y);
@@ -48,6 +51,7 @@ namespace MatsuoKeywordExtractor
                                 if (YIndex == -1)
                                 {
                                     wordCluster.Add(Y, XIndex);
+                                    k++;
                                 }
                                 Clusters[XIndex].Members.Add(Y);
                             }
@@ -56,6 +60,7 @@ namespace MatsuoKeywordExtractor
                                 if (XIndex == -1)
                                 {
                                     wordCluster.Add(X, YIndex);
+                                    k++;
                                 }
                                 Clusters[YIndex].Members.Add(X);
                             }
@@ -66,13 +71,14 @@ namespace MatsuoKeywordExtractor
                                 wordCluster.Add(Y, k);
                                 k++;
                             }
-                            if(XIndex != -1 && YIndex != -1 && Xindex != YIndex)
-{
-Clusters[XIndex].Members.Merge(Clusters[YIndex].Members);
-Clusters[YIndex].Members.ForEach(x => {wordCluster[x] = XIndex;});
-Clusters.RemoveAt(YIndex);
-}
-                    }                    
+                            if (XIndex != -1 && YIndex != -1 && XIndex != YIndex)
+                            {
+                                Clusters[XIndex].Members.AddRange(Clusters[YIndex].Members);
+                                Clusters[YIndex].Members.ForEach(x => { wordCluster[x] = XIndex; });
+                                Clusters.RemoveAt(YIndex);
+                            }
+                        }
+                    }               
                 }
         }
 
@@ -83,20 +89,20 @@ Clusters.RemoveAt(YIndex);
                 FrequentTerms.Any(x => x.Key == Y) == false)
                 return result;
 
-            var countX = Sentences.Count(x => x.Contains(X)) / FrequentTerms.Sum(x => x.Value);
-            var countY = Sentences.Count(y => y.Contains(Y)) / FrequentTerms.Sum(x => x.Value);
-            result = (CooccurenceMatrix[IndexOf(X), IndexOf(Y)] / FrequentTerms.Sum(x => x.Value)) / (countX * countY);
+            double countX = ((double)Sentences.Count(x => x.Contains(X))) / FrequentTerms.Sum(x => x.Value);
+            double countY = ((double)Sentences.Count(y => y.Contains(Y))) / FrequentTerms.Sum(x => x.Value);
+            int indexX = IndexOf(X);
+            int indexY = IndexOf(Y);
+            if (indexX < CooccurenceMatrix.Length && indexY < CooccurenceMatrix.Rank)
+                result = (CooccurenceMatrix[IndexOf(X), IndexOf(Y)] / FrequentTerms.Sum(x => x.Value)) / (countX * countY);
             return result;
         }
 
-        internal int[,] PopulateCooccurrenceMatrix(Dictionary<string, int> dict, string[] sentences)
+        internal int[,] PopulateCooccurrenceMatrix()
         {
-            var topTerms = dict.OrderByDescending(x => x.Value).ToList();
-            TopTerms = topTerms;
-            InitializeFrequentTerms(dict);
-            var matrix = new int[topTerms.Count(), FrequentTerms.Count()];
+            var matrix = new int[TopTerms.Count(), FrequentTerms.Count()];
             int i = -1;
-            foreach (var word in topTerms)
+            foreach (var word in TopTerms)
             {
                 i++;
                 int j = -1;
@@ -110,7 +116,7 @@ Clusters.RemoveAt(YIndex);
                             matrix[i, j] = matrix[j, i];
                             continue;
                         }
-                        var count = sentences.Count(x => x.Contains(word.Key) && x.Contains(pair.Key));
+                        var count = Sentences.Count(x => x.Contains(word.Key) && x.Contains(pair.Key));
                         matrix[i, j] = count;
                     }
                 }
