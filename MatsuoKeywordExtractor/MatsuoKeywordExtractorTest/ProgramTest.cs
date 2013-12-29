@@ -62,7 +62,6 @@ namespace MatsuoKeywordExtractorTest
             clusterer.Sentences = sentences;
             clusterer.WordCount = dict;
             clusterer.InitializeFrequentTerms(dict);
-            clusterer.FrequentTerms.Add(new KeyValuePair<string, int>("def", 1));
             clusterer.Initialize(dict);
             var mutualInformation = clusterer.GetMutualInformation("abc", "def"); // there's only one
             Assert.IsTrue(mutualInformation == 0.0d);
@@ -79,8 +78,6 @@ namespace MatsuoKeywordExtractorTest
             clusterer.Sentences = sentences;
             clusterer.WordCount = dict; 
             clusterer.InitializeFrequentTerms(dict);
-            clusterer.FrequentTerms.Add(new KeyValuePair<string, int>("def", 1));
-            
             clusterer.Initialize(dict);
             clusterer.Classify();
         }

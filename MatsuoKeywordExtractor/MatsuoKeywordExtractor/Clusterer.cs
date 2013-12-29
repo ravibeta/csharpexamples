@@ -46,22 +46,16 @@ namespace MatsuoKeywordExtractor
                         var measure = GetMutualInformation(X, Y);
                         if (measure > Math.Log(2.0d))
                         {
-                            if (XIndex != -1)
+                            if (XIndex != -1 && YIndex == -1)
                             {
-                                if (YIndex == -1)
-                                {
-                                    wordCluster.Add(Y, XIndex);
-                                    k++;
-                                }
+                                wordCluster.Add(Y, XIndex);
+                                k++;
                                 Clusters[XIndex].Members.Add(Y);
                             }
-                            if (YIndex != -1)
+                            if (YIndex != -1 && XIndex == -1)
                             {
-                                if (XIndex == -1)
-                                {
-                                    wordCluster.Add(X, YIndex);
-                                    k++;
-                                }
+                                wordCluster.Add(X, YIndex);
+                                k++;
                                 Clusters[YIndex].Members.Add(X);
                             }
                             if (XIndex == -1 && YIndex == -1)
@@ -73,9 +67,18 @@ namespace MatsuoKeywordExtractor
                             }
                             if (XIndex != -1 && YIndex != -1 && XIndex != YIndex)
                             {
-                                Clusters[XIndex].Members.AddRange(Clusters[YIndex].Members);
-                                Clusters[YIndex].Members.ForEach(x => { wordCluster[x] = XIndex; });
-                                Clusters.RemoveAt(YIndex);
+                                if (XIndex < YIndex)
+                                {
+                                    Clusters[XIndex].Members.AddRange(Clusters[YIndex].Members);
+                                    Clusters[YIndex].Members.ForEach(x => { wordCluster[x] = XIndex; });
+                                    Clusters.RemoveAt(YIndex);
+                                }
+                                else
+                                {
+                                    Clusters[YIndex].Members.AddRange(Clusters[XIndex].Members);
+                                    Clusters[XIndex].Members.ForEach(x => { wordCluster[x] = YIndex; });
+                                    Clusters.RemoveAt(XIndex);
+                                }
                             }
                         }
                     }               
