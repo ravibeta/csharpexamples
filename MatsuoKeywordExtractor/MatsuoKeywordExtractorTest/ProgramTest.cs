@@ -68,6 +68,7 @@ namespace MatsuoKeywordExtractorTest
             dict.Add("ghi", 2);
             dict.Add("jkl", 1);
             var sentences = new string[] { "abc def ghi jkl", "abc def ghi", "abc def", "abc abc", "abc" };
+            clusterer.ThresholdFactor = 1.0d;
             clusterer.Initialize(dict, sentences);
             clusterer.Classify();
             Assert.IsTrue(clusterer.Clusters.Count == 1);

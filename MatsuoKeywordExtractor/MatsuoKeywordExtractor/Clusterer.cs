@@ -16,11 +16,12 @@ namespace MatsuoKeywordExtractor
         public string[] Sentences { get; set; }
         public int[,] CooccurenceMatrix { get; set; }
         public string[] StopWords { get; set; }
-        const double ThresholdFactor = 1.0d;
+        internal double ThresholdFactor { get; set; }
 
 
         public void Initialize(Dictionary<string,int> dict, string[] sentences)
         {
+            if (ThresholdFactor == 0.0d) ThresholdFactor = 0.3d;
             var topTerms = dict.OrderByDescending(x => x.Value).ToList();
             Sentences = sentences;
             TopTerms = topTerms;
@@ -33,19 +34,20 @@ namespace MatsuoKeywordExtractor
         {
             int k = 0;
             Clusters = new List<Cluster>();
-            var wordCluster = new Dictionary<string, int>(); 
+            var wordCluster = new Dictionary<string, int>();
+
             for (int i = 0; i < FrequentTerms.Count; i++)
                 for (int j = 0; j < FrequentTerms.Count; j++)
                 {
+                    var X = FrequentTerms[i].Key;
+                    var Y = FrequentTerms[j].Key;
+                    int XIndex = wordCluster.Keys.Contains(X) ? wordCluster[X] : -1;
+                    int YIndex = wordCluster.Keys.Contains(Y) ? wordCluster[Y] : -1;
+                    if (XIndex == YIndex && XIndex != -1) continue;
 
                     // TODO: we could optimize to using only the diagonal half the matrix [i,j]
                     if (i != j)
                     {
-                        var X = FrequentTerms[i].Key;
-                        var Y = FrequentTerms[j].Key;
-                        int XIndex = wordCluster.Keys.Contains(X) ? wordCluster[X] : -1;
-                        int YIndex = wordCluster.Keys.Contains(Y) ? wordCluster[Y] : -1;
-                        if (XIndex == YIndex && XIndex != -1) continue;
                         var measure = GetMutualInformation(X, Y);
                         if (measure > Math.Log(2.0d))
                         {
@@ -84,7 +86,13 @@ namespace MatsuoKeywordExtractor
                                 }
                             }
                         }
-                    }               
+                    }
+                    if (wordCluster.Keys.Contains(X) == false)
+                    {
+                        wordCluster.Add(X, k);
+                        k++;
+                        Clusters.Add(new Cluster() { Members = new List<string>() { X } });
+                    }
                 }
         }
 
