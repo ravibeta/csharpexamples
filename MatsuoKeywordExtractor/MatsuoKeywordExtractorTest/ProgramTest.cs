@@ -44,7 +44,7 @@ namespace MatsuoKeywordExtractorTest
             var chisquare =  clusterer.GetChiSquare("abc");
             Assert.IsTrue(chisquare == 0);
             var chisquare1 = clusterer.GetChiSquare("def");
-            Assert.IsTrue(chisquare1 == 26.133333333333333d);
+            Assert.IsTrue(chisquare1 == 6.4d);
         }
 
         [TestMethod]
