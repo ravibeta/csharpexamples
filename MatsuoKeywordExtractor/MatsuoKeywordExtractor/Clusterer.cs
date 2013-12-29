@@ -25,11 +25,13 @@ namespace MatsuoKeywordExtractor
 
         public void Classify()
         {
+            int k = 0;
             Clusters = new List<Cluster>();
             var wordCluster = new Dictionary<string, int>(); 
             for (int i = 0; i < FrequentTerms.Count; i++)
                 for (int j = 0; j < FrequentTerms.Count; j++)
                 {
+
                     // TODO: we could optimize to using only the diagonal half the matrix [i,j]
                     if (i != j)
                     {
@@ -60,8 +62,9 @@ namespace MatsuoKeywordExtractor
                             if (XIndex == -1 && YIndex == -1)
                             {
                                 Clusters.Add(new Cluster() { Members = new List<string> { X, Y } });
-                                wordCluster.Add(X, Clusters.Count);
-                                wordCluster.Add(Y, Clusters.Count);
+                                wordCluster.Add(X, k);
+                                wordCluster.Add(Y, k);
+                                k++;
                             }
                             if(XIndex != -1 && YIndex != -1 && Xindex != YIndex)
 {
