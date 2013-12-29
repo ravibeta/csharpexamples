@@ -12,6 +12,7 @@ namespace MatsuoKeywordExtractor
         public Dictionary<string, int> WordCount { get; set; }
         public List<KeyValuePair<string, int>> FrequentTerms { get; set; }
         public List<KeyValuePair<string, int>> TopTerms { get; set; }
+        public List<Cluster> Clusters {get; private set;}
         public string[] Sentences { get; set; }
         public int[,] CooccurenceMatrix { get; set; }
         public string[] StopWords { get; set; }
@@ -24,7 +25,54 @@ namespace MatsuoKeywordExtractor
 
         public void Classify()
         {
-            throw new NotImplementedException();
+            Clusters = new List<Cluster>();
+            var wordCluster = new Dictionary<string, int>(); 
+            for (int i = 0; i < FrequentTerms.Count; i++)
+                for (int j = 0; j < FrequentTerms.Count; j++)
+                {
+                    // TODO: we could optimize to using only the diagonal half the matrix [i,j]
+                    if (i != j)
+                    {
+                        var X = FrequentTerms[i].Key;
+                        var Y = FrequentTerms[j].Key;
+                        int XIndex = wordCluster.Keys.Contains(X) ?  wordCluster[X] : -1;
+                        int YIndex = wordCluster.Keys.Contains(Y) ? wordCluster[Y] : -1;
+                        if (XIndex == YIndex && XIndex != -1) continue;
+                        var measure = GetMutualInformation(X, Y);
+                        if (measure > Math.Log(2.0d))
+                        {
+                            if (XIndex != -1)
+                            {
+                                if (YIndex == -1)
+                                {
+                                    wordCluster.Add(Y, XIndex);
+                                }
+                                Clusters[XIndex].Members.Add(Y);
+                            }
+                            if (YIndex != -1)
+                            {
+                                if (XIndex == -1)
+                                {
+                                    wordCluster.Add(X, YIndex);
+                                }
+                                Clusters[YIndex].Members.Add(X);
+                            }
+                            if (XIndex == -1 && YIndex == -1)
+                            {
+                                Clusters.Add(new Cluster() { Members = new List<string> { X, Y } });
+                                wordCluster.Add(X, Clusters.Count);
+                                wordCluster.Add(Y, Clusters.Count);
+                            }
+                        }
+                        else
+                        {
+                            Clusters.Add(new Cluster() { Members = new List<string> { X } });
+                            wordCluster.Add(X, Clusters.Count);
+                            Clusters.Add(new Cluster() { Members = new List<string> { Y} });
+                            wordCluster.Add(Y, Clusters.Count);
+                        }
+                    }                    
+                }
         }
 
         internal double GetMutualInformation(string X, string Y)
@@ -36,7 +84,7 @@ namespace MatsuoKeywordExtractor
 
             var countX = Sentences.Count(x => x.Contains(X)) / FrequentTerms.Sum(x => x.Value);
             var countY = Sentences.Count(y => y.Contains(Y)) / FrequentTerms.Sum(x => x.Value);
-            result = (CooccurenceMatrix[IndexOf(X), IndexOf(Y)] / FrequentTerms.Sum(x => x.Value) / (countX * countY);
+            result = (CooccurenceMatrix[IndexOf(X), IndexOf(Y)] / FrequentTerms.Sum(x => x.Value)) / (countX * countY);
             return result;
         }
 
@@ -110,5 +158,11 @@ namespace MatsuoKeywordExtractor
             var frequentTerms = topTerms.TakeWhile(x => { entries++; sum += x.Value; return sum < cutoff || entries == 1; }).ToList();
             FrequentTerms = frequentTerms;
         }
+    }
+
+    public class Cluster
+    {
+        public double Center { get; set; }
+        public List<string> Members { get; set; }
     }
 }
