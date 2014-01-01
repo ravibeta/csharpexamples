@@ -74,5 +74,21 @@ namespace MatsuoKeywordExtractorTest
             Assert.IsTrue(clusterer.Clusters.Count == 1);
             Assert.IsTrue(clusterer.Clusters[0].Members.Count == 4);
         }
+
+        [TestMethod]
+        public void TestMethod5()
+        {
+            var dict = new Dictionary<string, int>();
+            dict.Add("abc", 6);
+            dict.Add("def", 3);
+            dict.Add("ghi", 2);
+            dict.Add("jkl", 1);
+            var sentences = new string[] { "abc def ghi jkl", "abc def ghi", "abc def", "abc abc", "abc" };
+            clusterer.ThresholdFactor = 0.3d;
+            clusterer.Initialize(dict, sentences);
+            clusterer.Classify();
+            Assert.IsTrue(clusterer.Clusters.Count == 1);
+            Assert.IsTrue(clusterer.Clusters[0].Members.Count == 1);
+        }
     }
 }
