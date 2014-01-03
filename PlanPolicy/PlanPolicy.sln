@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlanPolicy", "PlanPolicy\PlanPolicy.csproj", "{DBE52F22-3D75-4C8D-A181-733D77A19379}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlanPolicyTest", "PlanPolicyTest\PlanPolicyTest.csproj", "{E215E3D5-E6D2-41AF-A1DD-2BEECFB2384E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DBE52F22-3D75-4C8D-A181-733D77A19379}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DBE52F22-3D75-4C8D-A181-733D77A19379}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DBE52F22-3D75-4C8D-A181-733D77A19379}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DBE52F22-3D75-4C8D-A181-733D77A19379}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E215E3D5-E6D2-41AF-A1DD-2BEECFB2384E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E215E3D5-E6D2-41AF-A1DD-2BEECFB2384E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E215E3D5-E6D2-41AF-A1DD-2BEECFB2384E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E215E3D5-E6D2-41AF-A1DD-2BEECFB2384E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
