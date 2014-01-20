@@ -104,7 +104,7 @@ namespace MatsuoKeywordExtractor
             {
                 foreach (var kvp in TopTerms)
                 {
-                    double kld = (1.0d * Math.Log(1 / (((double)kvp.Value) / sum)));
+                    double kld = (1.0d * Math.Log(1 / (((double)kvp.Value) / sum)));  // when will be less than 1.0 ?
                     if (kld > 1.0d)
                     {
                         ret.Add(kvp.Key);
