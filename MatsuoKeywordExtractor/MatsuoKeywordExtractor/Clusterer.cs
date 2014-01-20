@@ -96,6 +96,24 @@ namespace MatsuoKeywordExtractor
                 }
         }
 
+        internal List<string> GetKeywordsBasedOnKLD()
+        {
+            var ret = new List<String>();
+            var sum = TopTerms.Sum(x => x.Value);
+            if (sum > 0)
+            {
+                foreach (var kvp in TopTerms)
+                {
+                    double kld = (1.0d * Math.Log(1 / (((double)kvp.Value) / sum)));
+                    if (kld > 1.0d)
+                    {
+                        ret.Add(kvp.Key);
+                    }
+                }
+            }
+            return ret;
+        }
+
         internal double GetMutualInformation(string X, string Y)
         {
             var result = 0.0d;

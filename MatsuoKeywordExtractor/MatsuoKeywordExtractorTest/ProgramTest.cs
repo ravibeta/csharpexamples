@@ -90,5 +90,37 @@ namespace MatsuoKeywordExtractorTest
             Assert.IsTrue(clusterer.Clusters.Count == 1);
             Assert.IsTrue(clusterer.Clusters[0].Members.Count == 1);
         }
+
+        [TestMethod]
+        public void TestMethod6()
+        {
+            var dict = new Dictionary<string, int>();
+            dict.Add("abc", 3);
+            dict.Add("def", 3);
+            dict.Add("ghi", 4);
+            dict.Add("jkl", 2);
+            var sentences = new string[] { "abc def jkl", "ghi jkl", "abc def", "abc def", "ghi ghi", "ghi" };
+            clusterer.ThresholdFactor = 0.7d;
+            clusterer.Initialize(dict, sentences);
+            clusterer.Classify();
+            Assert.IsTrue(clusterer.Clusters.Count == 2);
+            Assert.IsTrue(clusterer.Clusters[0].Members.Count == 2);
+            Assert.IsTrue(clusterer.Clusters[1].Members.Count == 1);
+        }
+
+        [TestMethod]
+        public void TestKLDFilter()
+        {
+            var dict = new Dictionary<string, int>();
+            dict.Add("abc", 3);
+            dict.Add("def", 3);
+            dict.Add("ghi", 4);
+            dict.Add("jkl", 2);
+            var sentences = new string[] { "abc def jkl", "ghi jkl", "abc def", "abc def", "ghi ghi", "ghi" };
+            clusterer.ThresholdFactor = 0.7d;
+            clusterer.Initialize(dict, sentences);
+            var ret = clusterer.GetKeywordsBasedOnKLD();
+            Assert.IsTrue(ret.Count > 0);
+        }
     }
 }
