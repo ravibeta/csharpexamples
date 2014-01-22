@@ -1,0 +1,133 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="DogOwner.Store" Alias="Self" Provider="System.Data.SqlServerCe.4.0" ProviderManifestToken="4.0" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="DogOwnerStoreContainer">
+          <EntitySet Name="Dog" EntityType="DogOwner.Store.Dog" store:Type="Tables" />
+          <EntitySet Name="Owner" EntityType="DogOwner.Store.Owner" store:Type="Tables" />
+          <AssociationSet Name="OwnerAssociation" Association="DogOwner.Store.OwnerAssociation">
+            <End Role="Owner" EntitySet="Owner" />
+            <End Role="Dog" EntitySet="Dog" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Dog">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="Name" Type="nvarchar" MaxLength="100" />
+          <Property Name="OwnerID" Type="int" Nullable="false" />
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Image" Type="varbinary" />
+        </EntityType>
+        <EntityType Name="Owner">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <Association Name="OwnerAssociation">
+          <End Role="Owner" Type="DogOwner.Store.Owner" Multiplicity="1" />
+          <End Role="Dog" Type="DogOwner.Store.Dog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Owner">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Dog">
+              <PropertyRef Name="OwnerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DogOwner" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="DogOwnerEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="Dogs" EntityType="DogOwner.Dog" />
+          <EntitySet Name="Owners" EntityType="DogOwner.Owner" />
+          <AssociationSet Name="OwnerAssociation" Association="DogOwner.OwnerAssociation">
+            <End Role="Owner" EntitySet="Owners" />
+            <End Role="Dog" EntitySet="Dogs" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Dog">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="Name" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="OwnerID" Type="Int32" Nullable="false" />
+          <Property Name="ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Image" Type="Binary" MaxLength="8000" FixedLength="false" />
+          <NavigationProperty Name="Owner" Relationship="DogOwner.OwnerAssociation" FromRole="Dog" ToRole="Owner" />
+        </EntityType>
+        <EntityType Name="Owner">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Dogs" Relationship="DogOwner.OwnerAssociation" FromRole="Owner" ToRole="Dog" />
+        </EntityType>
+        <Association Name="OwnerAssociation">
+          <End Role="Owner" Type="DogOwner.Owner" Multiplicity="1" />
+          <End Role="Dog" Type="DogOwner.Dog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Owner">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Dog">
+              <PropertyRef Name="OwnerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DogOwnerStoreContainer" CdmEntityContainer="DogOwnerEntities">
+          <EntitySetMapping Name="Dogs">
+            <EntityTypeMapping TypeName="DogOwner.Dog">
+              <MappingFragment StoreEntitySet="Dog">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Owners">
+            <EntityTypeMapping TypeName="DogOwner.Owner">
+              <MappingFragment StoreEntitySet="Owner">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
