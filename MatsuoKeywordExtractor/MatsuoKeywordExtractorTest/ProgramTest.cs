@@ -116,7 +116,8 @@ namespace MatsuoKeywordExtractorTest
             dict.Add("def", 3);
             dict.Add("ghi", 4);
             dict.Add("jkl", 2);
-            var sentences = new string[] { "abc def jkl", "ghi jkl", "abc def", "abc def", "ghi ghi", "ghi" };
+            dict.Add("mno", 1);
+            var sentences = new string[] { "abc def jkl mno", "ghi jkl", "abc def", "abc def", "ghi ghi", "ghi" };
             clusterer.ThresholdFactor = 0.7d;
             clusterer.Initialize(dict, sentences);
             var ret = clusterer.GetKeywordsBasedOnKLD();
