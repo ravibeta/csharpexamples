@@ -7,7 +7,8 @@
 
 <h2>Create</h2>
 
-@using (Html.BeginForm()) {
+@using (Html.BeginForm("Create", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
 
@@ -31,6 +32,7 @@
         </div>
 
         <p>
+            <input type="file" name="file" />
             <input type="submit" value="Create" />
         </p>
     </fieldset>

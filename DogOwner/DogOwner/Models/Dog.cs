@@ -9,5 +9,6 @@ namespace DogOwner.Models
     {
         public string Name { get; set; }
         public string OwnerName { get; set; }
+        public byte[] Image { get; set; }
     }
 }

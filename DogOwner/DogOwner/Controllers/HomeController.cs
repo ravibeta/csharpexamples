@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using DogOwner.Models;
+using System.IO;
 
 namespace DogOwner.Controllers
 {
@@ -34,11 +35,53 @@ namespace DogOwner.Controllers
             return View();
         }
 
-        public ActionResult Create(string dogName, string ownerName)
+        [HandleError]
+        public ActionResult Create(string name, string ownerName, HttpPostedFileBase file)
         {
             ViewBag.Message = "Create Dog Owner Association";
+            if (name == null) return View();
 
-            return View();
+            // Verify that the user selected a file
+            if (file != null && file.ContentLength > 0)
+            {
+                // Get file info
+                var fileName = Path.GetFileName(file.FileName);
+                var contentLength = file.ContentLength;
+                var contentType = file.ContentType;
+
+                // Get file data
+                byte[] data = new byte[] { };
+                using (var binaryReader = new BinaryReader(file.InputStream))
+                {
+                    data = binaryReader.ReadBytes(file.ContentLength);
+                }
+
+                // Save to database
+                var owner = DogOwnerConnection.Owners.FirstOrDefault(x => x.Name.ToLower() == ownerName.ToLower());
+                if (owner == null)
+                {
+                    owner = new Owner { Name = ownerName };
+                    DogOwnerConnection.Owners.Add(owner);
+                    var errors = DogOwnerConnection.GetValidationErrors();
+                    if (errors != null)
+                    {
+                        Console.WriteLine(errors);
+                    }
+                    DogOwnerConnection.SaveChanges();
+                }
+
+                Dog d = new Dog() { Name = name, Owner = owner, Image = data };
+                DogOwnerConnection.Dogs.Add(d);
+                DogOwnerConnection.SaveChanges();
+
+                // Show success ...
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                // Show error ...
+                return View("Error");
+            }
         }
     }
 }
