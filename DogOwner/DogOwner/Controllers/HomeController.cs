@@ -39,49 +39,58 @@ namespace DogOwner.Controllers
         public ActionResult Create(string name, string ownerName, HttpPostedFileBase file)
         {
             ViewBag.Message = "Create Dog Owner Association";
-            if (name == null) return View();
+            if (name == null || ownerName == null) return View();
 
-            // Verify that the user selected a file
-            if (file != null && file.ContentLength > 0)
+            try
             {
-                // Get file info
-                var fileName = Path.GetFileName(file.FileName);
-                var contentLength = file.ContentLength;
-                var contentType = file.ContentType;
-
-                // Get file data
-                byte[] data = new byte[] { };
-                using (var binaryReader = new BinaryReader(file.InputStream))
+                // Verify that the user selected a file
+                if (file != null && file.ContentLength > 0)
                 {
-                    data = binaryReader.ReadBytes(file.ContentLength);
-                }
+                    // Get file info
+                    var fileName = Path.GetFileName(file.FileName);
+                    var contentLength = file.ContentLength;
+                    var contentType = file.ContentType;
 
-                // Save to database
-                var owner = DogOwnerConnection.Owners.FirstOrDefault(x => x.Name.ToLower() == ownerName.ToLower());
-                if (owner == null)
-                {
-                    owner = new Owner { Name = ownerName };
-                    DogOwnerConnection.Owners.Add(owner);
-                    var errors = DogOwnerConnection.GetValidationErrors();
-                    if (errors != null)
+                    // Get file data
+                    byte[] data = new byte[] { };
+                    using (var binaryReader = new BinaryReader(file.InputStream))
                     {
-                        Console.WriteLine(errors);
+                        data = binaryReader.ReadBytes(file.ContentLength);
                     }
+
+                    // Save to database
+                    var owner = DogOwnerConnection.Owners.FirstOrDefault(x => x.Name.ToLower() == ownerName.ToLower());
+                    if (owner == null)
+                    {
+                        owner = new Owner { Name = ownerName };
+                        DogOwnerConnection.Owners.Add(owner);
+                        DogOwnerConnection.SaveChanges();
+                    }
+
+                    Dog d = new Dog() { Name = name, Owner = owner, Image = data };
+                    DogOwnerConnection.Dogs.Add(d);
                     DogOwnerConnection.SaveChanges();
+
+                    // Show success ...
+                    return RedirectToAction("Index");
                 }
-
-                Dog d = new Dog() { Name = name, Owner = owner, Image = data };
-                DogOwnerConnection.Dogs.Add(d);
-                DogOwnerConnection.SaveChanges();
-
-                // Show success ...
-                return RedirectToAction("Index");
+                else
+                {
+                    // Show error ...
+                    return View("Error");
+                }
             }
-            else
+            catch (Exception)
             {
-                // Show error ...
                 return View("Error");
             }
+        }
+
+        public ActionResult Detail(string name)
+        {
+            ViewBag.Message = "Details of Dog";
+            var dog = DogOwnerConnection.Dogs.FirstOrDefault(x => x.Name.ToLower() == x.Name);
+            return View(dog);
         }
     }
 }

@@ -1,0 +1,36 @@
+﻿@model DogOwner.Dog
+
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Detail</h2>
+
+<fieldset>
+    <legend>Dog</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Name)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Name)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Owner.Name)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Owner.Name)
+    </div>
+    <div class="display-label">
+         @Html.LabelFor(model => model.Image)
+    </div>
+    <div class="display-field">
+        <img src="data:image;base64,@System.Convert.ToBase64String(Model.Image)" />
+    </div>
+    
+</fieldset>
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>
