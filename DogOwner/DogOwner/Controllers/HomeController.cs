@@ -16,7 +16,7 @@ namespace DogOwner.Controllers
             ViewBag.Message = "List of registered dogs";
             var dogs = new List<DogOwner.Models.Dog>();
 
-            DogOwnerConnection.Dogs.ToList().ForEach(x => dogs.Add(new DogOwner.Models.Dog {  Name = x.Name, OwnerName = x.Owner.Name}));
+            DogOwnerConnection.Dogs.ToList().ForEach(x => dogs.Add(new DogOwner.Models.Dog {  Name = x.Name, OwnerName = x.Owner.Name, Image = x.Image}));
            
             return View(dogs);
         }

@@ -15,7 +15,7 @@
     <Property Name="Name" Type="nvarchar" MaxLength="100" />
     <Property Name="OwnerID" Type="int" Nullable="false" />
     <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-    <Property Name="Image" Type="varbinary" />
+    <Property Name="Image" Type="image" />
   </EntityType>
   <EntityType Name="Owner">
     <Key>

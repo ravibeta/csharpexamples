@@ -80,6 +80,6 @@ C:\Users\Admin\Documents\GitHub\csharpexamples\DogOwner\DogOwner\bin\ko\System.S
 C:\Users\Admin\Documents\GitHub\csharpexamples\DogOwner\DogOwner\bin\ru\System.Spatial.resources.dll
 C:\Users\Admin\Documents\GitHub\csharpexamples\DogOwner\DogOwner\bin\zh-Hans\System.Spatial.resources.dll
 C:\Users\Admin\Documents\GitHub\csharpexamples\DogOwner\DogOwner\bin\zh-Hant\System.Spatial.resources.dll
-C:\Users\Admin\Documents\GitHub\csharpexamples\DogOwner\DogOwner\obj\Debug\DogOwner.csprojResolveAssemblyReference.cache
 C:\Users\Admin\Documents\GitHub\csharpexamples\DogOwner\DogOwner\obj\Debug\DogOwner.dll
 C:\Users\Admin\Documents\GitHub\csharpexamples\DogOwner\DogOwner\obj\Debug\DogOwner.pdb
+C:\Users\Admin\Documents\GitHub\csharpexamples\DogOwner\DogOwner\obj\Debug\DogOwner.csprojResolveAssemblyReference.cache
