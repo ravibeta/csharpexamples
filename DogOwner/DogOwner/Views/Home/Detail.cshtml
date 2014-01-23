@@ -9,25 +9,28 @@
 
 <fieldset>
     <legend>Dog</legend>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.Name)
+    <div>
+        <div>
+            @Html.DisplayName("Name: ")
+        </div>
+        <div>
+            <b>@Html.DisplayNameFor(model => model.Name)</b>
+        </div>
+    </>
+    <div>
+        <div>
+            @Html.DisplayName("OwnerName: ")
+        </div>
+        <div>
+            <b>@Html.DisplayNameFor(model => model.Owner.Name)</b>
+        </div>
     </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Name)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.Owner.Name)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Owner.Name)
-    </div>
-    <div class="display-label">
-         @Html.LabelFor(model => model.Image)
-    </div>
-    <div class="display-field">
-        <img src="data:image;base64,@System.Convert.ToBase64String(Model.Image)" />
+    <div>
+        <div>
+        </div>
+        <div>
+            <img src="data:image;base64,@System.Convert.ToBase64String(Model.Image)" />
+        </div>
     </div>
     
 </fieldset>

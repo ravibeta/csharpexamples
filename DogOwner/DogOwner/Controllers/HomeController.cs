@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using DogOwner.Models;
 using System.IO;
+using System.Drawing;
 
 namespace DogOwner.Controllers
 {
@@ -14,11 +15,9 @@ namespace DogOwner.Controllers
         public ActionResult Index()
         {
             ViewBag.Message = "List of registered dogs";
-            var dogs = new List<DogOwner.Models.Dog>();
 
-            DogOwnerConnection.Dogs.ToList().ForEach(x => dogs.Add(new DogOwner.Models.Dog {  Name = x.Name, OwnerName = x.Owner.Name, Image = x.Image}));
-           
-            return View(dogs);
+
+            return View(DogOwnerConnection.Dogs.ToList());
         }
 
         public ActionResult About()
@@ -88,9 +87,45 @@ namespace DogOwner.Controllers
 
         public ActionResult Detail(string name)
         {
-            ViewBag.Message = "Details of Dog";
-            var dog = DogOwnerConnection.Dogs.FirstOrDefault(x => x.Name.ToLower() == x.Name);
+            ViewBag.Message = "Details of Dog.";
+            var dog = DogOwnerConnection.Dogs.FirstOrDefault(x => x.Name.ToLower() == name);
             return View(dog);
+        }
+
+        public ActionResult Search(string name, string ownerName)
+        {
+            ViewBag.Message = "Search by name or owner name.";
+            var dogs = new List<Dog>();
+            if (string.IsNullOrEmpty(name) == false)
+            {
+                dogs = DogOwnerConnection.Dogs.Where(x => x.Name.ToLower() == name.ToLower()).ToList();
+                return View("Index", dogs);
+            }
+            if (string.IsNullOrEmpty(ownerName) == false)
+            {
+                dogs = DogOwnerConnection.Dogs.Where(x => x.Owner.Name.ToLower() == ownerName.ToLower()).ToList();
+                return View("Index", dogs);
+            }
+            return View();
+        }
+
+        private Image ResizeImage(Image img, int width, int height)
+        {
+            Bitmap b = new Bitmap(width, height);
+            using (Graphics g = Graphics.FromImage((Image)b))
+            {
+                g.DrawImage(img, 0, 0, width, height);
+            }
+
+            return (Image)b;
+        }
+
+        private Image ToImage(Byte[] bytes)
+        {
+            Image image = null;
+            using (var mem = new MemoryStream(bytes))
+                image = Image.FromStream(mem);
+            return image;
         }
     }
 }
