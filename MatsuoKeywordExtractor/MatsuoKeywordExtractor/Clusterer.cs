@@ -204,6 +204,11 @@ namespace MatsuoKeywordExtractor
             int entries = 0;
             FrequentTerms = topTerms.TakeWhile(x => { entries++; if (sum < cutoff || entries == 1) { sum += x.Value; return true; } else { return false; } }).ToList();
         }
+
+        internal void CoOccurrenceClassify()
+        {
+            throw new NotImplementedException();
+        }
     }
 
     public class Cluster
