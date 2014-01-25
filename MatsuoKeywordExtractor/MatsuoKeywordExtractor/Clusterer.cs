@@ -17,6 +17,9 @@ namespace MatsuoKeywordExtractor
         public int[,] CooccurenceMatrix { get; set; }
         public string[] StopWords { get; set; }
         internal double ThresholdFactor { get; set; }
+        public int KMeans { get; set; }
+        public const double EPSILON = 0.10d;
+        public List<KLDLabel> Labels { get; set; }
 
 
         public void Initialize(Dictionary<string,int> dict, string[] sentences)
@@ -28,6 +31,7 @@ namespace MatsuoKeywordExtractor
             WordCount = dict;
             InitializeFrequentTerms(dict);
             CooccurenceMatrix = PopulateCooccurrenceMatrix();
+            KMeans = 3;
         }
 
         public void Classify()
@@ -207,13 +211,125 @@ namespace MatsuoKeywordExtractor
 
         internal void CoOccurrenceClassify()
         {
-            throw new NotImplementedException();
+            // Initialize centroids
+            Clusters = InitializeKMeansCluster();
+
+            // Repeat
+            List<string> prev = null;
+            List<string> current = new List<string>();
+            do
+            {
+                AssignLabel();
+
+                for (int i = 0; i < KMeans; i++)
+                {
+                    FixCentroids(i);
+                }
+                prev = current;
+                current = Clusters.Select(x => x.Term).ToList();
+            }
+            while (prev == null || current.SequenceEqual(prev) == false);
+
+            AssignLabel();
+        }
+
+        private List<Cluster> InitializeKMeansCluster()
+        {
+            var clusters = new List<Cluster>();
+            for (int i = 0; i < KMeans; i++)
+            {
+                int count = clusters.Count;
+                while (clusters.Count == count)
+                {
+                    var rand = new Random();
+                    int n = rand.Next(0, TopTerms.Count - 1);
+                    var term = TopTerms[n].Key;
+                    if (clusters.Any(x => x.Term == term)) continue;
+                    clusters.Add(new Cluster() { Term = term });
+                }
+            }
+            Labels = new List<KLDLabel>();
+            TopTerms.ForEach(t => Labels.Add(new KLDLabel() { Term = t.Key, ClusterIndex = 0 }));
+            return clusters;
+        }
+
+        private void AssignLabel()
+        {
+            Labels.ForEach(x =>
+            {
+                var distances = new List<double>();
+                if (Clusters.Any(t => t.Term == x.Term) == false)
+                {
+                    for (int i = 0; i < KMeans; i++)
+                    {
+                        distances.Add(GetKLDDistance(Clusters[i].Term, x.Term));
+                    }
+                    var min = distances.Min();
+                    int index = distances.IndexOf(min);
+
+                    x.ClusterIndex = index;
+                }
+                // FixCentroids(index);
+
+            });
+        }
+
+        private void FixCentroids(int  n)
+        {
+            var members = Labels.Where(x => x.ClusterIndex == n).ToList();
+            List<int> rowTotals = new List<int>();
+            members.ForEach(x =>
+                {
+                    var keys = TopTerms.Select(t => t.Key).ToList();
+                    int ix = keys.IndexOf(x.Term);
+                    int sum = 0;
+                    for (int i = 0; i < CooccurenceMatrix.Rank; i++)
+                    {
+                        sum += CooccurenceMatrix[ix, i];
+                    }
+                    rowTotals.Add(sum);
+                });
+            if (members.Count > 0)
+            {
+                var avg = rowTotals.Average();
+                var sorted = rowTotals;
+                sorted.Sort();
+                int candidate = 0;
+                while (sorted[candidate] <= avg) candidate++;
+                if (candidate >= sorted.Count) candidate = sorted.Count - 1;
+                int index = rowTotals.IndexOf(sorted[candidate]);
+                Clusters[n].Term = members[index].Term;
+            }
+        }
+
+        private double GetKLDDistance(string x, string y)
+        {
+            var distance = 0d;
+            var keys = TopTerms.Select(t => t.Key).ToList();
+            int ix = keys.IndexOf(x);
+            int iy = keys.IndexOf(y);
+            for (int i = 0; i < CooccurenceMatrix.Rank; i++)
+            {
+                if (CooccurenceMatrix[iy, i] == 0)
+                    distance += EPSILON;
+                else
+                    distance += CooccurenceMatrix[ix, i] * Math.Log(CooccurenceMatrix[ix, i] / CooccurenceMatrix[iy, i]);
+            }
+            return distance;
         }
     }
 
     public class Cluster
     {
         public double Center { get; set; }
+        public string Term { get; set; }
         public List<string> Members { get; set; }
     }
+
+    public class KLDLabel
+    {
+        public string Term { get; set; }
+        public int ClusterIndex { get; set; }
+    }
+
 }

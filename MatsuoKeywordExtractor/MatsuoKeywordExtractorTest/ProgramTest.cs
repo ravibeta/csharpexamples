@@ -123,5 +123,20 @@ namespace MatsuoKeywordExtractorTest
             var ret = clusterer.GetKeywordsBasedOnKLD();
             Assert.IsTrue(ret.Count > 0);
         }
+
+        [TestMethod]
+        public void TestKLDClassifier()
+        {
+            var dict = new Dictionary<string, int>();
+            dict.Add("abc", 3);
+            dict.Add("def", 3);
+            dict.Add("ghi", 4);
+            dict.Add("jkl", 2);
+            var sentences = new string[] { "abc def jkl", "ghi jkl", "abc def", "abc def", "ghi ghi", "ghi" };
+            clusterer.ThresholdFactor = 0.7d;
+            clusterer.Initialize(dict, sentences);
+            clusterer.CoOccurrenceClassify();
+            Assert.IsTrue(clusterer.Clusters.Count == 3);
+        }
     }
 }
