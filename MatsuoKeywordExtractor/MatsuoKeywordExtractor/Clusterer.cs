@@ -209,6 +209,7 @@ namespace MatsuoKeywordExtractor
             FrequentTerms = topTerms.TakeWhile(x => { entries++; if (sum < cutoff || entries == 1) { sum += x.Value; return true; } else { return false; } }).ToList();
         }
 
+        //  http://ravinote.blogspot.com/2014/01/both-zipfs-law-of-word-occurrences-and.html
         internal void CoOccurrenceClassify()
         {
             // Initialize centroids
@@ -230,7 +231,6 @@ namespace MatsuoKeywordExtractor
             }
             while (prev == null || current.SequenceEqual(prev) == false);
 
-            AssignLabel();
         }
 
         private List<Cluster> InitializeKMeansCluster()
@@ -269,8 +269,6 @@ namespace MatsuoKeywordExtractor
 
                     x.ClusterIndex = index;
                 }
-                // FixCentroids(index);
-
             });
         }
 
