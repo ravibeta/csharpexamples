@@ -297,7 +297,7 @@ namespace MatsuoKeywordExtractor
                 var sorted = rowTotals;
                 sorted.Sort();
                 int candidate = 0;
-                while (candidate < sorted.Count && sorted[candidate] <= avg) candidate++; // use binary search
+                while (candidate < sorted.Count && sorted[candidate] <= avg) candidate++; // use Find(x => x > avg)
                 if (candidate >= sorted.Count) candidate = sorted.Count - 1;
                 int index = rowTotals.IndexOf(sorted[candidate]);
                 Clusters[n].Term = members[index].Term;
@@ -312,7 +312,7 @@ namespace MatsuoKeywordExtractor
             int iy = keys.IndexOf(y);
             for (int i = 0; i < CooccurenceMatrix.Rank; i++)
             {
-                if (CooccurenceMatrix[iy, i] == 0)
+                if (CooccurenceMatrix[ix, i] == 0 || CooccurenceMatrix[iy, i] == 0)
                     distance += EPSILON;
                 else
                     distance += CooccurenceMatrix[ix, i] * Math.Log(CooccurenceMatrix[ix, i] / CooccurenceMatrix[iy, i]);
@@ -333,5 +333,4 @@ namespace MatsuoKeywordExtractor
         public string Term { get; set; }
         public int ClusterIndex { get; set; }
     }
-
 }
