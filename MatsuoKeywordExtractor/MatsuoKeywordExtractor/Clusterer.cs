@@ -12,7 +12,7 @@ namespace MatsuoKeywordExtractor
         public Dictionary<string, int> WordCount { get; set; }
         public List<KeyValuePair<string, int>> FrequentTerms { get; set; }
         public List<KeyValuePair<string, int>> TopTerms { get; set; }
-        public List<Cluster> Clusters {get; private set;}
+        public List<Cluster> Clusters { get; private set; }
         public string[] Sentences { get; set; }
         public int[,] CooccurenceMatrix { get; set; }
         public string[] StopWords { get; set; }
@@ -22,16 +22,16 @@ namespace MatsuoKeywordExtractor
         public List<KLDLabel> Labels { get; set; }
 
 
-        public void Initialize(Dictionary<string,int> dict, string[] sentences)
+        public void Initialize(Dictionary<string, int> dict, string[] sentences)
         {
             if (ThresholdFactor == 0.0d) ThresholdFactor = 0.3d;
             var topTerms = dict.OrderByDescending(x => x.Value).ToList();
-            Sentences = sentences;
+            Sentences = sentences.ToList().ConvertAll(x => x.ToLower()).ToArray();
             TopTerms = topTerms;
             WordCount = dict;
             InitializeFrequentTerms(dict);
             CooccurenceMatrix = PopulateCooccurrenceMatrix();
-            KMeans = 3;
+            if (KMeans == 0) KMeans = 3;
         }
 
         public void Classify()
@@ -155,7 +155,7 @@ namespace MatsuoKeywordExtractor
                     j++;
                     if (word.Key != pair.Key)
                     {
-                        if ( i < FrequentTerms.Count() && matrix[j, i] != 0)
+                        if (i < FrequentTerms.Count() && matrix[j, i] != 0)
                         {
                             matrix[i, j] = matrix[j, i];
                             continue;
@@ -169,11 +169,11 @@ namespace MatsuoKeywordExtractor
             return matrix;
 
         }
-        
+
         internal int IndexOf(string term)
         {
             int index = -1;
-            var kvp  = WordCount.FirstOrDefault(x => x.Key == term);
+            var kvp = WordCount.FirstOrDefault(x => x.Key == term);
             index = TopTerms.IndexOf(kvp);
             return index;
         }
@@ -185,7 +185,7 @@ namespace MatsuoKeywordExtractor
             var stopWords = File.ReadAllText(@"StopWords.txt").Split(new char[] { ',' });
             StopWords = stopWords;
             Sentences.ToList().ForEach(x => { if (x.Contains(word)) { var words = x.Split(); nw += words.Count(t => StopWords.Contains(t) == false); } });
-            foreach ( var g in FrequentTerms)
+            foreach (var g in FrequentTerms)
             {
                 if (word != g.Key)
                 {
@@ -269,31 +269,35 @@ namespace MatsuoKeywordExtractor
 
                     x.ClusterIndex = index;
                 }
+                else
+                {
+                    x.ClusterIndex = Clusters.IndexOf(Clusters.FirstOrDefault(r => r.Term == x.Term));
+                }
             });
         }
 
-        private void FixCentroids(int  n)
+        private void FixCentroids(int n)
         {
             var members = Labels.Where(x => x.ClusterIndex == n).ToList();
             List<int> rowTotals = new List<int>();
             members.ForEach(x =>
+            {
+                var keys = TopTerms.Select(t => t.Key).ToList();
+                int ix = keys.IndexOf(x.Term);
+                int sum = 0;
+                for (int i = 0; i < CooccurenceMatrix.Rank; i++)
                 {
-                    var keys = TopTerms.Select(t => t.Key).ToList();
-                    int ix = keys.IndexOf(x.Term);
-                    int sum = 0;
-                    for (int i = 0; i < CooccurenceMatrix.Rank; i++)
-                    {
-                        sum += CooccurenceMatrix[ix, i];
-                    }
-                    rowTotals.Add(sum);
-                });
+                    sum += CooccurenceMatrix[ix, i];
+                }
+                rowTotals.Add(sum);
+            });
             if (members.Count > 0)
             {
                 var avg = rowTotals.Average();
                 var sorted = rowTotals;
                 sorted.Sort();
                 int candidate = 0;
-                while (sorted[candidate] <= avg) candidate++;
+                while (candidate < sorted.Count && sorted[candidate] <= avg) candidate++; // use binary search
                 if (candidate >= sorted.Count) candidate = sorted.Count - 1;
                 int index = rowTotals.IndexOf(sorted[candidate]);
                 Clusters[n].Term = members[index].Term;
@@ -302,7 +306,7 @@ namespace MatsuoKeywordExtractor
 
         private double GetKLDDistance(string x, string y)
         {
-            var distance = 0d;
+            double distance = 0d;
             var keys = TopTerms.Select(t => t.Key).ToList();
             int ix = keys.IndexOf(x);
             int iy = keys.IndexOf(y);

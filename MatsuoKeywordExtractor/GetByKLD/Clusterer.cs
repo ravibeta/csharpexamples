@@ -26,12 +26,12 @@ namespace GetByKLD
         {
             if (ThresholdFactor == 0.0d) ThresholdFactor = 0.3d;
             var topTerms = dict.OrderByDescending(x => x.Value).ToList();
-            Sentences = sentences;
+            Sentences = sentences.ToList().ConvertAll(x => x.ToLower()).ToArray();
             TopTerms = topTerms;
             WordCount = dict;
             InitializeFrequentTerms(dict);
             CooccurenceMatrix = PopulateCooccurrenceMatrix();
-            KMeans = 3;
+            if (KMeans == 0) KMeans = 3;
         }
 
         public void Classify()
@@ -269,6 +269,10 @@ namespace GetByKLD
 
                     x.ClusterIndex = index;
                 }
+                else
+                {
+                    x.ClusterIndex = Clusters.IndexOf(Clusters.FirstOrDefault(r => r.Term == x.Term));
+                }
             });
         }
 
@@ -293,7 +297,7 @@ namespace GetByKLD
                 var sorted = rowTotals;
                 sorted.Sort();
                 int candidate = 0;
-                while (sorted[candidate] <= avg) candidate++;
+                while (candidate < sorted.Count && sorted[candidate] <= avg) candidate++; // use binary search
                 if (candidate >= sorted.Count) candidate = sorted.Count - 1;
                 int index = rowTotals.IndexOf(sorted[candidate]);
                 Clusters[n].Term = members[index].Term;
@@ -302,7 +306,7 @@ namespace GetByKLD
 
         private double GetKLDDistance(string x, string y)
         {
-            var distance = 0d;
+            double distance = 0d;
             var keys = TopTerms.Select(t => t.Key).ToList();
             int ix = keys.IndexOf(x);
             int iy = keys.IndexOf(y);

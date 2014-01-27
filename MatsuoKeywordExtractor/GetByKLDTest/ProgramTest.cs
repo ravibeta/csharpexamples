@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using GetByKLD;
 using System.Collections.Generic;
@@ -152,6 +153,17 @@ namespace GetByKLDTest
             clusterer.Initialize(dict, sentences);
             clusterer.CoOccurrenceClassify();
             Assert.IsTrue(clusterer.Clusters.Count == 3);
+            Assert.IsTrue(clusterer.Labels.Count == 4);
+            Assert.IsTrue(clusterer.Labels.Count(x => x.ClusterIndex == clusterer.Labels.FirstOrDefault(c => c.Term == "attribute").ClusterIndex) == 2);
+            clusterer.KMeans = 2;
+            clusterer.ThresholdFactor = 0.7d;
+            clusterer.Initialize(dict, sentences);
+            clusterer.CoOccurrenceClassify();
+            Assert.IsTrue(clusterer.Clusters.Count == 2);
+            Assert.IsTrue(clusterer.Labels.Count == 4);
+            Assert.IsTrue(clusterer.Labels.Count(x => x.ClusterIndex == 0) == 3);
+            Assert.IsTrue(clusterer.Labels.Count(x => x.ClusterIndex == 1) == 1);
+
         }
     }
 }
