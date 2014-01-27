@@ -2,3 +2,5 @@ C:\Users\Ravi\Documents\GitHub\csharpexamples\MatsuoKeywordExtractor\GetByKLD\bi
 C:\Users\Ravi\Documents\GitHub\csharpexamples\MatsuoKeywordExtractor\GetByKLD\bin\Debug\GetByKLD.pdb
 C:\Users\Ravi\Documents\GitHub\csharpexamples\MatsuoKeywordExtractor\GetByKLD\obj\x86\Debug\GetByKLD.exe
 C:\Users\Ravi\Documents\GitHub\csharpexamples\MatsuoKeywordExtractor\GetByKLD\obj\x86\Debug\GetByKLD.pdb
+C:\Users\Ravi\Documents\GitHub\csharpexamples\MatsuoKeywordExtractor\GetByKLD\bin\Debug\StopWords.txt
+C:\Users\Ravi\Documents\GitHub\csharpexamples\MatsuoKeywordExtractor\GetByKLD\obj\x86\Debug\GetByKLD.csprojResolveAssemblyReference.cache

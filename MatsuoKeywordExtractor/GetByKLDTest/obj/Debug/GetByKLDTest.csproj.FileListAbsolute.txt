@@ -5,3 +5,4 @@ C:\Users\Ravi\Documents\GitHub\csharpexamples\MatsuoKeywordExtractor\GetByKLDTes
 C:\Users\Ravi\Documents\GitHub\csharpexamples\MatsuoKeywordExtractor\GetByKLDTest\bin\Debug\GetByKLD.pdb
 C:\Users\Ravi\Documents\GitHub\csharpexamples\MatsuoKeywordExtractor\GetByKLDTest\obj\Debug\GetByKLDTest.dll
 C:\Users\Ravi\Documents\GitHub\csharpexamples\MatsuoKeywordExtractor\GetByKLDTest\obj\Debug\GetByKLDTest.pdb
+C:\Users\Ravi\Documents\GitHub\csharpexamples\MatsuoKeywordExtractor\GetByKLDTest\bin\Debug\StopWords.txt

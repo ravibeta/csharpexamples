@@ -258,21 +258,31 @@ namespace GetByKLD
             Labels.ForEach(x =>
             {
                 var distances = new List<double>();
-                if (Clusters.Any(t => t.Term == x.Term) == false)
+                
                 {
                     for (int i = 0; i < KMeans; i++)
                     {
                         distances.Add(GetKLDDistance(Clusters[i].Term, x.Term));
                     }
-                    var min = distances.Min();
-                    int index = distances.IndexOf(min);
+                    var max = distances.Max();
+                    int index = distances.IndexOf(max);
+
+                    if (Clusters.Any(c => c.Term == x.Term))
+                    {
+                        // merge two clusters
+                        Labels.Where(l => l.ClusterIndex == x.ClusterIndex).ToList().ConvertAll(a => a.ClusterIndex = index);
+                    }
 
                     x.ClusterIndex = index;
+                    
+                    if (x.Term != Clusters[index].Term)
+                    {
+                        Labels.Find(t => t.Term == Clusters[index].Term).ClusterIndex = index;
+
+                        Labels.Where(l => l.ClusterIndex == index).ToList().ConvertAll(a => a.ClusterIndex = x.ClusterIndex);
+                    }
                 }
-                else
-                {
-                    x.ClusterIndex = Clusters.IndexOf(Clusters.FirstOrDefault(r => r.Term == x.Term));
-                }
+                
             });
         }
 
@@ -307,16 +317,22 @@ namespace GetByKLD
         private double GetKLDDistance(string x, string y)
         {
             double distance = 0d;
+            if (x == y) return 0d;
             var keys = TopTerms.Select(t => t.Key).ToList();
             int ix = keys.IndexOf(x);
             int iy = keys.IndexOf(y);
             for (int i = 0; i < CooccurenceMatrix.Rank; i++)
             {
-                if (CooccurenceMatrix[ix, i] == 0 || CooccurenceMatrix[iy, i] == 0)
-                    distance += EPSILON;
+                if (ix == i) continue;
+                if (iy == i) continue;
+                double p = CooccurenceMatrix[ix, i];
+                double q = CooccurenceMatrix[iy, i];
+                if (p != 0 && q != 0)
+                    distance += p * Math.Log(p / q);
                 else
-                    distance += CooccurenceMatrix[ix, i] * Math.Log(CooccurenceMatrix[ix, i] / CooccurenceMatrix[iy, i]);
+                    distance += EPSILON;
             }
+
             return distance;
         }
     }
