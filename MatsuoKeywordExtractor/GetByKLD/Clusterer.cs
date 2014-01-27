@@ -273,7 +273,8 @@ namespace GetByKLD
                         distances.Add(GetKLDDistance(Clusters[i].Term, x.Term));
                     }
                     var max = distances.Max();
-                    var candidateCluster = Clusters[distances.IndexOf(max)];
+                    int index = distances.IndexOf(max);
+                    var candidateCluster = Clusters[index];
                     var designatedCluster = Clusters.FirstOrDefault(c => c.RangeEnd > max);
                     if (designatedCluster == null)
                         designatedCluster = Clusters.Last();
@@ -287,6 +288,7 @@ namespace GetByKLD
 
         private void FixCentroids(int  n)
         {
+            Clusters[n].Term = "";
             var members = Labels.Where(x => x.ClusterIndex == n).ToList();
             List<int> rowTotals = new List<int>();
             members.ForEach(x =>
@@ -309,29 +311,35 @@ namespace GetByKLD
                 while (candidate < sorted.Count && sorted[candidate] <= avg) candidate++; // use Find(x => x > avg)
                 if (candidate >= sorted.Count) candidate = sorted.Count - 1;
                 int index = rowTotals.IndexOf(sorted[candidate]);
-                Clusters[n].Term = members[index].Term;
+                Clusters[n].Term = TopTerms[index].Key;
             }
         }
 
         private double GetKLDDistance(string x, string y)
         {
             double distance = 0d;
-            if (x == y) return 0d;
-            if (x == "" || y == "") return 0d;
+            if (x == y) return distance;
+            if (x == "" || y == "") return distance;
             var keys = TopTerms.Select(t => t.Key).ToList();
             int ix = keys.IndexOf(x);
             int iy = keys.IndexOf(y);
-            for (int i = 0; i < CooccurenceMatrix.Rank; i++)
-            {
-                if (ix == i) continue;
-                if (iy == i) continue;
-                double p = CooccurenceMatrix[ix, i];
-                double q = CooccurenceMatrix[iy, i];
-                if (p != 0 && q != 0)
-                    distance += p * Math.Log(p / q);
-                else
-                    distance += EPSILON;
-            }
+
+            if (ix < FrequentTerms.Count && CooccurenceMatrix[iy, ix] > 0)
+                return CooccurenceMatrix[iy, ix];
+            if (iy < FrequentTerms.Count && CooccurenceMatrix[ix, iy] > 0)
+                return CooccurenceMatrix[ix, iy];
+            distance = EPSILON;
+            //for (int i = 0; i < CooccurenceMatrix.Rank; i++)
+            //{
+            //    //if (ix == i) continue;
+            //    //if (iy == i) continue;
+            //    double p = CooccurenceMatrix[ix, i];
+            //    double q = CooccurenceMatrix[iy, i];
+            //    if (p == 0) p = EPSILON;
+            //    if (q == 0) q = EPSILON;
+            //    distance += p * Math.Log(p / q);
+            //    // normalize all distances
+            //}
 
             return distance;
         }
