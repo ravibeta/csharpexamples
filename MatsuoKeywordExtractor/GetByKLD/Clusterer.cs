@@ -235,7 +235,14 @@ namespace GetByKLD
 
         private List<Cluster> InitializeKMeansCluster()
         {
+
+            Labels = new List<KLDLabel>();
+            TopTerms.ForEach(t => Labels.Add(new KLDLabel() { Term = t.Key, ClusterIndex = 0 }));
             var clusters = new List<Cluster>();
+            double slice = (FrequentTerms[0].Value * 2) / KMeans;
+            if (slice < 0.5) slice = 0.5;
+            double rangeStart = 0d;
+            double rangeEnd = slice;
             for (int i = 0; i < KMeans; i++)
             {
                 int count = clusters.Count;
@@ -245,11 +252,12 @@ namespace GetByKLD
                     int n = rand.Next(0, TopTerms.Count - 1);
                     var term = TopTerms[n].Key;
                     if (clusters.Any(x => x.Term == term)) continue;
-                    clusters.Add(new Cluster() { Term = term });
+                    clusters.Add(new Cluster() { Term = term, RangeStart = rangeStart, RangeEnd = rangeEnd });
+                    rangeStart = rangeEnd;
+                    rangeEnd = rangeEnd + slice;
+                    Labels.FirstOrDefault(x => x.Term == term).ClusterIndex = i;
                 }
             }
-            Labels = new List<KLDLabel>();
-            TopTerms.ForEach(t => Labels.Add(new KLDLabel() { Term = t.Key, ClusterIndex = 0 }));
             return clusters;
         }
 
@@ -265,22 +273,13 @@ namespace GetByKLD
                         distances.Add(GetKLDDistance(Clusters[i].Term, x.Term));
                     }
                     var max = distances.Max();
-                    int index = distances.IndexOf(max);
-
-                    if (Clusters.Any(c => c.Term == x.Term))
-                    {
-                        // merge two clusters
-                        Labels.Where(l => l.ClusterIndex == x.ClusterIndex).ToList().ConvertAll(a => a.ClusterIndex = index);
-                    }
-
-                    x.ClusterIndex = index;
-                    
-                    if (x.Term != Clusters[index].Term)
-                    {
-                        Labels.Find(t => t.Term == Clusters[index].Term).ClusterIndex = index;
-
-                        Labels.Where(l => l.ClusterIndex == index).ToList().ConvertAll(a => a.ClusterIndex = x.ClusterIndex);
-                    }
+                    var candidateCluster = Clusters[distances.IndexOf(max)];
+                    var designatedCluster = Clusters.FirstOrDefault(c => c.RangeEnd > max);
+                    if (designatedCluster == null)
+                        designatedCluster = Clusters.Last();
+                    var label = Labels.FirstOrDefault(c => c.Term == candidateCluster.Term);
+                    label.ClusterIndex = Clusters.IndexOf(designatedCluster);
+                    x.ClusterIndex = label.ClusterIndex;
                 }
                 
             });
@@ -318,6 +317,7 @@ namespace GetByKLD
         {
             double distance = 0d;
             if (x == y) return 0d;
+            if (x == "" || y == "") return 0d;
             var keys = TopTerms.Select(t => t.Key).ToList();
             int ix = keys.IndexOf(x);
             int iy = keys.IndexOf(y);
@@ -342,6 +342,8 @@ namespace GetByKLD
         public double Center { get; set; }
         public string Term { get; set; }
         public List<string> Members { get; set; }
+        public double RangeStart { get; set; }
+        public double RangeEnd { get; set; }
     }
 
     public class KLDLabel
