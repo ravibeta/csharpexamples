@@ -271,12 +271,17 @@ namespace GetByKLD
                     distances.Add(GetKLDDistance(Labels[i].Term, Labels[j].Term));
                 }
 
-                var max = distances.Max();
-                int index = distances.IndexOf(max);
-                var designatedClusterIndex = GetClusterIndex(max);
+                if (distances.Any(x => x > EPSILON))
+                {
+                    var max = distances.Max();
+                    int index = distances.IndexOf(max);
+                    var designatedClusterIndex = GetClusterIndex(max);
 
-                Labels[i].ClusterIndex = designatedClusterIndex;
-                Labels[index].ClusterIndex = designatedClusterIndex;
+                    Labels[i].ClusterIndex = designatedClusterIndex;
+                    Labels.ForEach(l => { if (l.ClusterIndex == Labels[i].ClusterIndex) { l.ClusterIndex = designatedClusterIndex; } });
+                    Labels[index].ClusterIndex = designatedClusterIndex;
+                    Labels.ForEach(l => { if (l.ClusterIndex == Labels[index].ClusterIndex) { l.ClusterIndex = designatedClusterIndex; } });
+                }
             }
         }
 
@@ -305,7 +310,7 @@ namespace GetByKLD
                 while (candidate < sorted.Count && sorted[candidate] <= avg) candidate++; // use Find(x => x > avg)
                 if (candidate >= sorted.Count) candidate = sorted.Count - 1;
                 int index = rowTotals.IndexOf(sorted[candidate]);
-                Clusters[n].Term = TopTerms[index].Key;
+                Clusters[n].Term = members[index].Term;
             }
         }
 
