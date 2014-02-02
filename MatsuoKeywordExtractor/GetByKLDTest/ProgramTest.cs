@@ -162,6 +162,7 @@ namespace GetByKLDTest
             Assert.IsTrue(clusterer.Clusters.Count == 2);
             Assert.IsTrue(clusterer.Labels.Count == 4);
             Assert.IsTrue(clusterer.Labels.Find(x => x.Term == "clustering").ClusterIndex == clusterer.Labels.Find(x => x.Term == "categories").ClusterIndex);
+            Assert.IsTrue(clusterer.Labels.Find(x => x.Term == "clustering").ClusterIndex != clusterer.Labels.Find(x => x.Term == "attributes").ClusterIndex);
             // Assert.IsTrue(clusterer.Labels.Count(x => x.ClusterIndex == 0) == 3);
             // Assert.IsTrue(clusterer.Labels.Count(x => x.ClusterIndex == 1) == 1);
 
