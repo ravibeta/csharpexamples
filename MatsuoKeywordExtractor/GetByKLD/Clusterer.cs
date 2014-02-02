@@ -237,53 +237,47 @@ namespace GetByKLD
         {
 
             Labels = new List<KLDLabel>();
-            TopTerms.ForEach(t => Labels.Add(new KLDLabel() { Term = t.Key, ClusterIndex = 0 }));
-            var clusters = new List<Cluster>();
-            double slice = (FrequentTerms[0].Value * 2) / KMeans;
-            if (slice < 0.5) slice = 0.5;
-            double rangeStart = 0d;
-            double rangeEnd = slice;
-            for (int i = 0; i < KMeans; i++)
-            {
-                int count = clusters.Count;
-                while (clusters.Count == count)
+            TopTerms.ForEach(t => 
                 {
-                    var rand = new Random();
-                    int n = rand.Next(0, TopTerms.Count - 1);
-                    var term = TopTerms[n].Key;
-                    if (clusters.Any(x => x.Term == term)) continue;
-                    clusters.Add(new Cluster() { Term = term, RangeStart = rangeStart, RangeEnd = rangeEnd });
-                    rangeStart = rangeEnd;
-                    rangeEnd = rangeEnd + slice;
-                    Labels.FirstOrDefault(x => x.Term == term).ClusterIndex = i;
-                }
-            }
+                    //var rand = new Random();
+                    //int n = rand.Next(0, KMeans - 1);
+                    Labels.Add(new KLDLabel() { Term = t.Key, ClusterIndex = 0 });
+                });
+            var clusters = new List<Cluster>();
+            for (int i = 0; i < KMeans; i++)
+                clusters.Add(new Cluster() { Term = "" });
             return clusters;
+        }
+
+        private int GetClusterIndex(double distance)
+        {
+            int clusterIndex = 0;
+            double maxDistance =  FrequentTerms[0].Value * 2;            
+            double slice = (maxDistance) / KMeans;
+            if (slice < 0.5) slice = 0.5;
+            if (distance > maxDistance) throw new InvalidOperationException();
+            clusterIndex = Convert.ToInt32(Math.Floor(distance / slice));
+            if (clusterIndex == 0 && distance > EPSILON) clusterIndex += 1;
+            return clusterIndex;
         }
 
         private void AssignLabel()
         {
-            Labels.ForEach(x =>
+            for (int i = 0; i < Labels.Count; i++)
             {
                 var distances = new List<double>();
-                
+                for (int j = 0; j < Labels.Count; j++)
                 {
-                    for (int i = 0; i < KMeans; i++)
-                    {
-                        distances.Add(GetKLDDistance(Clusters[i].Term, x.Term));
-                    }
-                    var max = distances.Max();
-                    int index = distances.IndexOf(max);
-                    var candidateCluster = Clusters[index];
-                    var designatedCluster = Clusters.FirstOrDefault(c => c.RangeEnd > max);
-                    if (designatedCluster == null)
-                        designatedCluster = Clusters.Last();
-                    var label = Labels.FirstOrDefault(c => c.Term == candidateCluster.Term);
-                    label.ClusterIndex = Clusters.IndexOf(designatedCluster);
-                    x.ClusterIndex = label.ClusterIndex;
+                    distances.Add(GetKLDDistance(Labels[i].Term, Labels[j].Term));
                 }
-                
-            });
+
+                var max = distances.Max();
+                int index = distances.IndexOf(max);
+                var designatedClusterIndex = GetClusterIndex(max);
+
+                Labels[i].ClusterIndex = designatedClusterIndex;
+                Labels[index].ClusterIndex = designatedClusterIndex;
+            }
         }
 
         private void FixCentroids(int  n)
