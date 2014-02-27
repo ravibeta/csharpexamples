@@ -1,0 +1,25 @@
+C:\projects\Codeplex\MDSUtilities\QueueProcessor\QueueProcessor\bin\Debug\QueueProcessor.exe
+C:\projects\Codeplex\MDSUtilities\QueueProcessor\QueueProcessor\bin\Debug\QueueProcessor.pdb
+C:\projects\Codeplex\MDSUtilities\QueueProcessor\QueueProcessor\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\projects\Codeplex\MDSUtilities\QueueProcessor\QueueProcessor\obj\x86\Debug\QueueProcessor.exe
+C:\projects\Codeplex\MDSUtilities\QueueProcessor\QueueProcessor\obj\x86\Debug\QueueProcessor.pdb
+C:\Users\RRAJAMANI\Documents\Visual Studio 2012\Projects\SB\C#\QueueProcessor\obj\x86\Debug\QueueProcessor.csprojResolveAssemblyReference.cache
+C:\Users\RRAJAMANI\Documents\Visual Studio 2012\Projects\SB\C#\QueueProcessor\bin\Debug\QueueProcessor.exe.config
+C:\Users\RRAJAMANI\Documents\Visual Studio 2012\Projects\SB\C#\QueueProcessor\bin\Debug\QueueProcessor.exe
+C:\Users\RRAJAMANI\Documents\Visual Studio 2012\Projects\SB\C#\QueueProcessor\bin\Debug\QueueProcessor.pdb
+C:\Users\RRAJAMANI\Documents\Visual Studio 2012\Projects\SB\C#\QueueProcessor\bin\Debug\SplunkSDK.dll
+C:\Users\RRAJAMANI\Documents\Visual Studio 2012\Projects\SB\C#\QueueProcessor\bin\Debug\Newtonsoft.Json.dll
+C:\Users\RRAJAMANI\Documents\Visual Studio 2012\Projects\SB\C#\QueueProcessor\bin\Debug\SplunkSDK.pdb
+C:\Users\RRAJAMANI\Documents\Visual Studio 2012\Projects\SB\C#\QueueProcessor\bin\Debug\SplunkSDK.xml
+C:\Users\RRAJAMANI\Documents\Visual Studio 2012\Projects\SB\C#\QueueProcessor\obj\x86\Debug\QueueProcessor.exe
+C:\Users\RRAJAMANI\Documents\Visual Studio 2012\Projects\SB\C#\QueueProcessor\obj\x86\Debug\QueueProcessor.pdb
+C:\Users\RRAJAMANI\Documents\GitHub\csharpexamples\ServiceBrokerMonitor\QueueProcessor\bin\Debug\QueueProcessor.exe.config
+C:\Users\RRAJAMANI\Documents\GitHub\csharpexamples\ServiceBrokerMonitor\QueueProcessor\obj\x86\Debug\QueueProcessor.exe
+C:\Users\RRAJAMANI\Documents\GitHub\csharpexamples\ServiceBrokerMonitor\QueueProcessor\obj\x86\Debug\QueueProcessor.pdb
+C:\Users\RRAJAMANI\Documents\GitHub\csharpexamples\ServiceBrokerMonitor\QueueProcessor\bin\Debug\QueueProcessor.exe
+C:\Users\RRAJAMANI\Documents\GitHub\csharpexamples\ServiceBrokerMonitor\QueueProcessor\bin\Debug\QueueProcessor.pdb
+C:\Users\RRAJAMANI\Documents\GitHub\csharpexamples\ServiceBrokerMonitor\QueueProcessor\bin\Debug\SplunkSDK.dll
+C:\Users\RRAJAMANI\Documents\GitHub\csharpexamples\ServiceBrokerMonitor\QueueProcessor\bin\Debug\Newtonsoft.Json.dll
+C:\Users\RRAJAMANI\Documents\GitHub\csharpexamples\ServiceBrokerMonitor\QueueProcessor\bin\Debug\SplunkSDK.pdb
+C:\Users\RRAJAMANI\Documents\GitHub\csharpexamples\ServiceBrokerMonitor\QueueProcessor\bin\Debug\SplunkSDK.xml
+C:\Users\RRAJAMANI\Documents\GitHub\csharpexamples\ServiceBrokerMonitor\QueueProcessor\obj\x86\Debug\QueueProcessor.csprojResolveAssemblyReference.cache
