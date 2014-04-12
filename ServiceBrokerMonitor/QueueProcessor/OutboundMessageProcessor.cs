@@ -5,6 +5,10 @@
 // LIMITED TO THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
 // FITNESS FOR A PARTICULAR PURPOSE.
 //===============================================================================
+//
+//  Modified by Ravi Rajamani to integrate with Splunk
+//
+//===============================================================================
 using System;
 using System.Collections.Generic;
 using System.Linq;
