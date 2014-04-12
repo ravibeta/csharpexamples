@@ -1,4 +1,4 @@
-﻿//===============================================================================
+//===============================================================================
 // Copyright © 2010 Microsoft Corporation.  All rights reserved.
 // THIS CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY
 // OF ANY KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT
@@ -25,33 +25,13 @@ namespace QueueProcessor
     public static void ProcessMessage(byte[] message)
     {
       Trace.WriteLine("InboundMessageProcessor Recieved Message");
-      using (var writer = new EventStreamWriter())
-      {
-          var varName = "ServiceBrokerData";
-          writer.Write(
-            new EventElement
-            {
-                Source = varName,
-                Data = Encoding.Default.GetString(message),
-            });
-      }
-      return;
+      ServiceBrokerUtils.WriteMessage(message);
     }
 
     public static void SaveFailedMessage(byte[] message, SqlConnection con, Exception errorInfo)
     {
       Trace.WriteLine("InboundMessageProcessor Recieved Failed Message");
-      using (var writer = new EventStreamWriter())
-      {
-          var varName = "ServiceBrokerData";
-          writer.Write(
-            new EventElement
-            {
-                Source = varName,
-                Data = Encoding.Default.GetString(message),
-            });
-      }
-      return;
+      ServiceBrokerUtils.WriteMessage(message);
     }
   }
 }
