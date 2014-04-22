@@ -357,6 +357,7 @@ namespace GetByKLD
     {
         public string Term { get; set; }
         public int ClusterIndex { get; set; }
+        // add support for metadata
     }
 
 }
