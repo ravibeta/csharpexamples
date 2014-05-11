@@ -1,0 +1,54 @@
+Scalable queue alerts design
+
+
+Introduction: Queues are heavily used in Enterprise services and applications for the reasons that they provide an asynchronous communication mechanism with robust, reliable and secure delivery framework. This paper describes a module to enable users to author alerts for the input and output of this framework.
+
+Use case: Select messages from a queue for alert one at a time
+Use case: Select several messages from queues for alerts over the length of the queue.
+Use case: Label all messages across queues into different groups 
+Use case: Journal all messages 
+Use case: Fire alerts on all messages currently being processed in all queues every few hours assuming an alarm clock
+Use case: Label messages into different groups
+
+Design criteria: 
+
+Support for retries by the queue processor: The design of a queue alert module must consider the retries by the queue processor for the same message. All exception paths including dead letter queues should be considered for the same treatment.
+Non-invasive: When possible, we should consider a non-invasive approach that doesn’t require instrumentation of the queues. In other words, it can work for any version of the queues and doesn’t affect the queue processing. It could work by sniffing the data changes or the logs.
+Polling: Any polling approach must be robust and rely on relieving high CPU usages during its processing.
+Support for transactional as well as non-transactional messages: The alerts module must work for both kinds of messages so that the user can specify the criteria and not be limited to only a set of messages. Concurrent processing of both messages must be supported.
+Support for distributed transactions: When transactions involve messages across queues, this alert module should enable evaluating those messages as part of the transaction or at least log the transaction and the actions taken with the transactions so that the final state can be determined by the alerts module.
+Support for clusters: The queues may not all be local to a machine and could be distributed on different nodes in a cluster or they may all be in a failover cluster. Alert module should target the messages and the queues and even the machines.
+Scoping of alerts: Alerts need not be registered at the message level. They could be registered at the queue level or at the machine level. Whatever the hierarchy chosen would take care of all the alerts at the inner scope by the outer scope. This means that the CRUD on the alerts at a queue scope automatically performs the same at the message scope.
+Changes to the rules or registration of alerts: Alerts registered with the alerts module will not take effect until the system reconfigures. This enables the changes to the alerts to be picked up for processing by the module and gives time for setup and cleanup operations by the module.
+Deployment: The alerts module should come in a standalone service or executable so that it can be an add-on to existing queue processing. The module itself could be deployable by copying or via an installer.
+Automatic administration of rules, actions, messages and queues could be performed where possible.
+The use of message format: When interacting with the queues to read the messages, the alerts module will evaluate the fields of the messages against the criteria specified in the rules by the user. The message format should not be opaque and as in the case of MSMQ should expose known fields for evaluation against the rules.
+Control of concurrency: The alerts module could make the invocation of actions registered with the rules as concurrent so that the evaluation of an action for a message does not block other. 
+Full-text or key-value search over message body: The expressions to search over the text of the messages could be resource intensive and optionally enabled. Rules to perform such search could be outside the alerts mechanism and done with the help of an indexer. As such this may not be in scope for the alerts module.
+Text messages versus binary messages: The alerts module should support both formats. The module should rely on the fields versus the contents. Subsequent processing of say JSON vs. XML text could be offloaded to other systems.
+Asynchronous communication mechanism: This could be enabled between producers and consumers so that they don’t block each other.
+Performance: Volumes of hundred thousand transactions per submission that reach millions of transactions per day and involve several messages across different queues should be targeted. Working on a set of few messages or queues or rules or alerts at a time could enable this.
+
+Approach one:
+Events and delegates model: This model raises events from the queues during processing. This is possible when the queue processor is something we can instrument. The queue processor is the one to maintain the queues, accept incoming messages, process current message and attempt retries. As such the queue processor can raise multiple events at same time and several events over the lifetime of a message. Events are useful in mapping to delegates that handle them. Delegates receive not only the events but the subject of the events which could be the message and the queue it belongs to. 
+Alerts registered by the user can translate to delegates for the events. This follows an Observer design pattern
+ In the case of windows message queues, logman shows that there are events being generated by the message queues and these can be subscribed to based on the trace provider name or trace provider identifier. Subscribers then get messages in raw format, which can then be evaluated against the rules for the actions to be performed.
+This approach has the benefit that it is real-time in nature.
+
+Approach two: 
+Rules and alerts can be registered as predicates that are evaluated for each message as they are currently being processed. This is a non-invasive method, as it does not rely on anything from the queue processors. Instead it polls the currently executing message if any and triggers actions when it changes. Several workers from a pool are registered to do this task. Each worker operates on a few queues at a time and independent of others. A set of queues picked up by a worker belongs to that worker. Queues may be split between workers apriori or the workers may increase their set by one queue at a time depending on their bandwidth. At no point of time is a queue shared between two workers. Messages read by a worker are evaluated against the rules and assigned labels or executed with follow up actions.
+The restrictions are this is going to be CPU heavy since it polls. There are a thread of workers involved in multi-processing and this could be hard for diagnostics unless all threads perform similar tasks and log their id and their working set. The messages evaluated are restricted to only those being executed instead of those across the length of the queue. The benefit is this is a simpler model and robust. It also scales for performance.
+
+Approach three: 
+A mix of both approaches mentioned where a periodic sweep of all messages across all queues returns a list of candidate messages for each of the rules. For performance reasons, only the delta of different messages need to be considered and not all the messages. This approach returns a list of messages for each queue and the messages for each rule are evaluated as they arrive and when the conditions are satisfied, they are acted upon and discarded from the list.
+
+An alternative data structure for processing the delta of message could involve the use of a Hash table or a dictionary for the lookup of messages as a key value pair. The keys will be the message Ids and the values will be a list of rules where rules are expressions and corresponding actions. An absence of a rule or the failure of a rule evaluation implies no-operation.
+
+
+We have described a problem that can be addressed with a module that can be implemented in more than one ways. Next we can look at the architecture of this model and the programmability components it provides
+
+Architecture: 
+We layer the programmability of the module aka rules over the delegates, which in turn are layered over the events. The layer involving delegates has a one to one mapping with the events and a higher level API for the users to specify rules that translate to delegates. All layers provide supportability in terms of logging or tracing.  The rules, delegates and events stack can be switched to rules, messages and a pipeline in the case of the other approach. Configuration for the module can be specified via a file that the module read.
+
+Conclusion: This approach merely scratches the surface of different options and considerations for a module to enable queue alerts. In depth analysis of one of the approaches will depend on the queues being serviced and the kind of rules and actions to be authored.
+
