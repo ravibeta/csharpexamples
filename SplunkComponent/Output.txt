@@ -1,0 +1,48 @@
+C:\Program Files (x86)\Log Parser 2.2>LogParser.exe "SELECT * FROM MAIN" -i:COM -iProgID:SplunkCompo
+nent.SplunkComponent
+Timestamp Host Source SourceType Raw
+--------- ---- ------ ---------- ---
+-         -    -      -          -
+-         -    -      -          -
+-         -    -      -          -
+-         -    -      -          -
+-         -    -      -          -
+-         -    -      -          -
+-         -    -      -          -
+-         -    -      -          -
+-         -    -      -          -
+-         -    -      -          -
+Press a key...
+Timestamp Host Source SourceType Raw
+--------- ---- ------ ---------- ---
+-         -    -      -          -
+-         -    -      -          -
+-         -    -      -          -
+-         -    -      -          -
+-         -    -      -          -
+-         -    -      -          -
+-         -    -      -          -
+-         -    -      -          -
+-         -    -      -          -
+-         -    -      -          -
+Press a key...
+Timestamp Host Source SourceType Raw
+--------- ---- ------ ---------- ---
+-         -    -      -          -
+-         -    -      -          -
+-         -    -      -          -
+-         -    -      -          -
+-         -    -      -          -
+-         -    -      -          -
+-         -    -      -          -
+-         -    -      -          -
+-         -    -      -          -
+-         -    -      -          -
+Press a key...
+Task aborted by user.
+
+Statistics:
+-----------
+Elements processed: 51
+Elements output:    50
+Execution time:     22.17 seconds
