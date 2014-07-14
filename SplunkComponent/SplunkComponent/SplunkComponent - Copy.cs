@@ -26,14 +26,14 @@ namespace SplunkComponent
 
     [Guid("fb947990-aa8c-4de5-8ff3-32a59fb66a6c")]
     [System.Runtime.InteropServices.ComVisible(true)]
-    public class SplunkComponent // : ILogParserInputContext
+    public class SplunkComponent : ILogParserInputContext
     {
         public SplunkComponent()
         {
             // Load connection info for Splunk server in .splunkrc file.
             var cli = Command.Splunk("search");
             cli.AddRule("search", typeof(string), "search string");
-            cli.Parse(new string[] { "--search=\"index=main\"" });
+            cli.Parse(new string[] {"--search=\"index=main\""});
             if (!cli.Opts.ContainsKey("search"))
             {
                 System.Console.WriteLine("Search query string required, use --search=\"query\"");
@@ -47,7 +47,7 @@ namespace SplunkComponent
             {
                 System.Threading.Thread.Sleep(1000);
             }
-            fields = new List<LogField>();
+
             fields.Add(new LogField("Timestamp", FieldType.Timestamp));
             fields.Add(new LogField("Host", FieldType.String));
             fields.Add(new LogField("Source", FieldType.String));
@@ -87,7 +87,7 @@ namespace SplunkComponent
                     return rr.ReadOuterXml();
                 }
             }
-            return null;
+
         }
 
         private Job job { get; set; }
@@ -134,42 +134,41 @@ namespace SplunkComponent
         #endregion
 
 [System.Runtime.InteropServices.ComVisible(true)]
-public void OpenInput(string from)
+void ILogParserInputContext.OpenInput(string from)
 {
     doc = GetAllResults();
     eventIndex = 0;
 }
 
 [System.Runtime.InteropServices.ComVisible(true)]
-public int GetFieldCount()
+int ILogParserInputContext.GetFieldCount()
 {
     return 5;
 }
 
 [System.Runtime.InteropServices.ComVisible(true)]
-public string GetFieldName(int index)
+string ILogParserInputContext.GetFieldName(int index)
 {
     LogField logfield = (LogField)fields[index];
     return logfield.FieldName;
 }
 
 [System.Runtime.InteropServices.ComVisible(true)]
-public int GetFieldType(int index)
+int ILogParserInputContext.GetFieldType(int index)
 {
     LogField logfield = (LogField)fields[index];
     return (int)logfield.FieldType;
 }
 
 [System.Runtime.InteropServices.ComVisible(true)]
-public bool ReadRecord()
+bool ILogParserInputContext.ReadRecord()
 {
     eventIndex++;
-    if (eventIndex > events.Count) return false;
     return true;
 }
 
 [System.Runtime.InteropServices.ComVisible(true)]
-public object GetValue(int index)
+object ILogParserInputContext.GetValue(int index)
 {
     if (index < 0 || index > events.Count) return null;
     var e = events[index];
@@ -188,7 +187,7 @@ public object GetValue(int index)
 }
 
 [System.Runtime.InteropServices.ComVisible(true)]
-public void CloseInput(bool abort)
+void ILogParserInputContext.CloseInput(bool abort)
 {
     eventIndex = 0;
     events.Clear();
