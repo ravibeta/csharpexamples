@@ -202,7 +202,7 @@ namespace Splunk
         private void InitProperties() 
         {
             this.SimpleReceiverEndPoint = "receivers/simple";
-            this.PasswordEndPoint = "admin/passwords";
+            this.PasswordEndPoint = "admin/changeme";
             this.App = null;
             this.Owner = null;
             this.Password = null;

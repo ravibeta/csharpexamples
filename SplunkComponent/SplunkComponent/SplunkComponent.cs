@@ -1,17 +1,32 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
 using Splunk;
 using SplunkSDKHelper;
-using System.Xml;
 
 namespace SplunkComponent
 {
+    
+    
+    public interface ILogParserInputContext
+    {
+        void OpenInput(string from);
+        int GetFieldCount();
+        string GetFieldName(int index);
+        int GetFieldType(int index);
+        bool ReadRecord();
+        object GetValue(int index);
+        void CloseInput(bool abort);
+    }
 
-    [System.Runtime.InteropServices.ComVisible(false)]
-    public class SplunkComponent
+
+    [Guid("fb947990-aa8c-4de5-8ff3-32a59fb66a6c")]
+    [System.Runtime.InteropServices.ComVisible(true)]
+    public class SplunkComponent : ILogParserInputContext
     {
         public SplunkComponent()
         {
@@ -32,9 +47,16 @@ namespace SplunkComponent
             {
                 System.Threading.Thread.Sleep(1000);
             }
+
+            fields.Add(new LogField("Timestamp", FieldType.Timestamp));
+            fields.Add(new LogField("Host", FieldType.String));
+            fields.Add(new LogField("Source", FieldType.String));
+            fields.Add(new LogField("SourceType", FieldType.String));
+            fields.Add(new LogField("Raw", FieldType.String));
+
         }
 
-        [System.Runtime.InteropServices.ComVisible(false)]
+        [System.Runtime.InteropServices.ComVisible(true)]
         public string GetAllResults()
         {
             var outArgs = new JobResultsArgs
@@ -52,13 +74,123 @@ namespace SplunkComponent
                     ConformanceLevel = ConformanceLevel.Fragment,
                 };
 
+                using (var rr = new ResultsReaderXml(stream))
+                {
+                    foreach (var @event in rr)
+                    {
+                        events.Add(@event);
+                    }
+                }
+
                 using (var rr = XmlReader.Create(stream, setting))
                 {
                     return rr.ReadOuterXml();
                 }
             }
+
         }
 
         private Job job { get; set; }
+        private string doc { get; set; }
+        private List<LogField> fields { get; set; }
+        private List<Event> events { get; set; }
+        private int eventIndex { get; set; }
+        #region LogField Class
+        /// <summary>InputFormat.FieldType Enumeration</summary>
+        private enum FieldType
+        {
+            /// <summary>VT_I8</summary>
+            Integer = 1,
+            /// <summary>VT_R8</summary>
+            Real = 2,
+            /// <summary>VT_BSTR</summary>
+            String = 3,
+            /// <summary>VT_DATE or VT_I8 (UTC)</summary>
+            Timestamp = 4
+        }
+        private class LogField
+        {
+            string fieldName;
+            FieldType fieldType;
+
+            public LogField(string FieldName, FieldType FieldType)
+            {
+                fieldName = FieldName;
+                fieldType = FieldType;
+            }
+
+            public string FieldName
+            {
+                get { return fieldName; }
+                set { fieldName = value; }
+            }
+
+            public FieldType FieldType
+            {
+                get { return fieldType; }
+                set { fieldType = value; }
+            }
+        }
+        #endregion
+
+[System.Runtime.InteropServices.ComVisible(true)]
+void ILogParserInputContext.OpenInput(string from)
+{
+    doc = GetAllResults();
+    eventIndex = 0;
+}
+
+[System.Runtime.InteropServices.ComVisible(true)]
+int ILogParserInputContext.GetFieldCount()
+{
+    return 5;
+}
+
+[System.Runtime.InteropServices.ComVisible(true)]
+string ILogParserInputContext.GetFieldName(int index)
+{
+    LogField logfield = (LogField)fields[index];
+    return logfield.FieldName;
+}
+
+[System.Runtime.InteropServices.ComVisible(true)]
+int ILogParserInputContext.GetFieldType(int index)
+{
+    LogField logfield = (LogField)fields[index];
+    return (int)logfield.FieldType;
+}
+
+[System.Runtime.InteropServices.ComVisible(true)]
+bool ILogParserInputContext.ReadRecord()
+{
+    eventIndex++;
+    return true;
+}
+
+[System.Runtime.InteropServices.ComVisible(true)]
+object ILogParserInputContext.GetValue(int index)
+{
+    if (index < 0 || index > events.Count) return null;
+    var e = events[index];
+    LogField lf = (LogField)fields[index];
+
+    if (String.Compare(lf.FieldName, "Timestamp") == 0 ||
+        String.Compare(lf.FieldName, "Host") == 0 ||
+        String.Compare(lf.FieldName, "Source") == 0 ||
+        String.Compare(lf.FieldName, "SourceType") == 0 ||
+        String.Compare(lf.FieldName, "Raw") == 0)
+    {
+        return e[lf.FieldName.ToLower()].ToString();
     }
+    return null;
+
+}
+
+[System.Runtime.InteropServices.ComVisible(true)]
+void ILogParserInputContext.CloseInput(bool abort)
+{
+    eventIndex = 0;
+    events.Clear();
+}
+}
 }
