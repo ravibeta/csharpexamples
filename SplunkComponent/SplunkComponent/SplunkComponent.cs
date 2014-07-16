@@ -48,11 +48,11 @@ namespace SplunkComponent
                 System.Threading.Thread.Sleep(1000);
             }
             fields = new List<LogField>();
-            fields.Add(new LogField("Timestamp", FieldType.Timestamp));
-            fields.Add(new LogField("Host", FieldType.String));
-            fields.Add(new LogField("Source", FieldType.String));
-            fields.Add(new LogField("SourceType", FieldType.String));
-            fields.Add(new LogField("Raw", FieldType.String));
+            fields.Add(new LogField("_time", FieldType.Timestamp));
+            fields.Add(new LogField("host", FieldType.String));
+            fields.Add(new LogField("source", FieldType.String));
+            fields.Add(new LogField("sourceype", FieldType.String));
+            fields.Add(new LogField("raw", FieldType.String));
 
         }
 
@@ -103,6 +103,7 @@ namespace SplunkComponent
             Integer = 1,
             /// <summary>VT_R8</summary>
             Real = 2,
+            
             /// <summary>VT_BSTR</summary>
             String = 3,
             /// <summary>VT_DATE or VT_I8 (UTC)</summary>
@@ -171,15 +172,15 @@ public bool ReadRecord()
 [System.Runtime.InteropServices.ComVisible(true)]
 public object GetValue(int index)
 {
-    if (index < 0 || index > events.Count) return null;
-    var e = events[index];
+    if (index < 0 || index > fields.Count) return null;
+    var e = events[eventIndex];
     LogField lf = (LogField)fields[index];
 
-    if (String.Compare(lf.FieldName, "Timestamp") == 0 ||
-        String.Compare(lf.FieldName, "Host") == 0 ||
-        String.Compare(lf.FieldName, "Source") == 0 ||
-        String.Compare(lf.FieldName, "SourceType") == 0 ||
-        String.Compare(lf.FieldName, "Raw") == 0)
+    if (String.Compare(lf.FieldName, "_time") == 0 ||
+        String.Compare(lf.FieldName, "host") == 0 ||
+        String.Compare(lf.FieldName, "source") == 0 ||
+        String.Compare(lf.FieldName, "sourcetype") == 0 ||
+        String.Compare(lf.FieldName, "_raw") == 0)
     {
         return e[lf.FieldName.ToLower()].ToString();
     }
