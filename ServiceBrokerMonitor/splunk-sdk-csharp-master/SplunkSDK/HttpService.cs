@@ -371,6 +371,7 @@ namespace Splunk
             {
                 webRequest.Headers.Add(entry.Key, entry.Value);
             }
+            webRequest.Headers.Add("Authorization", "Basic YWRtaW46Y2hhbmdlbWU=");
 
             // Reflection can be expensive, thus cache userAgent value.
             if (userAgent == null)

@@ -117,7 +117,7 @@ namespace Splunk
             this.InitProperties();
             this.App = Args.Get(args, "app", null);
             this.Host = Args.Get(args, "host", defaultHost);
-            this.Owner = Args.Get(args, "owner", null);
+            this.Owner = Args.Get(args, "owner", "admin");
             this.Port = args.ContainsKey("port") 
                 ? Convert.ToInt32(args["port"]) 
                 : defaultPort;
@@ -204,11 +204,11 @@ namespace Splunk
             this.SimpleReceiverEndPoint = "receivers/simple";
             this.PasswordEndPoint = "admin/changeme";
             this.App = null;
-            this.Owner = null;
-            this.Password = null;
-            this.Token = null;
-            this.Username = null;
-            this.Version = null;
+            this.Owner = "admin";
+            this.Password = "changeme";
+            this.Token = "Basic YWRtaW46Y2hhbmdlbWU=";
+            this.Username = "admin";
+            this.Version = "6.0";
         }
 
         /// <summary>
@@ -894,6 +894,15 @@ namespace Splunk
         public override 
             ResponseMessage Send(string path, RequestMessage request) 
         {
+            //this.SimpleReceiverEndPoint = "receivers/simple";
+            //this.PasswordEndPoint = "admin/changeme";
+            //this.App = null;
+            //this.Owner = "admin";
+            //this.Password = "changeme";
+            //this.Token = "Basic YWRtaW46Y2hhbmdlbWU=";
+            //this.Username = "admin";
+            //this.Version = "6.0";
+            //// this.Token = "Basic YWRtaW46Y2hhbmdlbWU=";
             if (this.Token != null) 
             {
                 request.Header.Add("Authorization", this.Token);

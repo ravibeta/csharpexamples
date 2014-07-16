@@ -20,6 +20,7 @@ namespace Splunk.Examples.Search
     using System.Threading;
     using Splunk;
     using SplunkSDKHelper;
+    using SplunkComponent;
 
     /// <summary>
     /// An example program to perform a normal search.
@@ -33,6 +34,9 @@ namespace Splunk.Examples.Search
         public static void Main(string[] argv) 
         {
             // Load connection info for Splunk server in .splunkrc file.
+            var component = new SplunkComponent();
+            component.OpenInput("main");
+            component.CloseInput(false);
             var cli = Command.Splunk("search");
             cli.AddRule("search", typeof(string), "search string");
             cli.Parse(argv);

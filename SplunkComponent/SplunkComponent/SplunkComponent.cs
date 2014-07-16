@@ -33,7 +33,7 @@ namespace SplunkComponent
             // Load connection info for Splunk server in .splunkrc file.
             var cli = Command.Splunk("search");
             cli.AddRule("search", typeof(string), "search string");
-            cli.Parse(new string[] { "--search=\"index=main\"" });
+            cli.Parse(new string[] { "--search=\"index=_internal | head 10\"" });
             if (!cli.Opts.ContainsKey("search"))
             {
                 System.Console.WriteLine("Search query string required, use --search=\"query\"");
