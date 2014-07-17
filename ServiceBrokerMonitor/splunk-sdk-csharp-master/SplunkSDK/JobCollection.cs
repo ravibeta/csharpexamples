@@ -84,7 +84,7 @@ namespace Splunk
                 }
             }
             args = Args.Create(args).Set("search", query);
-            ResponseMessage response = Service.Get(Path, args);
+            ResponseMessage response = Service.Post(Path, args);
             /* assert(response.getStatus() == 201); */
             StreamReader streamReader = new StreamReader(response.Content);
             XmlDocument doc = new XmlDocument();
