@@ -1,0 +1,16 @@
+C:\Program Files (x86)\Log Parser 2.2>LogParser.exe -e 1 "SELECT * FROM MAIN" -i:COM -iProgID:Splunk
+Component.SplunkComponent
+_time                         host        source                                             sourcey
+pe raw
+----------------------------- ----------- -------------------------------------------------- -------
+-- ---
+2014-07-16T23:56:50.381-07:00 RRAJAMANIPC C:\Program Files\Splunk\var\log\splunk\metrics.log -
+   -
+-                             -           -                                                  -
+   -
+
+Statistics:
+-----------
+Elements processed: 2
+Elements output:    2
+Execution time:     3.12 seconds

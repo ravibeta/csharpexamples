@@ -33,7 +33,7 @@ namespace SplunkComponent
             // Load connection info for Splunk server in .splunkrc file.
             var cli = Command.Splunk("search");
             cli.AddRule("search", typeof(string), "search string");
-            cli.Parse(new string[] { "--search=\"search index=_internal | head 1\"" });
+            cli.Parse(new string[] { "--search=\"search index=main\"" });
             if (!cli.Opts.ContainsKey("search"))
             {
                 System.Console.WriteLine("Search query string required, use --search=\"query\"");
@@ -49,7 +49,7 @@ namespace SplunkComponent
             }
             events = new List<Event>();
             fields = new List<LogField>();
-            fields.Add(new LogField("_time", FieldType.Timestamp));
+            fields.Add(new LogField("_time", FieldType.String));
             fields.Add(new LogField("host", FieldType.String));
             fields.Add(new LogField("source", FieldType.String));
             fields.Add(new LogField("sourceype", FieldType.String));
@@ -139,7 +139,7 @@ namespace SplunkComponent
 public void OpenInput(string from)
 {
     doc = GetAllResults();
-    eventIndex = 0;
+    eventIndex = -1;
 }
 
 [System.Runtime.InteropServices.ComVisible(true)]
@@ -174,16 +174,19 @@ public bool ReadRecord()
 public object GetValue(int index)
 {
     if (index < 0 || index > fields.Count) return null;
-    var e = events[eventIndex];
-    LogField lf = (LogField)fields[index];
-
-    if (String.Compare(lf.FieldName, "_time") == 0 ||
-        String.Compare(lf.FieldName, "host") == 0 ||
-        String.Compare(lf.FieldName, "source") == 0 ||
-        String.Compare(lf.FieldName, "sourcetype") == 0 ||
-        String.Compare(lf.FieldName, "_raw") == 0)
+    if (eventIndex < events.Count)
     {
-        return e[lf.FieldName.ToLower()].ToString();
+        var e = events[eventIndex];
+        LogField lf = (LogField)fields[index];
+
+        if (String.Compare(lf.FieldName, "_time") == 0 ||
+            String.Compare(lf.FieldName, "host") == 0 ||
+            String.Compare(lf.FieldName, "source") == 0 ||
+            String.Compare(lf.FieldName, "sourcetype") == 0 ||
+            String.Compare(lf.FieldName, "_raw") == 0)
+        {
+            return e[lf.FieldName.ToLower()].ToString();
+        }
     }
     return null;
 

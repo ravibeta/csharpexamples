@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Xml;
 using Splunk;
 using SplunkSDKHelper;
+using System.IO;
 
 namespace SplunkComponent
 {
@@ -33,7 +34,7 @@ namespace SplunkComponent
             // Load connection info for Splunk server in .splunkrc file.
             var cli = Command.Splunk("search");
             cli.AddRule("search", typeof(string), "search string");
-            cli.Parse(new string[] { "--search=\"search index=main\"" });
+            cli.Parse(new string[] { "--search=\"search index=_internal | head 20 \"" });
             if (!cli.Opts.ContainsKey("search"))
             {
                 System.Console.WriteLine("Search query string required, use --search=\"query\"");
@@ -68,30 +69,27 @@ namespace SplunkComponent
                 Count = 0
             };
 
-            using (var stream = job.Results(outArgs))
+            stream = job.Results(outArgs);
             {
                 var setting = new XmlReaderSettings
                 {
                     ConformanceLevel = ConformanceLevel.Fragment,
                 };
 
-                using (var rr = new ResultsReaderXml(stream))
+                rr = new ResultsReaderXml(stream);
+                if (rr.AdvanceStreamToNextSet())
                 {
-                    foreach (var @event in rr)
-                    {
-                        events.Add(@event);
-                    }
+                    events = rr.GetEventsFromCurrentSet();
+                    eventIndex = 0;
                 }
-
-                using (var rr = XmlReader.Create(stream, setting))
-                {
-                    return rr.ReadOuterXml();
-                }
+                return rr.XmlReader.ReadOuterXml();
             }
             return null;
         }
 
         private Job job { get; set; }
+        private Stream stream { get; set; }
+        private ResultsReaderXml rr { get; set; }
         private string doc { get; set; }
         private List<LogField> fields { get; set; }
         private List<Event> events { get; set; }
@@ -166,7 +164,20 @@ public int GetFieldType(int index)
 public bool ReadRecord()
 {
     eventIndex++;
-    if (eventIndex > events.Count) return false;
+    if (eventIndex > events.Count)
+    {
+        events.Clear();
+        events = rr.GetEventsFromCurrentSet();
+        if (rr.AdvanceStreamToNextSet())
+        {
+            events = rr.GetEventsFromCurrentSet();
+            eventIndex = 0;
+        }
+        else
+        {
+            return false;
+        }
+    }
     return true;
 }
 
@@ -194,6 +205,8 @@ public void CloseInput(bool abort)
 {
     eventIndex = 0;
     events.Clear();
+    rr.Dispose();
+    stream.Dispose();
 }
 }
 }
