@@ -10,5 +10,21 @@ namespace SplunkLite.Net.Unittest
         public void TestProgram()
         {
         }
+
+        [TestMethod]
+        public void TestForwarder()
+        {
+
+        }
+
+        [TestMethod]
+        public void TestIndexer()
+        {
+        }
+
+        [TestMethod]
+        public void TestSearch()
+        {
+        }
     }
 }

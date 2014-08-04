@@ -1,0 +1,4 @@
+C:\Users\Admin\Documents\GitHub\csharpexamples\SplunkLite.Net\SplunkLite.Net.Unittest\bin\Debug\SplunkLite.Net.Unittest.dll
+C:\Users\Admin\Documents\GitHub\csharpexamples\SplunkLite.Net\SplunkLite.Net.Unittest\bin\Debug\SplunkLite.Net.Unittest.pdb
+C:\Users\Admin\Documents\GitHub\csharpexamples\SplunkLite.Net\SplunkLite.Net.Unittest\obj\Debug\SplunkLite.Net.Unittest.dll
+C:\Users\Admin\Documents\GitHub\csharpexamples\SplunkLite.Net\SplunkLite.Net.Unittest\obj\Debug\SplunkLite.Net.Unittest.pdb
