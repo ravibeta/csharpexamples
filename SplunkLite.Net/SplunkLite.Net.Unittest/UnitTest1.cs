@@ -1,4 +1,9 @@
-﻿using System;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace SplunkLite.Net.Unittest
@@ -14,17 +19,33 @@ namespace SplunkLite.Net.Unittest
         [TestMethod]
         public void TestForwarder()
         {
-
+            var input = new FileInputProcessor();
+            var data = input.CreateInputPipelineData();
+            Assert.IsTrue(input.Execute(data), "forwarder failed.");
         }
 
         [TestMethod]
         public void TestIndexer()
         {
+            var db = Directory.EnumerateFiles(Environment.CurrentDirectory).FirstOrDefault(x => x.Contains(DateTime.Now.Day.ToString() + DateTime.Now.Month.ToString() + DateTime.Now.Year.ToString()));
+            Assert.IsTrue(db != null, "indexer could not find db");
         }
 
         [TestMethod]
         public void TestSearch()
         {
+            var db = Directory.EnumerateFiles(Environment.CurrentDirectory).FirstOrDefault(x => x.Contains(DateTime.Now.Day.ToString() + DateTime.Now.Month.ToString() + DateTime.Now.Year.ToString()));
+            if (db == null) return;
+            using (var reader = new StreamReader(db))
+            {
+                var results = new SearchResults();
+                results.Results = new List<SearchResult>();
+                reader.ReadToEnd().Split(new char[] { '\n' }).ToList().ForEach(x => { var result = new SearchResult(); result.Raw = x; results.Results.Add(result); });
+                var info = new SearchResultsInfo();
+                var search = new SearchProcessor();
+                Assert.IsTrue(results.Results.Count > 0, "no results returned.");
+                Assert.IsTrue(search.Execute(results, info), "Search failed.");
+            }    
         }
     }
 }
