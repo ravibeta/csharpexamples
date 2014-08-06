@@ -14,6 +14,7 @@ namespace SplunkLite.Net
             bool ret = false;
             using (var reader = new StreamReader(data.Data))
             {
+                // TODO: change bucket persist  and lookup
                 var bucketId = Guid.NewGuid().ToString() + DateTime.Now.Day.ToString() + DateTime.Now.Month.ToString() + DateTime.Now.Year.ToString();
                 using (var writer = new StreamWriter(bucketId, true, Encoding.UTF8))
                 {
