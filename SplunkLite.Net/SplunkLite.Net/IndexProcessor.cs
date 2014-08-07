@@ -15,6 +15,7 @@ namespace SplunkLite.Net
             using (var reader = new StreamReader(data.Data))
             {
                 // TODO: change bucket persist  and lookup
+                // I'm seeing a push to MongoDB at Splunk, not sure why When such others could do.
                 var bucketId = Guid.NewGuid().ToString() + DateTime.Now.Day.ToString() + DateTime.Now.Month.ToString() + DateTime.Now.Year.ToString();
                 using (var writer = new StreamWriter(bucketId, true, Encoding.UTF8))
                 {
