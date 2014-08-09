@@ -17,7 +17,8 @@ namespace SplunkLite.Net
                 // TODO: change bucket persist  and lookup
                 // I'm seeing a push to MongoDB at Splunk, not sure why When such others could do.
                 // will be truer to Splunk at this time
-                // my priority time inverted series, historical search and JSON output by end of week
+                // my priority time inverted series, historical search and JSON output
+                // bucket support to be added
                 var bucketId = Guid.NewGuid().ToString() + DateTime.Now.Day.ToString() + DateTime.Now.Month.ToString() + DateTime.Now.Year.ToString();
                 using (var writer = new StreamWriter(bucketId, true, Encoding.UTF8))
                 {
