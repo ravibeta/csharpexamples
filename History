@@ -1,0 +1,38 @@
+There are source code projects in both 'master' and 'repository' branches 
+Projects under master:
+BuildBridges 
+	Clusterer 
+	DogOwner 	
+	KLD 	
+	MatsuoKeywordExtractor 	
+	PlanPolicy 	
+	Ravi.Movies 
+	ServiceBrokerMonitor 	
+	SourceIndexServer 	
+	SourceSearch 	
+	SplunkComponent 	
+	SplunkLite.Net 	
+	StarbucksAPIExplorer
+
+Projects under repository:
+  AWSwithWSDL 	
+	Allocator 	
+	BookIndexing 	
+	BreadthWiseTree 	
+	MayITaxi 	
+	NerdRide 	
+	PDC 	
+	PhoneAppTicTacToe 	
+	Reader 	
+	SchedulerCSharp 	
+	StackTraceDatabase 	
+	StackTraceFileWatcherService 	
+	StackTraceIdentificationService 	
+	StackTracePS 	
+	StackTraceService 	
+	StackTraceSniffer 	
+	TicTacToe 	
+	TicTacToeWeb 	
+	WordAddInIndexer 	
+	webAppMVCIndexer3 	
+	windowsphoneapp 	
