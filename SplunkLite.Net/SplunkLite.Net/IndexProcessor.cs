@@ -19,6 +19,7 @@ namespace SplunkLite.Net
                 // will be truer to Splunk at this time
                 // my priority time inverted series, historical search and JSON output
                 // bucket support to be added
+                // bucket moving to be done.
                 var bucketId = Guid.NewGuid().ToString() + DateTime.Now.Day.ToString() + DateTime.Now.Month.ToString() + DateTime.Now.Year.ToString();
                 using (var writer = new StreamWriter(bucketId, true, Encoding.UTF8))
                 {
