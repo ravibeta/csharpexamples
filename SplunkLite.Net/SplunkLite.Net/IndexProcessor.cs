@@ -14,12 +14,7 @@ namespace SplunkLite.Net
             bool ret = false;
             using (var reader = new StreamReader(data.Data))
             {
-                // TODO: change bucket persist  and lookup
-                // I'm seeing a push to MongoDB at Splunk, not sure why When such others could do.
-                // will be truer to Splunk at this time
-                // my priority time inverted series, historical search and JSON output
-                // bucket support to be added
-                // bucket moving to be done.
+                // TODO: all we want to do here is store events in reverse time order.
                 var bucketId = Guid.NewGuid().ToString() + DateTime.Now.Day.ToString() + DateTime.Now.Month.ToString() + DateTime.Now.Year.ToString();
                 using (var writer = new StreamWriter(bucketId, true, Encoding.UTF8))
                 {
