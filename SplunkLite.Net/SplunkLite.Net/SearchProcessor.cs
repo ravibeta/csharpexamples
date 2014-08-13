@@ -8,6 +8,7 @@ namespace SplunkLite.Net
 {
     public class SearchProcessor
     {
+        // TODO: only time inverted index search to be enabled for Lite 
         public bool Execute(SearchResults results, SearchResultsInfo info)
         {
             bool ret = false;
