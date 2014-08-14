@@ -1,0 +1,5 @@
+File List
+
+Input Processor -> for forwarder ( sends events )
+Index Processor -> for database ( time, lexicon and postings )
+Search Processor -> for search  ( returns events )
