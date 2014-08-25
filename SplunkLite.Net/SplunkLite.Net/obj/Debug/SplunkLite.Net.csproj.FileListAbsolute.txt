@@ -1,0 +1,17 @@
+C:\Users\Admin\Documents\GitHub\csharpexamples\SplunkLite.Net\SplunkLite.Net\bin\Debug\SplunkLite.Net.exe.config
+C:\Users\Admin\Documents\GitHub\csharpexamples\SplunkLite.Net\SplunkLite.Net\bin\Debug\SplunkLite.Net.exe
+C:\Users\Admin\Documents\GitHub\csharpexamples\SplunkLite.Net\SplunkLite.Net\bin\Debug\SplunkLite.Net.pdb
+C:\Users\Admin\Documents\GitHub\csharpexamples\SplunkLite.Net\SplunkLite.Net\obj\Debug\SplunkLite.Net.exe
+C:\Users\Admin\Documents\GitHub\csharpexamples\SplunkLite.Net\SplunkLite.Net\obj\Debug\SplunkLite.Net.pdb
+C:\Users\Admin\Documents\GitHub\csharpexamples\SplunkLite.Net\SplunkLite.Net\bin\Debug\EntityFramework.dll
+C:\Users\Admin\Documents\GitHub\csharpexamples\SplunkLite.Net\SplunkLite.Net\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Admin\Documents\GitHub\csharpexamples\SplunkLite.Net\SplunkLite.Net\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Admin\Documents\GitHub\csharpexamples\SplunkLite.Net\SplunkLite.Net\bin\Debug\System.Net.Http.Formatting.dll
+C:\Users\Admin\Documents\GitHub\csharpexamples\SplunkLite.Net\SplunkLite.Net\bin\Debug\System.Web.Http.dll
+C:\Users\Admin\Documents\GitHub\csharpexamples\SplunkLite.Net\SplunkLite.Net\bin\Debug\System.Web.Http.WebHost.dll
+C:\Users\Admin\Documents\GitHub\csharpexamples\SplunkLite.Net\SplunkLite.Net\bin\Debug\EntityFramework.xml
+C:\Users\Admin\Documents\GitHub\csharpexamples\SplunkLite.Net\SplunkLite.Net\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Admin\Documents\GitHub\csharpexamples\SplunkLite.Net\SplunkLite.Net\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Admin\Documents\GitHub\csharpexamples\SplunkLite.Net\SplunkLite.Net\bin\Debug\System.Net.Http.Formatting.xml
+C:\Users\Admin\Documents\GitHub\csharpexamples\SplunkLite.Net\SplunkLite.Net\bin\Debug\System.Web.Http.xml
+C:\Users\Admin\Documents\GitHub\csharpexamples\SplunkLite.Net\SplunkLite.Net\bin\Debug\System.Web.Http.WebHost.xml
