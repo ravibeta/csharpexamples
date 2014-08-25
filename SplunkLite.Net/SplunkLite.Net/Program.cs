@@ -11,6 +11,7 @@ namespace SplunkLite.Net
     {
         static void Main(string[] args)
         {
+            // sample end to end invocation
             var input = new FileInputProcessor();
             var data = input.CreateInputPipelineData();
             if (input.Execute(data))
