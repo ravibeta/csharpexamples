@@ -37,5 +37,16 @@ namespace SplunkLite.Net.Rest.Controllers
             ViewBag.Message = "returns all events";
             return View(entities.Events);
         }
+
+        public ActionResult Input(SplunkLite.Net.Rest.Models.InputItemModel item) 
+        {
+            ViewBag.Message = "adding raw data and extracting fields";
+            if (item != null  && 
+                String.IsNullOrWhiteSpace(item.Raw) == false)
+            {
+                // parse fields and store as xml in DB
+            }
+            return View();
+        }
     }
 }

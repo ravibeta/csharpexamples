@@ -212,6 +212,7 @@
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\Event.cs" />
+    <Compile Include="Models\InputItemModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -344,6 +345,7 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Web.config" />
     <Content Include="Views\Home\Events.cshtml" />
+    <Content Include="Views\Home\Input.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SplunkLite.Net\SplunkLite.Net.csproj">
