@@ -187,7 +187,9 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\HomeController.cs">
+      <ExcludeFromStyleCop>True</ExcludeFromStyleCop>
+    </Compile>
     <Compile Include="Event.cs">
       <DependentUpon>Events.tt</DependentUpon>
     </Compile>
@@ -206,6 +208,21 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Events.edmx</DependentUpon>
     </Compile>
+    <Compile Include="EventsDB.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EventsDB.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EventsDB.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EventsDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EventsDB.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EventsDB.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -217,6 +234,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\Events.sdf" />
+    <Content Include="App_Data\EventsDB.sdf" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
@@ -290,6 +308,23 @@
       <DependentUpon>Events.edmx</DependentUpon>
       <LastGenOutput>Events.cs</LastGenOutput>
     </Content>
+    <EntityDeploy Include="EventsDB.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>EventsDB.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="EventsDB.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>EventsDB.edmx</DependentUpon>
+      <LastGenOutput>EventsDB.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="EventsDB.edmx.diagram">
+      <DependentUpon>EventsDB.edmx</DependentUpon>
+    </Content>
+    <Content Include="EventsDB.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>EventsDB.edmx</DependentUpon>
+      <LastGenOutput>EventsDB.cs</LastGenOutput>
+    </Content>
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />
@@ -346,6 +381,8 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\Home\Events.cshtml" />
     <Content Include="Views\Home\Input.cshtml" />
+    <Content Include="Views\Home\ListEvents.cshtml" />
+    <Content Include="Views\Home\Search.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SplunkLite.Net\SplunkLite.Net.csproj">

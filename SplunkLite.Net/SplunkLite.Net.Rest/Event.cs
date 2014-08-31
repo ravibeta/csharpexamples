@@ -20,5 +20,6 @@ namespace SplunkLite.Net.Rest
         public string Host { get; set; }
         public string Source { get; set; }
         public string SourceType { get; set; }
+        public string FieldMap { get; set; }
     }
 }
