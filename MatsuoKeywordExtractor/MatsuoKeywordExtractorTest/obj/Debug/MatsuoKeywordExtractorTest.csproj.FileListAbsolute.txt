@@ -1,0 +1,8 @@
+C:\Users\Admin\Documents\GitHub\csharpexamples\MatsuoKeywordExtractor\MatsuoKeywordExtractorTest\bin\Debug\MatsuoKeywordExtractorTest.dll
+C:\Users\Admin\Documents\GitHub\csharpexamples\MatsuoKeywordExtractor\MatsuoKeywordExtractorTest\bin\Debug\MatsuoKeywordExtractorTest.pdb
+C:\Users\Admin\Documents\GitHub\csharpexamples\MatsuoKeywordExtractor\MatsuoKeywordExtractorTest\obj\Debug\MatsuoKeywordExtractorTest.csprojResolveAssemblyReference.cache
+C:\Users\Admin\Documents\GitHub\csharpexamples\MatsuoKeywordExtractor\MatsuoKeywordExtractorTest\obj\Debug\MatsuoKeywordExtractorTest.dll
+C:\Users\Admin\Documents\GitHub\csharpexamples\MatsuoKeywordExtractor\MatsuoKeywordExtractorTest\obj\Debug\MatsuoKeywordExtractorTest.pdb
+C:\Users\Admin\Documents\GitHub\csharpexamples\MatsuoKeywordExtractor\MatsuoKeywordExtractorTest\bin\Debug\StopWords.txt
+C:\Users\Admin\Documents\GitHub\csharpexamples\MatsuoKeywordExtractor\MatsuoKeywordExtractorTest\bin\Debug\MatsuoKeywordExtractor.exe
+C:\Users\Admin\Documents\GitHub\csharpexamples\MatsuoKeywordExtractor\MatsuoKeywordExtractorTest\bin\Debug\MatsuoKeywordExtractor.pdb

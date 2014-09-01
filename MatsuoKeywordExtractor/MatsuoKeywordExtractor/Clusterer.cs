@@ -186,7 +186,7 @@ namespace MatsuoKeywordExtractor
             StopWords = stopWords;
             Sentences.ToList().ForEach(x => { if (x.Contains(word)) { var words = x.Split(); nw += words.Count(t => StopWords.Contains(t) == false); } });
             int wordCount = 0;
-            Sentences.ToList().ForEach(x =>  { var words = x.Split(); count += words.Count(t => StopWords.Contains(t) == false);});
+            Sentences.ToList().ForEach(x =>  { var words = x.Split(); wordCount += words.Count(t => StopWords.Contains(t) == false);});
             foreach (var g in FrequentTerms)
             {
                 if (word != g.Key)

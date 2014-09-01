@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using MatsuoKeywordExtractor;
 using System.Collections.Generic;
@@ -42,7 +43,7 @@ namespace MatsuoKeywordExtractorTest
             var chisquare = clusterer.GetChiSquare("abc");
             Assert.IsTrue(chisquare == 0);
             var chisquare1 = clusterer.GetChiSquare("def");
-            Assert.IsTrue(chisquare1 == 6.4d);
+            Assert.IsTrue(chisquare1 == 1.8d);
         }
 
         [TestMethod]
@@ -104,8 +105,8 @@ namespace MatsuoKeywordExtractorTest
             clusterer.Initialize(dict, sentences);
             clusterer.Classify();
             Assert.IsTrue(clusterer.Clusters.Count == 2);
-            Assert.IsTrue(clusterer.Clusters.Any(x => x.Members.Count == 2));
-            Assert.IsTrue(clusterer.Clusters.Any(x => x.Members.Count == 1));
+            Assert.IsTrue(clusterer.Clusters.First(x => x.Members.Count == 2) != null);
+            Assert.IsTrue(clusterer.Clusters.First(x => x.Members.Count == 1) != null);
         }
 
         [TestMethod]

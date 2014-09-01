@@ -1,0 +1,8 @@
+c:\users\admin\documents\visual studio 2012\Projects\MatsuoKeywordExtractor\MatsuoKeywordExtractor\bin\Debug\MatsuoKeywordExtractor.exe.config
+C:\Users\Admin\Documents\GitHub\csharpexamples\MatsuoKeywordExtractor\MatsuoKeywordExtractor\bin\Debug\MatsuoKeywordExtractor.exe.config
+C:\Users\Admin\Documents\GitHub\csharpexamples\MatsuoKeywordExtractor\MatsuoKeywordExtractor\bin\Debug\StopWords.txt
+C:\Users\Admin\Documents\GitHub\csharpexamples\MatsuoKeywordExtractor\MatsuoKeywordExtractor\bin\Debug\MatsuoKeywordExtractor.exe
+C:\Users\Admin\Documents\GitHub\csharpexamples\MatsuoKeywordExtractor\MatsuoKeywordExtractor\bin\Debug\MatsuoKeywordExtractor.pdb
+C:\Users\Admin\Documents\GitHub\csharpexamples\MatsuoKeywordExtractor\MatsuoKeywordExtractor\obj\Debug\MatsuoKeywordExtractor.exe
+C:\Users\Admin\Documents\GitHub\csharpexamples\MatsuoKeywordExtractor\MatsuoKeywordExtractor\obj\Debug\MatsuoKeywordExtractor.pdb
+C:\Users\Admin\Documents\GitHub\csharpexamples\MatsuoKeywordExtractor\MatsuoKeywordExtractor\obj\Debug\MatsuoKeywordExtractor.csprojResolveAssemblyReference.cache
