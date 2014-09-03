@@ -1,0 +1,6 @@
+C:\Users\Admin\Documents\GitHub\csharpexamples\PowerMethod\PowerMethod\bin\Debug\PowerMethod.exe.config
+C:\Users\Admin\Documents\GitHub\csharpexamples\PowerMethod\PowerMethod\bin\Debug\PowerMethod.exe
+C:\Users\Admin\Documents\GitHub\csharpexamples\PowerMethod\PowerMethod\bin\Debug\PowerMethod.pdb
+C:\Users\Admin\Documents\GitHub\csharpexamples\PowerMethod\PowerMethod\obj\Debug\PowerMethod.csprojResolveAssemblyReference.cache
+C:\Users\Admin\Documents\GitHub\csharpexamples\PowerMethod\PowerMethod\obj\Debug\PowerMethod.exe
+C:\Users\Admin\Documents\GitHub\csharpexamples\PowerMethod\PowerMethod\obj\Debug\PowerMethod.pdb
