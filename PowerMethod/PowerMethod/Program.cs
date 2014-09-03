@@ -18,18 +18,18 @@ namespace PowerMethod
             for (int i = 0; i < 10; i++)
             {
                 
-                b= GetEigenVectorCentrality(adjacency, n, b, 0.1d).ToList();
+                b = GetEigenVectorCentrality(adjacency, n, b, 0.1d).ToList();
             }
 
             b.ForEach(x => Console.Write(" {0} ", x));
         }
 
-        private static IEnumerable<double> GetEigenVectorCentrality(double[,] adjacency, int N, List<double> b, double tolerance)
+        private static List<double> GetEigenVectorCentrality(double[,] adjacency, int N, List<double> b, double tolerance)
         {
             double dd = 1.0d;
             double n = 10d;
 
-            // while (dd > tolerance) 
+            while (dd > tolerance) 
             {
                 List<double> tmp = new List<double>(new double[N]);
 
@@ -44,15 +44,15 @@ namespace PowerMethod
                 }
 
                 dd = Math.Abs(getNorm(b, N) - n);
-                var normalized = getNorm(b, N);
+                n = getNorm(b, N);
 
 
                 for (int i = 0; i < N; i++)
                 {
-                    b[i] = tmp[i] / normalized;
-                    yield return b[i];
+                    b[i] = tmp[i] / n;
                 }
             }
+            return b;
         }
 
         private static double getNorm(List<double> tmp, int N)
