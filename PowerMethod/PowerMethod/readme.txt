@@ -1,5 +1,5 @@
 This is how Google's page rank is supposed to work.
-To apply this to keyword extraction, looking into WordNet C# for semantic relationship.
+To apply this to keyword extraction, we could use WordNet C# for semantic relationship.
 
 SemanticSimilarity semsim=new SemanticSimilarity() ;
     float score=semsim.GetScore(word1, word2);
