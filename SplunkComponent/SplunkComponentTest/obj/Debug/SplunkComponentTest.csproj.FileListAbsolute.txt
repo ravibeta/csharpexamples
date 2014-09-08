@@ -1,0 +1,14 @@
+C:\Users\Admin\Documents\GitHub\csharpexamples\SplunkComponent\SplunkComponentTest\obj\Debug\SplunkComponentTest.csprojResolveAssemblyReference.cache
+C:\Users\Admin\Documents\GitHub\csharpexamples\SplunkComponent\SplunkComponentTest\bin\Debug\SplunkComponentTest.dll
+C:\Users\Admin\Documents\GitHub\csharpexamples\SplunkComponent\SplunkComponentTest\bin\Debug\SplunkComponentTest.pdb
+C:\Users\Admin\Documents\GitHub\csharpexamples\SplunkComponent\SplunkComponentTest\bin\Debug\SplunkComponent.dll
+C:\Users\Admin\Documents\GitHub\csharpexamples\SplunkComponent\SplunkComponentTest\bin\Debug\SplunkSDK.dll
+C:\Users\Admin\Documents\GitHub\csharpexamples\SplunkComponent\SplunkComponentTest\bin\Debug\SplunkSDKHelper.dll
+C:\Users\Admin\Documents\GitHub\csharpexamples\SplunkComponent\SplunkComponentTest\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Admin\Documents\GitHub\csharpexamples\SplunkComponent\SplunkComponentTest\bin\Debug\dotnetcli-0.1.1.dll
+C:\Users\Admin\Documents\GitHub\csharpexamples\SplunkComponent\SplunkComponentTest\bin\Debug\SplunkComponent.pdb
+C:\Users\Admin\Documents\GitHub\csharpexamples\SplunkComponent\SplunkComponentTest\bin\Debug\SplunkSDK.pdb
+C:\Users\Admin\Documents\GitHub\csharpexamples\SplunkComponent\SplunkComponentTest\bin\Debug\SplunkSDK.xml
+C:\Users\Admin\Documents\GitHub\csharpexamples\SplunkComponent\SplunkComponentTest\bin\Debug\SplunkSDKHelper.pdb
+C:\Users\Admin\Documents\GitHub\csharpexamples\SplunkComponent\SplunkComponentTest\obj\Debug\SplunkComponentTest.dll
+C:\Users\Admin\Documents\GitHub\csharpexamples\SplunkComponent\SplunkComponentTest\obj\Debug\SplunkComponentTest.pdb
