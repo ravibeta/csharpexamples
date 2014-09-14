@@ -1,0 +1,6 @@
+C:\Users\Admin\Documents\GitHub\csharpexamples\TimeSeries\TimeSeries\bin\Debug\TimeSeries.exe.config
+C:\Users\Admin\Documents\GitHub\csharpexamples\TimeSeries\TimeSeries\obj\Debug\TimeSeries.csprojResolveAssemblyReference.cache
+C:\Users\Admin\Documents\GitHub\csharpexamples\TimeSeries\TimeSeries\bin\Debug\TimeSeries.exe
+C:\Users\Admin\Documents\GitHub\csharpexamples\TimeSeries\TimeSeries\bin\Debug\TimeSeries.pdb
+C:\Users\Admin\Documents\GitHub\csharpexamples\TimeSeries\TimeSeries\obj\Debug\TimeSeries.exe
+C:\Users\Admin\Documents\GitHub\csharpexamples\TimeSeries\TimeSeries\obj\Debug\TimeSeries.pdb
