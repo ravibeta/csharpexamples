@@ -8,19 +8,32 @@ namespace TimeSeries
 {
     public class TimeSeries<T>
     {
+        private int PLength { get; set; }
         public List<List<T>> GetWindowingTransformations(List<T> timeSeriesData, int p) // for p-length transformations
         {
+            PLength = p;
             return null;
         }
 
         public List<Double> GetRandomVariablePlotCentered(List<T> timeSeriesData)
         {
-            if (timeSeriesData == null || timeSeriesData.Count == 0) throw new InvalidOperationException();
+            List<List<T>> transformedData = GetWindowingTransformations(timeSeriesData, PLength);
+            if (transformedData == null || transformedData.Count == 0) throw new InvalidOperationException();
             Func<T, decimal?> converter = c => Convert.ToDecimal(c);
-            decimal? mean = timeSeriesData.Average<T>(converter);
-            var diff = timeSeriesData.Select(x => Math.Pow((double) (Convert.ToDecimal(x) - mean),  2));
-            double sd = Math.Sqrt(diff.Sum() / diff.Count());
-            return timeSeriesData.Select(x => (Convert.ToDouble(x) - Convert.ToDouble(mean.Value)) / sd).ToList();
+            List<Double> ret = new List<Double>();
+            foreach (var xi in transformedData)
+            {
+                decimal? mean = xi.Average<T>(converter);
+                decimal? min = xi.Min<T>(converter);
+                decimal? max = xi.Max<T>(converter);
+                var diff = xi.Select(x => Math.Pow((double)(Convert.ToDecimal(x) - mean), 2));
+                double sd = Math.Sqrt(diff.Sum() / diff.Count());
+                double zmin = (double)(mean - min) / sd;
+                double zmax = (double)(max - mean)/ sd;
+                // var centeredAndStandardized = xi.Select(x => (Convert.ToDouble(x) - Convert.ToDouble(mean.Value)) / sd).ToList();
+                ret.Add((zmin + zmax)/2);
+            }
+            return ret;
         }
 
         public Dictionary<double, double> GetRegression(List<T> rv)
