@@ -1,11 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿//-----------------------------------------------------------------------
+// <copyright file="TimeSeries.cs" company="RaviRajamani">
+//     Copyright (c) Ravi Rajamani. All rights reserved.
+// </copyright>
+// <author>Ravi Rajamani</author>
+//-----------------------------------------------------------------------
 
 namespace TimeSeries
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+
     public class TimeSeries<T>
     {
         private int PLength { get; set; }
