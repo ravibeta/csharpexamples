@@ -1,4 +1,10 @@
-﻿using System.Reflection;
+﻿//-----------------------------------------------------------------------
+// <copyright file="AssemblyInfo.cs" company="RaviRajamani">
+//     Copyright (c) Ravi Rajamani. All rights reserved.
+// </copyright>
+// <author>Ravi Rajamani</author>
+//-----------------------------------------------------------------------
+using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
