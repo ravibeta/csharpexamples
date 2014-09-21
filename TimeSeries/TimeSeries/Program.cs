@@ -17,8 +17,9 @@ namespace TimeSeries
     public class Program
     {
         /// <summary>
-        /// Implementing TimeSeries Method as described in http://1drv.ms/1ozKWTw
+        /// Implementing TimeSeries Method as described in <![CDATA[http://1drv.ms/1ozKWTw]]>"
         /// </summary>
+        /// <param name="args">Arguments for the program</param>
         public static void Main(string[] args)
         {
         }        
