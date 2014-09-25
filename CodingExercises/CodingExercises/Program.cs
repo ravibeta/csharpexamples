@@ -126,6 +126,56 @@ namespace CodingExercises
         }
 
         /// <summary>
+        /// Gets the distance along a path
+        /// </summary>
+        /// <param name="graph">adjacency matrix of graph</param>
+        /// <param name="numVertex">number of vertices in graph</param>
+        /// <param name="pathList">list of paths</param>
+        /// <param name="distanceList">list of distances</param>
+        public static void GetAllShortestPaths(int[,] graph, int numVertex, ref List<List<int>> pathList, ref List<List<int>> distanceList)
+        {
+            for( int i = 0; i < numVertex; i++)
+            {
+                //// initialize
+                var parents = new List<int>();
+                var distances = new List<int>();
+                for (int k = 0; k < numVertex; k++)
+                {
+                    parents.Add(0);
+                    distances.Add(0);
+                }
+
+                //// add shortest path for this source
+                if (GetShortestPath(graph, numVertex, i, ref distances, ref parents))
+                {
+                    pathList.Add(parents);
+                    distanceList.Add(distances);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Gets the distance along a path
+        /// </summary>
+        /// <param name="graph">adjacency matrix of graph</param>
+        /// <param name="numVertex">number of vertices in graph</param>
+        /// <param name="nodes">path represented by the list of vertices</param>
+        /// <returns>distance</returns>
+        public static int GetDistance(int[,] graph, int numVertex, List<int> nodes)
+        {
+            int distance = 0;
+            for (int i = 1; i < nodes.Count; i++)
+            {
+                if (nodes[i - 1] < numVertex && nodes[i] < numVertex)
+                {
+                    if (graph[nodes[i - 1], nodes[i]] == 0) return -1; 
+                    distance += graph[nodes[i - 1], nodes[i]];
+                }
+            }
+            return distance;
+        }
+
+        /// <summary>
         /// label for vertex
         /// </summary>
         /// <param name="i">vertex i</param>
@@ -140,6 +190,25 @@ namespace CodingExercises
                 case 3: return "D";
                 case 4: return "E";
                 case 5: return "F";
+                default: throw new ArgumentOutOfRangeException();
+            }
+        }
+
+        /// <summary>
+        /// internal representation for vertex
+        /// </summary>
+        /// <param name="c">vertex label c</param>
+        /// <returns>vertex as integer</returns>
+        public static int ToInt(char c)
+        {
+            switch (c)
+            {
+                case 'A': return 0;
+                case 'B': return 1;
+                case 'C': return 2;
+                case 'D': return 3;
+                case 'E': return 4;
+                case 'F': return 5;
                 default: throw new ArgumentOutOfRangeException();
             }
         }

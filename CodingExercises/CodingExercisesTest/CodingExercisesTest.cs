@@ -106,5 +106,25 @@ namespace CodingExercisesTest
             Assert.IsTrue(distances[2] == 7);
             Assert.IsTrue(distances[3] == 15);
         }
+
+        [TestMethod]
+        public void TestGetDistance()
+        {
+            Assert.IsTrue(Program.GetDistance(this.graph, NUMVERTICES, new List<int>() { 0, 1, 2 }) == 9);
+            Assert.IsTrue(Program.GetDistance(this.graph, NUMVERTICES, new List<int>() { 0, 3 }) == 5);
+            Assert.IsTrue(Program.GetDistance(this.graph, NUMVERTICES, new List<int>() { 0, 3, 2 }) == 13);
+            Assert.IsTrue(Program.GetDistance(this.graph, NUMVERTICES, new List<int>() { 0, 4, 1, 2, 3 }) == 22);
+            Assert.IsTrue(Program.GetDistance(this.graph, NUMVERTICES, new List<int>() { 0, 4, 3 }) == -1); 
+        }
+
+        [TestMethod]
+        public void TestGetAllShortestPaths()
+        {
+           var distanceList = new List<List<int>>();
+           var pathList = new List<List<int>>();
+           Program.GetAllShortestPaths(this.graph, NUMVERTICES, ref pathList, ref distanceList);
+           Assert.IsTrue(pathList.Count == 1);
+           Assert.IsTrue(distanceList.Count == 1);
+        }
     }
 }
