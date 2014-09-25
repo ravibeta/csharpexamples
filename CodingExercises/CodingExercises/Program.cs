@@ -154,6 +154,45 @@ namespace CodingExercises
             }
         }
 
+        /// <summary>
+        /// Gets the outbound edges for a vertex
+        /// </summary>
+        /// <param name="graph">adjacency matrix of graph</param>
+        /// <param name="numVertex">number of vertices in graph</param>
+        /// <param name="pathList">list of paths between source and destination</param>
+        /// <param name="distanceList">list of paths between </param>
+        public static void GetAllPaths(int[,] graph, int numVertex, int source, int destination, ref List<int> candidatePath, ref List<int> candidateDist, ref List<List<int>> pathList, ref List<List<int>> distanceList)
+        {
+            if (candidatePath.Count > 5) return;
+            if (candidatePath != null && candidatePath.Count > 0 && candidatePath.Last() == destination) return;
+
+            var path = new List<int>();
+            var distances = new List<int>();
+            GetOutboundEdges(graph, numVertex, source, ref path, ref distances);
+            if (path.Contains(destination))
+            {
+                candidatePath.Add(destination);
+                candidateDist.Add(distances[path.IndexOf(destination)]);
+                if (pathList.Contains(candidatePath) == false)
+                    pathList.Add(new List<int>(candidatePath));
+                if (distanceList.Contains(candidateDist) == false)
+                    distanceList.Add(new List<int>(candidateDist));
+                candidatePath.RemoveAt(candidatePath.Count - 1);
+                candidateDist.RemoveAt(candidateDist.Count - 1);
+            }
+
+            for (int i = 1; i < path.Count; i++)
+            {
+                if (i != source)
+                {
+                    candidatePath.Add(path[i]);
+                    candidateDist.Add(distances[i]);
+                    GetAllPaths(graph, numVertex, path[i], destination, ref candidatePath, ref candidateDist, ref pathList, ref distanceList);
+                    candidatePath.RemoveAt(candidatePath.Count - 1);
+                    candidateDist.RemoveAt(candidateDist.Count - 1);
+                }
+            }
+        }
 
         /// <summary>
         /// Gets the outbound edges for a vertex

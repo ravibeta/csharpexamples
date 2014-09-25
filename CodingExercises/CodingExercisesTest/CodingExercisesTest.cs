@@ -143,5 +143,28 @@ namespace CodingExercisesTest
             Assert.IsTrue(parents.Last() == 4);
                
         }
+
+        [TestMethod]
+        public void TestGetAllPaths()
+        {
+            var distances = new List<int>();
+            var path = new List<int>();
+            var distanceList = new List<List<int>>();
+            var pathList = new List<List<int>>();
+            Program.GetAllPaths(this.graph, NUMVERTICES, 2, 4, ref path, ref distances, ref pathList, ref distanceList);
+            Assert.IsTrue(pathList.Count == 6);
+            Assert.IsTrue(distanceList.Count == 6);
+            Assert.IsTrue(path.Count == 0);
+            Assert.IsTrue(pathList.ElementAt(0).ElementAt(0) == 4);
+            Assert.IsTrue(pathList.ElementAt(1).ElementAt(0) == 3);
+            Assert.IsTrue(pathList.ElementAt(1).ElementAt(1) == 4);
+            Assert.IsTrue(pathList.ElementAt(2).ElementAt(0) == 3);
+            Assert.IsTrue(pathList.ElementAt(2).ElementAt(1) == 2);
+            Assert.IsTrue(pathList.ElementAt(2).ElementAt(2) == 4);
+            Assert.IsTrue(distances.Count == 0);
+            Assert.IsTrue(distanceList.ElementAt(0).ElementAt(0) == 2);
+            Assert.IsTrue(distanceList.ElementAt(1).ElementAt(0) == 8);
+            Assert.IsTrue(distanceList.ElementAt(1).ElementAt(1) == 6);
+        }
     }
 }
