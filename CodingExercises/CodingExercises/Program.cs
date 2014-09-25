@@ -154,6 +154,32 @@ namespace CodingExercises
             }
         }
 
+
+        /// <summary>
+        /// Gets the outbound edges for a vertex
+        /// </summary>
+        /// <param name="graph">adjacency matrix of graph</param>
+        /// <param name="numVertex">number of vertices in graph</param>
+        /// <param name="parents">list of destinations for outbound edges from source</param>
+        /// <param name="distances">list of edge weights</param>
+        public static void GetOutboundEdges(int[,] graph, int numVertex, int source, ref List<int> parents, ref List<int> distances)
+        {
+            var allEdges = GetAllEdges(graph, numVertex);
+
+            //// initialize
+            parents.Add(source);
+            distances.Add(0);
+
+            for (int i = 0; i < allEdges.Count; i++)
+            {
+                if (allEdges[i].Item1 == source)
+                {
+                    parents.Add(allEdges[i].Item2);
+                    distances.Add(allEdges[i].Item3);
+                }
+            }
+        }
+
         /// <summary>
         /// Gets the distance along a path
         /// </summary>

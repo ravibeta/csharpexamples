@@ -126,5 +126,22 @@ namespace CodingExercisesTest
            Assert.IsTrue(pathList.Count == 1);
            Assert.IsTrue(distanceList.Count == 1);
         }
+
+        [TestMethod]
+        public void TestGetOutboundEdges()
+        {
+            var distances = new List<int>();
+            var parents = new List<int>();
+            Program.GetOutboundEdges(this.graph, NUMVERTICES, 2, ref parents, ref distances);
+            Assert.IsTrue(distances.Count == 3);
+            Assert.IsTrue(distances.First() == 0);
+            Assert.IsTrue(distances.ElementAt(1) == 8);
+            Assert.IsTrue(distances.Last() == 2);
+            Assert.IsTrue(parents.Count == 3);
+            Assert.IsTrue(parents.First() == 2);
+            Assert.IsTrue(parents.ElementAt(1) == 3);
+            Assert.IsTrue(parents.Last() == 4);
+               
+        }
     }
 }
