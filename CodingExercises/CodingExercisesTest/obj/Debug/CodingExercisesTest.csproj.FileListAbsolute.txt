@@ -1,0 +1,7 @@
+C:\Users\Admin\Documents\GitHub\csharpexamples\CodingExercises\CodingExercisesTest\obj\Debug\CodingExercisesTest.csprojResolveAssemblyReference.cache
+C:\Users\Admin\Documents\GitHub\csharpexamples\CodingExercises\CodingExercisesTest\bin\Debug\CodingExercisesTest.dll
+C:\Users\Admin\Documents\GitHub\csharpexamples\CodingExercises\CodingExercisesTest\bin\Debug\CodingExercisesTest.pdb
+C:\Users\Admin\Documents\GitHub\csharpexamples\CodingExercises\CodingExercisesTest\bin\Debug\CodingExercises.exe
+C:\Users\Admin\Documents\GitHub\csharpexamples\CodingExercises\CodingExercisesTest\bin\Debug\CodingExercises.pdb
+C:\Users\Admin\Documents\GitHub\csharpexamples\CodingExercises\CodingExercisesTest\obj\Debug\CodingExercisesTest.dll
+C:\Users\Admin\Documents\GitHub\csharpexamples\CodingExercises\CodingExercisesTest\obj\Debug\CodingExercisesTest.pdb
