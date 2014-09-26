@@ -60,11 +60,11 @@ namespace CodingExercises
 
             Console.WriteLine("Number of trips from 'C' to 'C' is {0}", pathList.Count - 1);
 
-
-            pathList = new List<List<int>>();
-            distanceList = new List<List<int>>();
-            GetAllPaths(graph, NUMVERTICES, ToInt('A'), ToInt('C'), ref candidatePath, ref candidateDist, ref pathList, ref distanceList);
-            Console.WriteLine("Number of trips from 'A' to 'C' with four stops is {0}", pathList.Where(x => x.Count == 4).Count());
+// TODO: add start != destination along with  last () == destination in  recursion termination 
+            // pathList = new List<List<int>>();
+            //distanceList = new List<List<int>>();
+            //GetAllPaths(graph, NUMVERTICES, ToInt('A'), ToInt('C'), ref candidatePath, ref candidateDist, ref pathList, ref distanceList);
+            //Console.WriteLine("Number of trips from 'A' to 'C' with four stops is {0}", pathList.Where(x => x.Count == 4).Count());
 
             var path = new List<int>() { 0, 0, 0, 0, 0 };
             var parent = new List<int>() { 0, 0, 0, 0, 0 };
