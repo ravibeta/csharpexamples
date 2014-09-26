@@ -57,14 +57,14 @@ namespace CodingExercises
             var pathList = new List<List<int>>();
             var distanceList = new List<List<int>>();
             GetAllPaths(graph, NUMVERTICES, ToInt('C'), ToInt('C'), ref candidatePath, ref candidateDist, ref pathList, ref distanceList);
-
+            for (int i = 0; i < pathList.Count; i++) Console.WriteLine(GetPath(pathList[i]));
             Console.WriteLine("Number of trips from 'C' to 'C' is {0}", pathList.Count - 1);
 
-// TODO: add start != destination along with  last () == destination in  recursion termination 
-            // pathList = new List<List<int>>();
-            //distanceList = new List<List<int>>();
-            //GetAllPaths(graph, NUMVERTICES, ToInt('A'), ToInt('C'), ref candidatePath, ref candidateDist, ref pathList, ref distanceList);
-            //Console.WriteLine("Number of trips from 'A' to 'C' with four stops is {0}", pathList.Where(x => x.Count == 4).Count());
+            pathList = new List<List<int>>();
+            distanceList = new List<List<int>>();
+            GetAllPaths(graph, NUMVERTICES, ToInt('A'), ToInt('C'), ref candidatePath, ref candidateDist, ref pathList, ref distanceList);
+            for (int i = 0; i < pathList.Count; i++) Console.WriteLine(GetPath(pathList[i]));
+            Console.WriteLine("Number of trips from 'A' to 'C' with four stops is {0}", pathList.Where(x => x.Count == 4).Count());
 
             var path = new List<int>() { 0, 0, 0, 0, 0 };
             var parent = new List<int>() { 0, 0, 0, 0, 0 };
@@ -201,12 +201,11 @@ namespace CodingExercises
         public static void GetAllPaths(int[,] graph, int numVertex, int source, int destination, ref List<int> candidatePath, ref List<int> candidateDist, ref List<List<int>> pathList, ref List<List<int>> distanceList)
         {
             if (candidatePath.Count > 5) return;
-            if (candidatePath != null && candidatePath.Count > 0 && candidatePath.Last() == destination) return;
-
+           
             var path = new List<int>();
             var distances = new List<int>();
             GetOutboundEdges(graph, numVertex, source, ref path, ref distances);
-            if (path.Contains(destination))
+            if (path.Contains(destination) && (candidatePath.Count == 0 || (candidatePath.Count > 0 && candidatePath.Last() != destination)))
             {
                 candidatePath.Add(destination);
                 candidateDist.Add(distances[path.IndexOf(destination)]);
@@ -220,7 +219,7 @@ namespace CodingExercises
 
             for (int i = 1; i < path.Count; i++)
             {
-                if (i != source)
+                // if (i != source)
                 {
                     candidatePath.Add(path[i]);
                     candidateDist.Add(distances[i]);
@@ -313,6 +312,15 @@ namespace CodingExercises
                 case 'F': return 5;
                 default: throw new ArgumentOutOfRangeException();
             }
+        }
+
+        public static string GetPath(List<int> path)
+        {
+            Converter<int, string> converter = x => ToString(x);
+            var output = path.ConvertAll<string>(converter);
+            string ret = string.Empty;
+            output.ForEach(x => ret += x);
+            return ret;
         }
     }
 }
