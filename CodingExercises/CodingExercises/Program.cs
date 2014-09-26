@@ -60,6 +60,17 @@ namespace CodingExercises
 
             Console.WriteLine("Number of trips from 'C' to 'C' is {0}", pathList.Count - 1);
 
+
+            pathList = new List<List<int>>();
+            distanceList = new List<List<int>>();
+            GetAllPaths(graph, NUMVERTICES, ToInt('A'), ToInt('C'), ref candidatePath, ref candidateDist, ref pathList, ref distanceList);
+            Console.WriteLine("Number of trips from 'A' to 'C' with four stops is {0}", pathList.Where(x => x.Count == 5).Count());
+
+            var path = new List<int>() { 0, 0, 0, 0, 0 };
+            var parent = new List<int>() { 0, 0, 0, 0, 0 };
+            GetShortestPath(graph, NUMVERTICES, ToInt('A'), ref path, ref parent);
+            Console.WriteLine("Shortest path from 'A' to 'C' is {0}", path[ToInt('C')]);
+
         }
 
         /// <summary>
