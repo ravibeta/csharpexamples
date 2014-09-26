@@ -23,7 +23,8 @@ namespace CodingExercises
         /// </summary>
         public static void Main()
         {
-            int[,] graph = new int[5, 5];
+            const int NUMVERTICES = 5;
+            int[,] graph = new int[NUMVERTICES, NUMVERTICES];
             //// A = 0, B = 1, C = 2, D = 3, E = 4
             graph[0, 1] = 5;
             graph[1, 2] = 4;
@@ -34,6 +35,31 @@ namespace CodingExercises
             graph[2, 4] = 2;
             graph[4, 1] = 3;
             graph[0, 4] = 7;
+
+            Func<string, List<int>> converter = x =>
+            {
+                var ret = new List<int>();
+                x.ToCharArray().ToList().ForEach(c => ret.Add(ToInt(c)));
+                return ret;
+            };
+            List<string> routes = new List<string> {"ABC", "AD", "AEBCD", "AED"};
+            routes.ForEach( x => 
+                {
+                    var distance = GetDistance(graph, NUMVERTICES, converter(x));
+                    if (distance == -1)
+                        Console.WriteLine("Distance of the route {0}  = NO SUCH ROUTE", x);
+                    else
+                        Console.WriteLine("Distance of the route {0} = {1}", x, distance);
+                });
+            
+            var candidatePath = new List<int>();
+            var candidateDist = new List<int>();
+            var pathList = new List<List<int>>();
+            var distanceList = new List<List<int>>();
+            GetAllPaths(graph, NUMVERTICES, ToInt('C'), ToInt('C'), ref candidatePath, ref candidateDist, ref pathList, ref distanceList);
+
+            Console.WriteLine("Number of trips from 'C' to 'C' is {0}", pathList.Count - 1);
+
         }
 
         /// <summary>
@@ -155,7 +181,7 @@ namespace CodingExercises
         }
 
         /// <summary>
-        /// Gets the outbound edges for a vertex
+        /// Gets all the paths for a vertex
         /// </summary>
         /// <param name="graph">adjacency matrix of graph</param>
         /// <param name="numVertex">number of vertices in graph</param>
