@@ -151,7 +151,7 @@ namespace CodingExercisesTest
             var path = new List<int>();
             var distanceList = new List<List<int>>();
             var pathList = new List<List<int>>();
-            Program.GetAllPaths(this.graph, NUMVERTICES, 2, 4, ref path, ref distances, ref pathList, ref distanceList);
+            Program.GetAllPaths(this.graph, NUMVERTICES, 2, 4, 5, ref path, ref distances, ref pathList, ref distanceList);
             Assert.IsTrue(pathList.Count == 12);
             Assert.IsTrue(distanceList.Count == 12);
             Assert.IsTrue(path.Count == 0);

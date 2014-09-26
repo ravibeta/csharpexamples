@@ -56,20 +56,37 @@ namespace CodingExercises
             var candidateDist = new List<int>();
             var pathList = new List<List<int>>();
             var distanceList = new List<List<int>>();
-            GetAllPaths(graph, NUMVERTICES, ToInt('C'), ToInt('C'), ref candidatePath, ref candidateDist, ref pathList, ref distanceList);
+            candidatePath.Add(ToInt('C'));
+            candidateDist.Add(0);
+            GetAllPaths(graph, NUMVERTICES, ToInt('C'), ToInt('C'), 5, ref candidatePath, ref candidateDist, ref pathList, ref distanceList);
             for (int i = 0; i < pathList.Count; i++) Console.WriteLine(GetPath(pathList[i]));
-            Console.WriteLine("Number of trips from 'C' to 'C' is {0}", pathList.Count - 1);
+            Console.WriteLine("Number of trips from 'C' to 'C' is {0}", pathList.Where(x => x.Count <= 4).Count());
 
+            candidatePath = new List<int>();
+            candidateDist = new List<int>();
+            candidatePath.Add(ToInt('A'));
+            candidateDist.Add(0);
             pathList = new List<List<int>>();
             distanceList = new List<List<int>>();
-            GetAllPaths(graph, NUMVERTICES, ToInt('A'), ToInt('C'), ref candidatePath, ref candidateDist, ref pathList, ref distanceList);
+            GetAllPaths(graph, NUMVERTICES, ToInt('A'), ToInt('C'), 5, ref candidatePath, ref candidateDist, ref pathList, ref distanceList);
             for (int i = 0; i < pathList.Count; i++) Console.WriteLine(GetPath(pathList[i]));
-            Console.WriteLine("Number of trips from 'A' to 'C' with four stops is {0}", pathList.Where(x => x.Count == 4).Count());
+            Console.WriteLine("Number of trips from 'A' to 'C' with four stops is {0}", pathList.Where(x => x.Count == 5).Count());
 
             var path = new List<int>() { 0, 0, 0, 0, 0 };
             var parent = new List<int>() { 0, 0, 0, 0, 0 };
             GetShortestPath(graph, NUMVERTICES, ToInt('A'), ref path, ref parent);
             Console.WriteLine("Shortest path from 'A' to 'C' is {0}", path[ToInt('C')]);
+
+            candidatePath = new List<int>();
+            candidateDist = new List<int>();
+            candidatePath.Add(ToInt('C'));
+            candidateDist.Add(0);
+            pathList = new List<List<int>>();
+            distanceList = new List<List<int>>();
+            GetAllPaths(graph, NUMVERTICES, ToInt('C'), ToInt('C'), 12, ref candidatePath, ref candidateDist, ref pathList, ref distanceList);
+            pathList = pathList.Where(x => distanceList[pathList.IndexOf(x)].Sum() < 30).ToList();
+            for (int i = 0; i < pathList.Count; i++) Console.WriteLine(GetPath(pathList[i]));
+            Console.WriteLine("Number of trips from 'C' to 'C' with distance < 30 is {0}", pathList.Count());
 
         }
 
@@ -198,14 +215,14 @@ namespace CodingExercises
         /// <param name="numVertex">number of vertices in graph</param>
         /// <param name="pathList">list of paths between source and destination</param>
         /// <param name="distanceList">list of paths between </param>
-        public static void GetAllPaths(int[,] graph, int numVertex, int source, int destination, ref List<int> candidatePath, ref List<int> candidateDist, ref List<List<int>> pathList, ref List<List<int>> distanceList)
+        public static void GetAllPaths(int[,] graph, int numVertex, int source, int destination, int threshold, ref List<int> candidatePath, ref List<int> candidateDist, ref List<List<int>> pathList, ref List<List<int>> distanceList)
         {
-            if (candidatePath.Count > 5) return;
+            if (candidatePath.Count > threshold) return;
            
             var path = new List<int>();
             var distances = new List<int>();
             GetOutboundEdges(graph, numVertex, source, ref path, ref distances);
-            if (path.Contains(destination) && (candidatePath.Count == 0 || (candidatePath.Count > 0 && candidatePath.Last() != destination)))
+            if (path.Contains(destination) && (candidatePath.Count == 0  || (candidatePath.Count > 0 && candidatePath.Last() != destination)))
             {
                 candidatePath.Add(destination);
                 candidateDist.Add(distances[path.IndexOf(destination)]);
@@ -223,7 +240,7 @@ namespace CodingExercises
                 {
                     candidatePath.Add(path[i]);
                     candidateDist.Add(distances[i]);
-                    GetAllPaths(graph, numVertex, path[i], destination, ref candidatePath, ref candidateDist, ref pathList, ref distanceList);
+                    GetAllPaths(graph, numVertex, path[i], destination, threshold, ref candidatePath, ref candidateDist, ref pathList, ref distanceList);
                     candidatePath.RemoveAt(candidatePath.Count - 1);
                     candidateDist.RemoveAt(candidateDist.Count - 1);
                 }
