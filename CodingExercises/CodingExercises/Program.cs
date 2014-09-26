@@ -69,8 +69,32 @@ namespace CodingExercises
             pathList = new List<List<int>>();
             distanceList = new List<List<int>>();
             GetAllPaths(graph, NUMVERTICES, ToInt('A'), ToInt('C'), 5, ref candidatePath, ref candidateDist, ref pathList, ref distanceList);
-            for (int i = 0; i < pathList.Count; i++) Console.WriteLine(GetPath(pathList[i]));
+            int Min = int.MaxValue;
+            for (int i = 0; i < pathList.Count; i++)
+            {
+                Console.WriteLine(GetPath(pathList[i]));
+                if (distanceList[i].Sum() < Min)
+                    Min = distanceList[i].Sum();
+            }
+            Console.WriteLine("Length of the shortest route from 'A' to 'C' is {0}", Min );
             Console.WriteLine("Number of trips from 'A' to 'C' with four stops is {0}", pathList.Where(x => x.Count == 5).Count());
+
+            candidatePath = new List<int>();
+            candidateDist = new List<int>();
+            candidatePath.Add(ToInt('B'));
+            candidateDist.Add(0);
+            pathList = new List<List<int>>();
+            distanceList = new List<List<int>>();
+            GetAllPaths(graph, NUMVERTICES, ToInt('B'), ToInt('B'), 5, ref candidatePath, ref candidateDist, ref pathList, ref distanceList);
+            Min = int.MaxValue;
+            for (int i = 0; i < pathList.Count; i++)
+            {
+                Console.WriteLine(GetPath(pathList[i]));
+                if (distanceList[i].Sum() < Min)
+                    Min = distanceList[i].Sum();
+            }
+            Console.WriteLine("Length of the shortest route from 'B' to 'N' is {0}", Min);
+            
 
             var path = new List<int>() { 0, 0, 0, 0, 0 };
             var parent = new List<int>() { 0, 0, 0, 0, 0 };
