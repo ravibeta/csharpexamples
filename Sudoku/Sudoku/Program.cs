@@ -61,6 +61,24 @@ namespace Sudoku
             if (used.All(x => x == true)) return true;
             return false;
         }
+        private static bool FillSudoku(ref int[,] board, ref List<bool> used)
+        {
+            PrintBoard(ref board);
+            for (int subgrid = 0; subgrid < 9; subgrid++)
+            {
+                if (used[subgrid]) continue;
+                used[subgrid] = true;
+                if (FillSubGrid(ref board, subgrid) &&
+                    FillSudoku(ref board, ref used))
+                {
+                    return true;
+                }
+                used[subgrid] = false;
+                ResetSubgrid(ref board, subgrid);
+            }
+            if (used.All(x => x == true)) return true;
+            return false;
+        }
         //private static void oldMain()
         //{
         //    int[,] board = new int[9, 9];
