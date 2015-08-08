@@ -25,41 +25,26 @@ namespace Sudoku
                 GeneratePuzzle(ref board);
             }
         }
-        private static bool FillSudoku(ref int[,] board, ref List<bool> used)
+        private static void GeneratePuzzle(ref int[,] board)
         {
-            PrintBoard(ref board);
-            for (int subgrid = 0; subgrid < 9; subgrid++)
+            int[,] clone = new int[9, 9];
+            for (int i = 0; i < 9; i++)
             {
-                if (used[subgrid]) continue;
-                used[subgrid] = true;
-                if (FillSubGrid(ref board, subgrid) &&
-                    FillSudoku(ref board, ref used))
+                for (int j = 0; j < 9; j++)
                 {
-                    return true;
+                    clone[i, j] = board[i, j];
                 }
-                used[subgrid] = false;
-                ResetSubgrid(ref board, subgrid);
             }
-            if (used.All(x => x == true)) return true;
-            return false;
-        }
-        private static bool FillSudoku(ref int[,] board, ref List<bool> used)
-        {
-            PrintBoard(ref board);
-            for (int subgrid = 0; subgrid < 9; subgrid++)
+            Random rnd = new Random();
+            for (int i = 0; i < ((9 * 9) / 2); i++)
             {
-                if (used[subgrid]) continue;
-                used[subgrid] = true;
-                if (FillSubGrid(ref board, subgrid) &&
-                    FillSudoku(ref board, ref used))
-                {
-                    return true;
-                }
-                used[subgrid] = false;
-                ResetSubgrid(ref board, subgrid);
+                int num = rnd.Next(0, 81);
+                int row = num / 9;
+                int col = num % 9;
+                clone[row, col] = -1; // equivalent to hiding this cell
             }
-            if (used.All(x => x == true)) return true;
-            return false;
+            PrintBoard(ref clone);
+
         }
         private static bool FillSudoku(ref int[,] board, ref List<bool> used)
         {
