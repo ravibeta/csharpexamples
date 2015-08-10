@@ -22,7 +22,8 @@ namespace Sudoku
             if (FillSudoku(ref board, ref used))
             {
                 PrintBoard(ref board);
-                GeneratePuzzle(ref board);
+                for  (int i =0; i  < 10; i++)
+                      GeneratePuzzle(ref board);
             }
         }
         private static void GeneratePuzzle(ref int[,] board)
