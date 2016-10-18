@@ -22,7 +22,30 @@ namespace Sudoku
             if (FillSudoku(ref board, ref used))
             {
                 PrintBoard(ref board);
+                for  (int i =0; i  < 10; i++)
+                      GeneratePuzzle(ref board);
             }
+        }
+        private static void GeneratePuzzle(ref int[,] board)
+        {
+            int[,] clone = new int[9, 9];
+            for (int i = 0; i < 9; i++)
+            {
+                for (int j = 0; j < 9; j++)
+                {
+                    clone[i, j] = board[i, j];
+                }
+            }
+            Random rnd = new Random();
+            for (int i = 0; i < ((9 * 9) / 2); i++)
+            {
+                int num = rnd.Next(0, 81);
+                int row = num / 9;
+                int col = num % 9;
+                clone[row, col] = -1; // equivalent to hiding this cell
+            }
+            PrintBoard(ref clone);
+
         }
         private static bool FillSudoku(ref int[,] board, ref List<bool> used)
         {
