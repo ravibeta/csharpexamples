@@ -1,0 +1,39 @@
+﻿@model WindowsExports.Commands
+
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Detail</h2>
+
+<fieldset>
+    <legend>Commands</legend>
+    <div>
+        <div>
+            @Html.DisplayName("Name: ")
+        </div>
+        <div>
+            <b>@Html.DisplayName(Model.Name)</b>
+        </div>
+    </>
+    <div>
+        <div>
+            @Html.DisplayName("OwnerName: ")
+        </div>
+        <div>
+            <b>@Html.DisplayName(Model.Owner.Name)</b>
+        </div>
+    </div>
+    <div>
+        <div>
+        </div>
+        <div>
+            <img src="data:image;base64,@System.Convert.ToBase64String(Model.Image)" />
+        </div>
+    </div>
+    
+</fieldset>
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>
