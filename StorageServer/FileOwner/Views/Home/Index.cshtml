@@ -1,0 +1,33 @@
+﻿@model IEnumerable<FileOwner.File>
+
+@{
+    ViewBag.Title = "Home Page";
+}
+@section featured {
+    <section class="featured">
+        <div class="content-wrapper">
+            <hgroup class="title">
+                <h1>@ViewBag.Title.</h1>
+                <h2>@ViewBag.Message</h2>
+            </hgroup>
+
+        </div>
+    </section>
+}
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<div class="wrap">
+    @foreach (var item in Model) {
+      <div class="box">
+    <div class="boxInner">
+      <div>@Html.DisplayName(item.Name)</div>
+      <a href="@Url.Action("Detail", "Home", new { name = item.Name })"><img src="data:image;base64,@System.Convert.ToBase64String(item.Image)" /></a>
+      <div class="titleBox">@Html.Display(item.Name)</div>
+    </div>
+  </div>
+    }
+</div>
+
+

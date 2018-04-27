@@ -1,0 +1,85 @@
+
+-- --------------------------------------------------
+-- Entity Designer DDL Script for SQL Server Compact Edition
+-- --------------------------------------------------
+-- Date Created: 04/21/2018 17:08:25
+-- Generated from EDMX file: C:\Users\Admin\Documents\GitHub\csharpexamples\FileAPI\FileOwner\FileOwnerDB.edmx
+-- --------------------------------------------------
+
+
+-- --------------------------------------------------
+-- Dropping existing FOREIGN KEY constraints
+-- NOTE: if the constraint does not exist, an ignorable error will be reported.
+-- --------------------------------------------------
+
+    ALTER TABLE [Files] DROP CONSTRAINT [FK_OwnerAssociation];
+GO
+
+-- --------------------------------------------------
+-- Dropping existing tables
+-- NOTE: if the table does not exist, an ignorable error will be reported.
+-- --------------------------------------------------
+
+    DROP TABLE [Files];
+GO
+    DROP TABLE [Owners];
+GO
+
+-- --------------------------------------------------
+-- Creating all tables
+-- --------------------------------------------------
+
+-- Creating table 'Files'
+CREATE TABLE [Files] (
+    [Name] nvarchar(100)  NULL,
+    [OwnerID] int  NOT NULL,
+    [ID] int IDENTITY(1,1) NOT NULL,
+    [Image] image  NULL
+);
+GO
+
+-- Creating table 'Owners'
+CREATE TABLE [Owners] (
+    [ID] int IDENTITY(1,1) NOT NULL,
+    [Name] nvarchar(100)  NULL
+);
+GO
+
+-- --------------------------------------------------
+-- Creating all PRIMARY KEY constraints
+-- --------------------------------------------------
+
+-- Creating primary key on [ID] in table 'Files'
+ALTER TABLE [Files]
+ADD CONSTRAINT [PK_Files]
+    PRIMARY KEY ([ID] );
+GO
+
+-- Creating primary key on [ID] in table 'Owners'
+ALTER TABLE [Owners]
+ADD CONSTRAINT [PK_Owners]
+    PRIMARY KEY ([ID] );
+GO
+
+-- --------------------------------------------------
+-- Creating all FOREIGN KEY constraints
+-- --------------------------------------------------
+
+-- Creating foreign key on [OwnerID] in table 'Files'
+ALTER TABLE [Files]
+ADD CONSTRAINT [FK_OwnerAssociation]
+    FOREIGN KEY ([OwnerID])
+    REFERENCES [Owners]
+        ([ID])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_OwnerAssociation'
+CREATE INDEX [IX_FK_OwnerAssociation]
+ON [Files]
+    ([OwnerID]);
+GO
+
+-- --------------------------------------------------
+-- Script has ended
+-- --------------------------------------------------
