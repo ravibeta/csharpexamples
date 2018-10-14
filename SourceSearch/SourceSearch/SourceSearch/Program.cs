@@ -24,6 +24,7 @@ namespace SourceSearch
                 return;
             }
 
+            // Move destination c:\Code\Index2 as FS Enabled Object Storage
             var indexAt = SimpleFSDirectory.Open(new DirectoryInfo(@"C:\Code\Index2"));
             var analyzer = new StandardAnalyzer(Lucene.Net.Util.Version.LUCENE_30);
             using (var indexer = new IndexWriter(
