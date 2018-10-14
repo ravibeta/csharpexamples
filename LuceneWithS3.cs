@@ -13,8 +13,6 @@ using Lucene.Net.Index;
 using Lucene.Net.QueryParsers;
 using Lucene.Net.Store;
 using Lucene.Net.Analysis.Standard;
-using Microsoft.WindowsAzure.Storage;
-using Microsoft.WindowsAzure.Storage.Blob;
 
 namespace SourceSearch
 {
@@ -37,7 +35,7 @@ namespace SourceSearch
             try {
                 CloudStorageAccount storageAccount = null;
                 CloudBlobContainer cloudBlobContainer = null;
-                CloudStorageAccount.TryParse(storageConnectionString, out storageAccount);
+                storageAccount = CloudStorageAccount.Parse(storageConnectionString);
                 CloudBlobClient cloudBlobClient = storageAccount.CreateCloudBlobClient();
                 cloudBlobContainer = cloudBlobClient.GetContainerReference(bucketName + Guid.NewGuid().ToString());
                 cloudBlobContainer.Create();
