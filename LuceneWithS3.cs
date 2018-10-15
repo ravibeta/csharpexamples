@@ -68,11 +68,15 @@ namespace SourceSearch
                                     doc.Add(new Field("title", x.FullName, Field.Store.YES, Field.Index.ANALYZED));
                                     indexer.AddDocument(doc);
                                     CloudBlockBlob cloudBlockBlob = cloudBlobContainer.GetBlockBlobReference(x.Name);
-                                    MemoryStream stream = new MemoryStream();
-                                    var writer = new StreamWriter(stream);
-                                    writer.Write(doc.ToString());
-                                    stream.Position = 0;
-                                    cloudBlockBlob.UploadFromStream(stream);
+                                    using (MemoryStream stream = new MemoryStream())
+                                    {
+                                        using (var writer = new StreamWriter(stream))
+                                        {
+                                            writer.Write(doc.ToString());
+                                            stream.Position = 0;
+                                            cloudBlockBlob.UploadFromStream(stream);
+                                        }
+                                    }
                                 }
                             });
 
